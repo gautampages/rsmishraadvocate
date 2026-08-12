@@ -1,16 +1,50 @@
-# React + Vite
+# Advocate Ram Snehi Mishra — Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, responsive, single-page static website for **Advocate Ram Snehi Mishra**, built with React + Vite. No backend required — deploys anywhere static files are served.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Fixed glass navbar with smooth-scroll navigation and a mobile menu
+- Cinematic hero with practice stats and an advocate profile card
+- About, Practice Areas, Why Choose Us, Testimonials and Contact sections
+- Scroll-reveal animations (respect `prefers-reduced-motion`)
+- Automatic light/dark theme (follows the visitor's OS setting)
+- Fully responsive (desktop, tablet, mobile)
+- Contact form that opens the visitor's email client (static-friendly, no server)
+- Navy + gold "legal" aesthetic, Fraunces + Inter typography
+- SEO / Open Graph meta tags, custom scales-of-justice favicon
 
-## React Compiler
+## Editing content
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All text lives in one file — **[`src/data/content.js`](src/data/content.js)**.
+Update the advocate name, bio, practice areas, testimonials and contact details there.
+Fields marked `// TODO` still contain placeholder data (phone, email, chamber
+address, credentials) — replace them with the real information.
 
-## Expanding the Oxlint configuration
+## Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+npm install      # install dependencies
+npm run dev      # start dev server (http://localhost:5173)
+npm run build    # production build → dist/
+npm run preview  # preview the production build
+npm run lint     # run oxlint
+```
+
+## Deployment
+
+The `dist/` folder is a fully static site. Deploy to any static host:
+
+- **GitHub Pages**, **Netlify**, **Vercel**, **Cloudflare Pages**, or any web server.
+
+For GitHub Pages served from a sub-path, set `base` in `vite.config.js` to your
+repo name (e.g. `base: '/rsmishraadvocate/'`) before building.
+
+## Tech stack
+
+React 19 · Vite · plain CSS (design tokens, no UI framework)
+
+---
+
+> This website is for informational purposes only and does not constitute legal
+> advice or solicitation.
