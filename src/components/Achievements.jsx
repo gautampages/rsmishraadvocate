@@ -5,13 +5,13 @@ import Reveal from "./Reveal";
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="section section--dark">
+    <section id="achievements" className="section section--tint">
       <div className="dots" aria-hidden="true" />
       <div className="container">
         <Reveal className="section__head">
-          <h2 className="section__title section__title--light">{achievements.heading}</h2>
+          <h2 className="section__title">{achievements.heading}</h2>
           <span className="section__rule" />
-          <p className="section__subtitle section__subtitle--light">{achievements.subtext}</p>
+          <p className="section__subtitle">{achievements.subtext}</p>
         </Reveal>
 
         <div className="grid grid--achieve">

@@ -4,8 +4,8 @@
   "description": "Best Advocate & Lawyer in Hajipur, Vaishali, Bihar — 28+ years of legal experience.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0b1a2f",
-  "theme_color": "#0b1a2f",
+  "background_color": "#fbf9f5",
+  "theme_color": "#fbf9f5",
   "icons": [
     {
       "src": "/favicon.svg",
