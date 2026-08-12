@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { contact } from "../data/content";
+import { contact, advocate } from "../data/content";
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
 
@@ -11,6 +11,7 @@ export default function Contact() {
     { icon: "mail", label: "Email", value: contact.email, href: `mailto:${contact.email}` },
     { icon: "pin", label: "Chamber", value: contact.address },
     { icon: "clock", label: "Office Hours", value: contact.hours },
+    { icon: "linkedin", label: "LinkedIn", value: "ramsnehimishra", href: advocate.linkedin, external: true },
   ];
 
   const onSubmit = (e) => {
@@ -44,7 +45,13 @@ export default function Contact() {
                 <div>
                   <span className="contact__label">{d.label}</span>
                   {d.href ? (
-                    <a href={d.href} className="contact__value">{d.value}</a>
+                    <a
+                      href={d.href}
+                      className="contact__value"
+                      {...(d.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                    >
+                      {d.value}
+                    </a>
                   ) : (
                     <span className="contact__value">{d.value}</span>
                   )}

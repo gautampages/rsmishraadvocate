@@ -17,14 +17,15 @@ export const advocate = {
   heroSubtitle: "Excellence in Every Case",
   heroSubtext:
     "With over 28 years of experience, Advocate Ram Snehi Mishra is one of the most trusted " +
-    "advocates and lawyers serving Hajipur, Vaishali and across Bihar — offering expert legal " +
-    "services in criminal, civil, family, property and corporate law, ensuring justice and " +
-    "favorable outcomes for every client.",
+    "advocates and lawyers serving Hajipur, Vaishali and across Bihar — a leading choice for " +
+    "divorce and family disputes, as well as criminal, civil, property and corporate matters, " +
+    "ensuring justice and favorable outcomes for every client.",
   serving: "Serving Hajipur • Vaishali • Patna • across Bihar",
   location: "Hajipur, Vaishali, Bihar",
   yearsExperience: "28",
   clientsServed: "1000",
   clientSatisfaction: "96",
+  linkedin: "https://www.linkedin.com/in/ramsnehimishra/",
 };
 
 // ---------------------------------------------------------------------------
@@ -128,11 +129,12 @@ export const services = {
       icon: "family",
       title: "Family Law",
       subtitle: "Family Matters",
-      eyebrow: "Family Law Practice",
-      headline: "Family Law Expertise",
+      eyebrow: "Family & Divorce Law Practice",
+      headline: "Divorce & Family Law Expertise",
       description:
-        "Sensitive, discreet representation in matrimonial and family disputes, focused on " +
-        "protecting your interests and those of your loved ones.",
+        "A leading choice in Hajipur and Vaishali for divorce and family disputes — offering " +
+        "sensitive, discreet and strategic representation in matrimonial matters, maintenance, " +
+        "alimony and child custody, always protecting your interests and those of your loved ones.",
       cases: { total: 40, running: 25, won: 12 },
       subAreas: [
         {
@@ -315,28 +317,44 @@ export const whyChoose = {
   ],
 };
 
-// Blog / Insights
+// Blog / Insights — real posts shared by the advocate on LinkedIn.
 export const blog = {
-  heading: "Legal Insights",
-  subtext: "Articles and updates on law, rights and legal developments",
+  heading: "Legal Insights & Updates",
+  subtext: "Reflections on family law, property disputes and justice — shared on LinkedIn.",
+  linkedinUrl: "https://www.linkedin.com/in/ramsnehimishra/",
   posts: [
     {
-      tag: "Criminal Law",
-      title: "Understanding Bail: Your Rights and the Process",
-      excerpt: "A clear guide to how bail works, the types of bail, and what to expect when applying.",
-      date: "TODO — date",
+      tag: "Family Law",
+      title: "When Law Enters a Family, Something Has Already Broken",
+      excerpt:
+        "Family disputes are never just about law — they are about emotions, expectations and unspoken pain. Why mediation often protects families better than litigation.",
+      body: [
+        "In my experience as a legal professional, family disputes are never just about law — they are about emotions, expectations, and often, unspoken pain.",
+        "By the time a matter reaches the court — whether it is divorce, maintenance, custody, or domestic disputes — the relationship has already gone through phases of silence, misunderstanding, and emotional distance.",
+        "The courtroom then becomes a place where personal conversations turn into legal arguments, emotions are converted into affidavits, and relationships are reduced to case files.",
+        "But one important reality often gets overlooked — a legal victory does not always mean emotional closure. A decree of divorce ends the marriage, but not the memories. A custody order decides rights, but not bonding. A maintenance order ensures support, but not respect.",
+        "This is why the law today increasingly encourages mediation and settlement in family matters. Sometimes a conversation can solve what litigation cannot, understanding can prevent years of court battles, and early resolution can protect not just individuals, but entire families.",
+        "As legal professionals, our duty is not only to fight cases — but also to guide clients towards the most humane and practical resolution. Because in family law, the goal should not just be “winning the case” — it should be “minimizing the damage.”",
+      ],
+      hashtags: ["FamilyLaw", "Mediation", "LegalAwareness", "Divorce", "Advocacy", "Justice"],
+      source: "https://www.linkedin.com/in/ramsnehimishra/",
     },
     {
       tag: "Property Law",
-      title: "Verifying Property Title Before You Buy",
-      excerpt: "Essential due-diligence steps every buyer should take to avoid disputes later.",
-      date: "TODO — date",
-    },
-    {
-      tag: "Family Law",
-      title: "Maintenance & Custody: What the Law Provides",
-      excerpt: "An overview of rights and obligations in matrimonial and custody matters.",
-      date: "TODO — date",
+      title: "HUF & Ancestral Property: When Legacy Turns Into Litigation",
+      excerpt:
+        "Ancestral property under a Hindu Undivided Family often turns legacy into litigation. How clear partition and family settlements protect both land and relationships.",
+      body: [
+        "In many villages across India, land is not just an asset — it is identity, legacy, and family pride passed down through generations.",
+        "But when it comes to ancestral property under a Hindu Undivided Family (HUF), what was once shared ownership often becomes the root of serious disputes. The problem usually begins with a simple assumption: “Yeh toh hum sabka hai…” Legally, that may be true — but how much belongs to whom is where conflicts arise.",
+        "Under HUF, property is jointly owned by coparceners, rights are acquired by birth, and each member has a claim — but not always a clearly defined share until partition.",
+        "In villages these disputes become even more complex because records are unclear or outdated, oral partitions were never legally documented, and emotional attachment is stronger than legal understanding.",
+        "And then one day a sale happens without consent, a mutation is challenged, or a boundary becomes a battlefield. What follows is not just a legal fight — but a breakdown of family structure: years of litigation, strained relationships, and land that remains unusable during disputes.",
+        "As legal professionals, it is important to create awareness: partition should be clearly documented and registered, family settlements can avoid years of court battles, and every coparcener's right must be understood and respected.",
+        "Because in HUF matters, the law is clear — but emotions are not. The real challenge is not dividing the property… it is protecting the family while doing so.",
+      ],
+      hashtags: ["HUF", "AncestralProperty", "PropertyLaw", "LegalAwareness", "FamilyDisputes", "Advocacy"],
+      source: "https://www.linkedin.com/in/ramsnehimishra/",
     },
   ],
 };
@@ -351,10 +369,10 @@ export const testimonials = [
   },
   {
     quote:
-      "Professional, honest and always available. I felt confident throughout my case knowing " +
-      "I had the right advocate by my side.",
+      "During my divorce he was compassionate, discreet and firm in court. He guided me through " +
+      "custody and maintenance with honesty and secured a fair settlement for me and my child.",
     author: "S. Verma",
-    role: "Civil Matter",
+    role: "Divorce & Family Matter",
   },
   {
     quote:
@@ -407,8 +425,12 @@ export const faqs = {
       a: "Advocate Ram Snehi Mishra is a Senior Advocate with over 28 years of experience serving Hajipur, Vaishali and across Bihar, handling criminal, civil, family, property and corporate matters with a strong track record of favorable outcomes.",
     },
     {
+      q: "Do you handle divorce and family dispute cases in Hajipur?",
+      a: "Yes. Advocate Ram Snehi Mishra is one of the most trusted divorce and family lawyers in Hajipur and Vaishali, handling mutual-consent and contested divorce, maintenance and alimony, child custody and guardianship, and domestic-violence matters with sensitivity and confidentiality.",
+    },
+    {
       q: "What legal services do you provide in Hajipur and Vaishali?",
-      a: "We provide comprehensive legal services including criminal defence, civil litigation, property and real estate law, family and matrimonial law, and corporate & commercial law across Hajipur, Vaishali, Patna and Bihar.",
+      a: "We provide comprehensive legal services including divorce and family law, criminal defence, civil litigation, property and real estate law, and corporate & commercial law across Hajipur, Vaishali, Patna and Bihar.",
     },
     {
       q: "Where is your law office located in Hajipur?",

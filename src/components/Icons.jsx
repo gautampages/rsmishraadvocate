@@ -162,6 +162,12 @@ export function Icon({ name, ...props }) {
         <path d="M4 21h16" />
       </>
     ),
+    linkedin: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="3" />
+        <path d="M8 10v6M8 7v.01M12 16v-3.5a2 2 0 0 1 4 0V16" fill="none" />
+      </>
+    ),
     check: <path d="M20 6 9 17l-5-5" />,
     star: (
       <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" />

@@ -1,4 +1,5 @@
 import { advocate, nav, contact } from "../data/content";
+import { Icon } from "./Icons";
 
 export default function Footer() {
   return (
@@ -9,6 +10,15 @@ export default function Footer() {
           <div>
             <strong>{advocate.title} {advocate.name}</strong>
             <p className="muted">{advocate.tagline}</p>
+            <a
+              href={advocate.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="footer__social"
+              aria-label="LinkedIn profile"
+            >
+              <Icon name="linkedin" width={18} height={18} /> LinkedIn
+            </a>
           </div>
         </div>
 
