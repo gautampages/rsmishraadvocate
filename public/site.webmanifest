@@ -1,0 +1,17 @@
+{
+  "name": "Advocate Ram Snehi Mishra",
+  "short_name": "RSM Advocate",
+  "description": "Best Advocate & Lawyer in Hajipur, Vaishali, Bihar — 28+ years of legal experience.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1a2f",
+  "theme_color": "#0b1a2f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
