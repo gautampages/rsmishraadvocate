@@ -70,6 +70,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html, body { overflow-x: hidden; max-width: 100%; }
+* { min-width: 0; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
@@ -1125,9 +1128,37 @@ a.contact__value:hover { color: var(--gold-500); }
 .footer__disclaimer { max-width: 520px; }
 
 /* ============================ RESPONSIVE ============================ */
+/* Collapse the nav into a hamburger before the links crowd the bar */
+@media (max-width: 900px) {
+  .nav__toggle { display: flex; }
+  .nav__links {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 16px 20px 22px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
+  }
+  .nav__links--open { transform: none; opacity: 1; pointer-events: auto; }
+  .nav__links > a { padding: 12px 14px; }
+  .nav__links > a.is-active::after { display: none; }
+  .nav__cta { margin: 8px 0 0; text-align: center; justify-content: center; }
+}
+
 @media (max-width: 960px) {
-  .hero__inner { grid-template-columns: 1fr; }
-  .hero__showcase { min-height: 400px; max-width: 520px; }
+  .hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero__showcase { display: none; }
   .philosophy { grid-template-columns: 1fr; }
   .contact { grid-template-columns: 1fr; }
   .grid--cards, .grid--quotes { grid-template-columns: repeat(2, 1fr); }
@@ -1141,35 +1172,40 @@ a.contact__value:hover { color: var(--gold-500); }
 }
 
 @media (max-width: 720px) {
-  .nav__toggle { display: flex; }
-  .nav__links {
-    position: absolute;
-    top: 76px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-    padding: 16px 24px 24px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-12px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.22s ease, opacity 0.22s ease;
-  }
-  .nav__links--open { transform: none; opacity: 1; pointer-events: auto; }
-  .nav__cta { margin: 8px 0 0; text-align: center; justify-content: center; }
+  .section { padding: clamp(52px, 11vw, 80px) 0; }
+  .section__head { margin-bottom: 40px; }
+  .hero { padding: 128px 0 72px; }
   .hero__stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .hero__stat { padding: 14px 6px; }
   .hero__showcase { display: none; }
   .grid--cards, .grid--quotes, .grid--why, .grid--achieve { grid-template-columns: 1fr; }
   .tabs { grid-template-columns: 1fr; }
+  .svc { padding: 22px 18px; }
   .svc__areas { grid-template-columns: 1fr; }
   .svc__header { flex-direction: column; gap: 16px; }
+  .svc__stats { gap: 18px 26px; }
+  .article { padding: 24px 22px; }
+  .office__map, .office__map iframe { min-height: 320px; }
   .hours__row { grid-template-columns: 1fr auto; }
   .hours__time { grid-column: 1 / -1; grid-row: 2; }
   .footer__inner { grid-template-columns: 1fr; gap: 28px; }
   .footer__barinner { flex-direction: column; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 116px 0 60px; }
+  .hero__statval { font-size: 1.6rem; }
+  .hero__stat { padding: 12px 4px; }
+  .hero__breakdownlist { gap: 8px; }
+  .pill { font-size: 0.76rem; padding: 6px 12px; }
+  .contact__formwrap, .office__panel { padding: 22px 18px; }
+  .contact__item { padding: 16px; }
+  .faq__q { padding: 16px 18px; font-size: 1rem; }
+  .faq__a > p { padding: 0 18px; }
+  .faq__item--open .faq__a > p { padding: 0 18px 18px; }
+  .backtotop { right: 16px; bottom: 16px; width: 44px; height: 44px; }
+  .svc__stats { gap: 14px 22px; }
+  .svc__statnum { font-size: 1.5rem; }
 }
