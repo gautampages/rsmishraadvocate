@@ -2,6 +2,7 @@ import { useState } from "react";
 import { office } from "../data/content";
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
+import OpenStatus from "./OpenStatus";
 
 export default function VisitOffice() {
   const [copied, setCopied] = useState(false);
@@ -63,6 +64,7 @@ export default function VisitOffice() {
             <Reveal className="office__panel" delay={120}>
               <h3 className="office__paneltitle">
                 <Icon name="clock" width={22} height={22} /> {office.hoursTitle}
+                <OpenStatus />
               </h3>
               <ul className="hours">
                 {office.hours.map((h) => (

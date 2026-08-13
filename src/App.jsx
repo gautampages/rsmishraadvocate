@@ -1,5 +1,6 @@
 import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Achievements from "./components/Achievements";
@@ -31,6 +32,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
       <BackToTop />
     </>
   );

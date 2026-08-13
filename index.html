@@ -8,6 +8,17 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href="https://ramsnehimishra.in/" />
 
+    <!-- Fonts: preconnect + single non-blocking request (better LCP than CSS @import) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- Largest Contentful Paint image -->
+    <link rel="preload" as="image" href="/advocate-ram-snehi-mishra-hajipur.jpg" fetchpriority="high" />
+
     <!-- Primary SEO -->
     <title>Best Advocate & Lawyer in Hajipur, Vaishali (Bihar) | Advocate Ram Snehi Mishra</title>
     <meta
@@ -41,7 +52,9 @@
     <meta property="og:url" content="https://ramsnehimishra.in/" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:image" content="https://ramsnehimishra.in/og-image.jpg" />
-    <meta property="og:image:alt" content="Advocate Ram Snehi Mishra — Legal Counsel in Hajipur, Bihar" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Advocate Ram Snehi Mishra — Best Advocate & Lawyer in Hajipur, Vaishali, Bihar" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -67,7 +80,8 @@
       "telephone": "+91-92845-93714",
       "email": "info@ramsnehimishra.in",
       "priceRange": "₹₹",
-      "founder": { "@type": "Person", "name": "Ram Snehi Mishra", "jobTitle": "Senior Advocate" },
+      "slogan": "Excellence in Every Case",
+      "founder": { "@type": "Person", "name": "Ram Snehi Mishra", "jobTitle": "Senior Advocate", "sameAs": "https://www.linkedin.com/in/ramsnehimishra/" },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Reliance Tower Campus, Near Pyara Bachpan School, East Anwarpur",
@@ -88,6 +102,8 @@
         { "@type": "City", "name": "Hajipur" },
         { "@type": "AdministrativeArea", "name": "Vaishali" },
         { "@type": "City", "name": "Patna" },
+        { "@type": "City", "name": "Muzaffarpur" },
+        { "@type": "City", "name": "Sonepur" },
         { "@type": "State", "name": "Bihar" }
       ],
       "knowsAbout": ["Divorce Law", "Family Law", "Matrimonial Disputes", "Maintenance and Alimony", "Child Custody", "Criminal Law", "Civil Law", "Property Law"],

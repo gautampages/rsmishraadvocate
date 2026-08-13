@@ -85,6 +85,11 @@ export default function Hero() {
           </aside>
         </div>
 
+        <div className="hero__seo">
+          <h2>Best Advocate &amp; Lawyer in Hajipur, Vaishali (Bihar)</h2>
+          <p>{advocate.heroSubtext}</p>
+        </div>
+
         <div className="hero__below">
           <div className="hero__breakdown">
             <span className="hero__breakdownlabel">Case Breakdown</span>

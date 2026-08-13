@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { googleReviews } from "../data/content";
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
@@ -16,6 +17,28 @@ function GoogleLogo({ size = 20 }) {
 }
 
 export default function Testimonials() {
+  const trackRef = useRef(null);
+  const [paused, setPaused] = useState(false);
+
+  const scrollByCard = (dir) => {
+    const el = trackRef.current;
+    if (!el || !el.firstElementChild) return;
+    const step = el.firstElementChild.getBoundingClientRect().width + 24;
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - step / 2;
+    const atStart = el.scrollLeft <= step / 2;
+    if (dir > 0 && atEnd) el.scrollTo({ left: 0, behavior: "smooth" });
+    else if (dir < 0 && atStart) el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+    else el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => {
+      if (!paused && trackRef.current) scrollByCard(1);
+    }, 5500);
+    return () => clearInterval(id);
+  }, [paused]);
+
   return (
     <section id="testimonials" className="section section--alt">
       <div className="container">
@@ -43,9 +66,16 @@ export default function Testimonials() {
           </a>
         </Reveal>
 
-        <div className="grid grid--quotes">
-          {googleReviews.items.map((t, i) => (
-            <Reveal key={t.author} as="figure" className="quote" delay={(i % 3) * 90}>
+        <div
+          className="carousel"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false)}
+        >
+          <div className="carousel__track" ref={trackRef}>
+            {googleReviews.items.map((t, i) => (
+              <figure key={t.author} className="quote carousel__card">
               <figcaption className="quote__author quote__author--top">
                 <span className="quote__avatar" style={{ background: AVATAR_COLORS[i % AVATAR_COLORS.length] }}>
                   {t.avatar ? (
@@ -67,9 +97,16 @@ export default function Testimonials() {
                   <Icon key={k} name="star" width={16} height={16} />
                 ))}
               </div>
-              <blockquote className="quote__text quote__text--review">{t.quote}</blockquote>
-            </Reveal>
-          ))}
+                <blockquote className="quote__text quote__text--review">{t.quote}</blockquote>
+              </figure>
+            ))}
+          </div>
+          <button className="carousel__arrow carousel__arrow--prev" aria-label="Previous reviews" onClick={() => scrollByCard(-1)}>
+            <Icon name="arrow" width={18} height={18} />
+          </button>
+          <button className="carousel__arrow carousel__arrow--next" aria-label="Next reviews" onClick={() => scrollByCard(1)}>
+            <Icon name="arrow" width={18} height={18} />
+          </button>
         </div>
       </div>
     </section>
