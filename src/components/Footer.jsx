@@ -1,4 +1,4 @@
-import { advocate, nav, contact } from "../data/content";
+import { advocate, nav, contact, profiles } from "../data/content";
 import { Icon } from "./Icons";
 
 export default function Footer() {
@@ -10,15 +10,20 @@ export default function Footer() {
           <div>
             <strong>{advocate.title} {advocate.name}</strong>
             <p className="muted">{advocate.tagline}</p>
-            <a
-              href={advocate.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="footer__social"
-              aria-label="LinkedIn profile"
-            >
-              <Icon name="linkedin" width={18} height={18} /> LinkedIn
-            </a>
+            <div className="footer__socials">
+              {profiles.map((p) => (
+                <a
+                  key={p.label}
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer__social"
+                  aria-label={p.label}
+                >
+                  <Icon name={p.icon} width={18} height={18} /> {p.label.replace(" Profile", "")}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { contact, advocate } from "../data/content";
+import { contact, profiles } from "../data/content";
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
 
@@ -11,7 +11,7 @@ export default function Contact() {
     { icon: "mail", label: "Email", value: contact.email, href: `mailto:${contact.email}` },
     { icon: "pin", label: "Chamber", value: contact.address },
     { icon: "clock", label: "Office Hours", value: contact.hours },
-    { icon: "linkedin", label: "LinkedIn", value: "ramsnehimishra", href: advocate.linkedin, external: true },
+    ...profiles.map((p) => ({ icon: p.icon, label: p.label, value: p.value, href: p.url, external: true })),
   ];
 
   const onSubmit = (e) => {
@@ -37,27 +37,23 @@ export default function Contact() {
 
         <div className="contact">
           <Reveal className="contact__info">
-            {details.map((d) => (
-              <div key={d.label} className="contact__item">
-                <span className="contact__icon">
-                  <Icon name={d.icon} width={22} height={22} />
-                </span>
-                <div>
-                  <span className="contact__label">{d.label}</span>
-                  {d.href ? (
-                    <a
-                      href={d.href}
-                      className="contact__value"
-                      {...(d.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                    >
-                      {d.value}
-                    </a>
-                  ) : (
+            {details.map((d) => {
+              const Item = d.href ? "a" : "div";
+              const linkProps = d.href
+                ? { href: d.href, ...(d.external ? { target: "_blank", rel: "noreferrer" } : {}) }
+                : {};
+              return (
+                <Item key={d.label} className="contact__item" {...linkProps}>
+                  <span className="contact__icon">
+                    <Icon name={d.icon} width={22} height={22} />
+                  </span>
+                  <div>
+                    <span className="contact__label">{d.label}</span>
                     <span className="contact__value">{d.value}</span>
-                  )}
-                </div>
-              </div>
-            ))}
+                  </div>
+                </Item>
+              );
+            })}
           </Reveal>
 
           <Reveal className="contact__formwrap" delay={120}>

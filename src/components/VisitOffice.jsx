@@ -34,9 +34,14 @@ export default function VisitOffice() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            <a href={directions} target="_blank" rel="noreferrer" className="office__directions">
-              <Icon name="pin" width={16} height={16} /> Get Directions
-            </a>
+            <div className="office__maplinks">
+              <a href={directions} target="_blank" rel="noreferrer" className="office__directions">
+                <Icon name="pin" width={16} height={16} /> Get Directions
+              </a>
+              <a href={office.mapProfileUrl} target="_blank" rel="noreferrer" className="office__directions">
+                <Icon name="scales" width={16} height={16} /> View on Google Maps
+              </a>
+            </div>
           </Reveal>
 
           <div className="office__side">

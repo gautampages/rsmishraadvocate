@@ -18,7 +18,7 @@ export const advocate = {
   heroSubtext:
     "With over 28 years of experience, Advocate Ram Snehi Mishra is one of the most trusted " +
     "advocates and lawyers serving Hajipur, Vaishali and across Bihar — a leading choice for " +
-    "divorce and family disputes, as well as criminal, civil, property and corporate matters, " +
+    "divorce and family disputes, as well as criminal, civil and property matters, " +
     "ensuring justice and favorable outcomes for every client.",
   serving: "Serving Hajipur • Vaishali • Patna • across Bihar",
   location: "Hajipur, Vaishali, Bihar",
@@ -27,6 +27,15 @@ export const advocate = {
   clientSatisfaction: "96",
   linkedin: "https://www.linkedin.com/in/ramsnehimishra/",
 };
+
+// External profiles & directory listings (highly-rated public profiles).
+// Also referenced by the LegalService "sameAs" structured data in index.html.
+export const profiles = [
+  { icon: "linkedin", label: "LinkedIn", value: "ramsnehimishra", url: advocate.linkedin },
+  { icon: "scales", label: "LawRato Profile", value: "lawrato.com", url: "https://lawrato.com/advocate-ram-snehi-mishra" },
+  { icon: "gavel", label: "PathLegal Profile", value: "pathlegal.in", url: "https://www.pathlegal.in/Advocate-Ram-Snehi-Mishra--Hajipur/L000000000589704.htm" },
+  { icon: "pin", label: "Google Maps", value: "4.7★ · 105 reviews", url: "https://maps.app.goo.gl/7upM6fmTUfH5nXgB7" },
+];
 
 // ---------------------------------------------------------------------------
 //  Choose Your Legal Service — tabbed, detailed services.
@@ -135,7 +144,7 @@ export const services = {
         "A leading choice in Hajipur and Vaishali for divorce and family disputes — offering " +
         "sensitive, discreet and strategic representation in matrimonial matters, maintenance, " +
         "alimony and child custody, always protecting your interests and those of your loved ones.",
-      cases: { total: 40, running: 25, won: 12 },
+      cases: { total: 65, running: 25, won: 32 },
       subAreas: [
         {
           title: "Divorce & Separation",
@@ -167,49 +176,6 @@ export const services = {
       ctaHeading: "Free Consultation",
       ctaText: "Get expert legal advice for your family matter",
     },
-    {
-      key: "corporate",
-      short: "Corporate",
-      icon: "briefcase",
-      title: "Corporate Law",
-      subtitle: "Business Solutions",
-      eyebrow: "Corporate Law Practice",
-      headline: "Corporate Law Expertise",
-      description:
-        "Practical legal solutions for businesses — from formation and compliance to commercial " +
-        "contracts and dispute resolution.",
-      cases: { total: 20, running: 12, won: 8 },
-      subAreas: [
-        {
-          title: "Company Formation & Compliance",
-          desc: "Incorporation, licensing and ongoing statutory compliance",
-          points: ["Company Incorporation", "Licensing & Registration", "Statutory Compliance", "Corporate Advisory"],
-        },
-        {
-          title: "Commercial Contracts",
-          desc: "Drafting and vetting of business agreements and commercial documents",
-          points: ["Vendor Agreements", "Service Contracts", "MoUs & NDAs", "Contract Review"],
-        },
-        {
-          title: "Dispute Resolution",
-          desc: "Commercial litigation, arbitration and recovery of dues",
-          points: ["Commercial Litigation", "Arbitration", "Recovery Suits", "Debt Recovery"],
-        },
-        {
-          title: "Regulatory Advisory",
-          desc: "Guidance on regulatory, labour and business-law obligations",
-          points: ["Regulatory Compliance", "Labour Law Advisory", "Notices & Replies", "Risk Assessment"],
-        },
-      ],
-      process: [
-        { title: "Case Assessment", desc: "Evaluation of your commercial objectives and legal exposure" },
-        { title: "Legal Research", desc: "Analysis of applicable corporate and commercial law" },
-        { title: "Documentation", desc: "Drafting of agreements, filings and compliance documents" },
-        { title: "Resolution", desc: "Representation and advisory to protect your business interests" },
-      ],
-      ctaHeading: "Free Consultation",
-      ctaText: "Get expert legal advice for your business matter",
-    },
   ],
 };
 
@@ -237,11 +203,12 @@ export const caseBreakdown = services.categories
   .map((c) => ({ label: c.short, value: c.cases.total }))
   .sort((a, b) => b.value - a.value);
 
-// Floating showcase cards in the hero
+// Practice-area strip along the bottom of the hero banner
 export const heroCards = [
-  { icon: "scales", title: "Civil Law", desc: "Expert representation" },
-  { icon: "shield", title: "Criminal Law", desc: "Strong defense" },
-  { icon: "home", title: "Property Law", desc: "Secure transactions" },
+  { icon: "gavel", title: "Civil Law", desc: "Expert representation in civil matters" },
+  { icon: "family", title: "Family Law", desc: "Divorce, custody, maintenance & more" },
+  { icon: "scales", title: "Criminal Law", desc: "Strong defense and legal protection" },
+  { icon: "home", title: "Property Law", desc: "Property disputes, documentation & titles" },
 ];
 
 // Professional Achievements (case number derived → stays consistent with hero)
@@ -359,29 +326,67 @@ export const blog = {
   ],
 };
 
-export const testimonials = [
-  {
-    quote:
-      "Advocate Mishra handled my property dispute with remarkable clarity and patience. " +
-      "He explained every step and secured a favourable outcome.",
-    author: "R. Sharma",
-    role: "Property Client",
-  },
-  {
-    quote:
-      "During my divorce he was compassionate, discreet and firm in court. He guided me through " +
-      "custody and maintenance with honesty and secured a fair settlement for me and my child.",
-    author: "S. Verma",
-    role: "Divorce & Family Matter",
-  },
-  {
-    quote:
-      "His courtroom preparation is exceptional. He fought my case diligently and I am grateful " +
-      "for his dedication and integrity.",
-    author: "A. Singh",
-    role: "Criminal Appeal",
-  },
-];
+// Real client reviews from the Google Business Profile
+// (https://maps.app.goo.gl/7upM6fmTUfH5nXgB7). Names, ratings and wording
+// are as posted on Google Maps.
+export const googleReviews = {
+  rating: "4.7",
+  count: 105,
+  url: "https://maps.app.goo.gl/7upM6fmTUfH5nXgB7",
+  items: [
+    {
+      author: "Sandeep Vadhel",
+      meta: "10 months ago",
+      avatar: "/reviewers/avatar-sandeep-vadhel.png",
+      quote:
+        "He is highly professional, knowledgeable, and dependable. They guided me with clarity, " +
+        "kept me updated at every step, and handled my case with great dedication. I truly " +
+        "recommend their services to anyone seeking legal help.",
+    },
+    {
+      author: "Piyush Kumar",
+      meta: "Local Guide · 10 months ago",
+      avatar: "/reviewers/avatar-piyush-kumar.png",
+      quote:
+        "I had an excellent experience with Ram Snehi Mishra. He is knowledgeable, professional, " +
+        "and very approachable. He provided clear guidance, explained complex legal matters in " +
+        "simple terms, and handled my case with great attention to detail. I highly recommend " +
+        "his services to anyone seeking reliable legal advice.",
+    },
+    {
+      author: "Kiran Makwana",
+      meta: "10 months ago",
+      avatar: "/reviewers/avatar-kiran-makwana.png",
+      quote:
+        "He is true advocate for their clients. His dedication and clear communication style " +
+        "made me feel empowered throughout the legal process.",
+    },
+    {
+      author: "Veyon Infra",
+      meta: "11 months ago",
+      quote:
+        "We, Veyon Infra, are very satisfied with the professional and timely legal support " +
+        "provided by Advocate Ram Snehi Mishra. Highly recommended for legal matters.",
+    },
+    {
+      author: "Keshav Anna",
+      meta: "6 years ago",
+      avatar: "/reviewers/avatar-keshav-anna.png",
+      quote:
+        "The personalized legal counsel I received by Ram Snehi Mishra Advocate was amazing. " +
+        "He made me feel confident in my case, and was readily available for any questions I " +
+        "had. I would recommend his services time and time again.",
+    },
+    {
+      author: "Deepak Kumar",
+      meta: "6 years ago",
+      quote:
+        "A person of indepth knowledge and experience of family as well as criminal cases, a " +
+        "good listener and communicator who understands the tactics of every move by the " +
+        "opposition and an expert of winning the hearts of courtroom audiences…",
+    },
+  ],
+};
 
 export const contact = {
   heading: "Get in Touch",
@@ -404,7 +409,8 @@ export const office = {
     "East Anwarpur, Hajipur",
     "Bihar - 844101, India",
   ],
-  mapQuery: "Reliance Tower Campus, East Anwarpur, Hajipur, Bihar 844101",
+  mapQuery: "Ram Snehi Mishra (Advocate), East Anwarpur, Hajipur, Bihar 844101",
+  mapProfileUrl: "https://maps.app.goo.gl/7upM6fmTUfH5nXgB7",
   hoursTitle: "Office Hours",
   hours: [
     { day: "Mon - Fri", time: "9:00 AM - 6:00 PM", status: "Open" },
@@ -412,7 +418,7 @@ export const office = {
     { day: "Sunday", time: "By Appointment", status: "Appointment Only" },
   ],
   areasTitle: "Areas We Serve",
-  areasServed: ["Hajipur", "Vaishali", "Patna", "Muzaffarpur", "Sonepur", "Bihar High Court, Patna"],
+  areasServed: ["Hajipur", "Vaishali", "Patna", "Muzaffarpur", "Sonepur", "Patna High Court"],
 };
 
 // Frequently Asked Questions (also emitted as FAQ structured data for SEO)
@@ -422,7 +428,7 @@ export const faqs = {
   items: [
     {
       q: "Who is the best advocate in Hajipur, Bihar?",
-      a: "Advocate Ram Snehi Mishra is a Senior Advocate with over 28 years of experience serving Hajipur, Vaishali and across Bihar, handling criminal, civil, family, property and corporate matters with a strong track record of favorable outcomes.",
+      a: "Advocate Ram Snehi Mishra is a Senior Advocate with over 28 years of experience serving Hajipur, Vaishali and across Bihar, handling criminal, civil, family and property matters with a strong track record of favorable outcomes.",
     },
     {
       q: "Do you handle divorce and family dispute cases in Hajipur?",
@@ -430,7 +436,7 @@ export const faqs = {
     },
     {
       q: "What legal services do you provide in Hajipur and Vaishali?",
-      a: "We provide comprehensive legal services including divorce and family law, criminal defence, civil litigation, property and real estate law, and corporate & commercial law across Hajipur, Vaishali, Patna and Bihar.",
+      a: "We provide comprehensive legal services including divorce and family law, criminal defence, civil litigation, and property and real estate law across Hajipur, Vaishali, Patna and Bihar.",
     },
     {
       q: "Where is your law office located in Hajipur?",

@@ -1,7 +1,6 @@
-import { advocate, heroStats, caseBreakdown, heroCards } from "../data/content";
+import { advocate, heroStats, caseBreakdown, heroCards, contact } from "../data/content";
 import { Icon } from "./Icons";
 import Counter from "./Counter";
-import ScalesOfJustice from "./ScalesOfJustice";
 
 export default function Hero() {
   return (
@@ -13,21 +12,80 @@ export default function Hero() {
       </div>
 
       <div className="container hero__inner">
-        <div className="hero__content">
-          <span className="pill">
-            <Icon name="gavel" width={15} height={15} />
-            {advocate.credentials}
-          </span>
-          <h1 className="hero__title">
-            <span className="hero__title-shine">{advocate.heroHeadline}</span>
-          </h1>
-          <p className="hero__subtitle">{advocate.heroSubtitle}</p>
-          <p className="hero__serving">
-            <Icon name="pin" width={16} height={16} />
-            {advocate.serving}
-          </p>
-          <p className="hero__sub">{advocate.heroSubtext}</p>
+        <div className="banner">
+          <div className="banner__left">
+            <div className="banner__top">
+              <img
+                className="banner__photo"
+                src="/advocate-ram-snehi-mishra-hajipur.jpg"
+                alt={`Advocate ${advocate.name} in court dress — advocate in Hajipur, Vaishali (Bihar)`}
+                width="575"
+                height="748"
+                fetchPriority="high"
+              />
+              <div className="banner__center">
+                <Icon name="scales" width={42} height={42} className="banner__scalesicon" />
+                <span className="banner__eyebrow">Advocate</span>
+                <h1 className="banner__name">{advocate.name}</h1>
+                <p className="banner__meta">LL.B. &middot; {advocate.yearsExperience}+ Years of Experience</p>
+                <span className="banner__divider" aria-hidden="true" />
+                <p className="banner__tagline">
+                  Trusted Legal Advisor &amp; Advocate in Hajipur, Vaishali (Bihar)
+                </p>
+              </div>
+            </div>
 
+            <ul className="banner__strip">
+              {heroCards.map((c) => (
+                <li key={c.title}>
+                  <Icon name={c.icon} width={26} height={26} />
+                  <strong>{c.title}</strong>
+                  <span>{c.desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside className="banner__side">
+            <div className="banner__portraitcard">
+              <img
+                src="/advocate-ram-snehi-mishra-portrait.jpg"
+                alt={`Portrait of Advocate ${advocate.name}, lawyer in Hajipur, Vaishali (Bihar)`}
+                width="800"
+                height="723"
+              />
+            </div>
+            <div className="banner__about">
+              <span className="banner__aboutlabel">About</span>
+              <p>
+                Advocate {advocate.name} is a dedicated legal professional with over{" "}
+                <strong>{advocate.yearsExperience} years of experience</strong> in various areas of
+                law. He is committed to providing honest, strategic and effective legal solutions
+                for every client.
+              </p>
+            </div>
+            <ul className="banner__contact">
+              <li>
+                <Icon name="pin" width={18} height={18} />
+                {advocate.location}
+              </li>
+              <li>
+                <a href={`tel:${contact.phone.replace(/\s/g, "")}`}>
+                  <Icon name="phone" width={18} height={18} />
+                  {contact.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${contact.email}`}>
+                  <Icon name="mail" width={18} height={18} />
+                  {contact.email}
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </div>
+
+        <div className="hero__below">
           <div className="hero__breakdown">
             <span className="hero__breakdownlabel">Case Breakdown</span>
             <ul className="hero__breakdownlist">
@@ -48,23 +106,6 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="hero__showcase" aria-hidden="true">
-          <div className="hero__panel">
-            <ScalesOfJustice className="hero__scales" />
-          </div>
-          {heroCards.map((c, i) => (
-            <div key={c.title} className={`hero__float hero__float--${i + 1}`}>
-              <span className="hero__floaticon">
-                <Icon name={c.icon} width={22} height={22} />
-              </span>
-              <div>
-                <strong>{c.title}</strong>
-                <span>{c.desc}</span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
