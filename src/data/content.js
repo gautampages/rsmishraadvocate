@@ -456,8 +456,77 @@ export const faqs = {
 
 export const nav = [
   { label: "Home", href: "#home" },
+  { label: "Case Status", href: "#case-status" },
+  { label: "Ask AI", href: "#ask-ai" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
+
+// AI legal assistant (chat)
+export const assistant = {
+  eyebrow: "AI Legal Assistant",
+  heading: "Ask a Legal Question",
+  subtext:
+    "Get a clear, plain-language answer to any legal question — day or night, in English or Hindi. " +
+    "For anything specific to your matter, Advocate Ram Snehi Mishra is a call away.",
+  botName: "Legal Assistant",
+  botStatus: "Online · answers in seconds",
+  greeting:
+    "Namaste 🙏 I can explain legal procedures, documents and general rights under Indian law in simple words. " +
+    "Ask me anything — or pick a question below to begin.",
+  placeholder: "Type your legal question…",
+  teaser:
+    "Namaste 🙏 Have a legal question? Ask our AI assistant — free, instant and in simple words.",
+  dockNote: "General legal information, not legal advice.",
+  disclaimer:
+    "This assistant gives general legal information, not legal advice. Answers can vary with the facts of your case, " +
+    "the court and the nature of the matter. Please do not share confidential details here.",
+  suggestions: [
+    "How do I file for divorce by mutual consent?",
+    "What documents are needed in a property dispute?",
+    "How can I claim maintenance for my child?",
+    "What is anticipatory bail and who can apply?",
+    "What should I do if the police refuse to lodge my FIR?",
+    "What are my options in a cheque bounce case?",
+  ],
+};
+
+// AI-assisted case tracker (eCourts records)
+export const caseTracker = {
+  eyebrow: "AI Case Intelligence",
+  heading: "Track Your Case Status",
+  subtext:
+    "Check any Indian court case in seconds. Enter your CNR number or search by name, and get the next " +
+    "hearing date, complete hearing history, orders and a plain-language summary of where your case stands.",
+  note:
+    "Data is drawn from public eCourts records maintained by the judiciary. Summaries are generated automatically " +
+    "and are for information only — they are not legal advice.",
+  samples: [
+    { label: "See a sample case", cnr: "DLND020047882015" },
+    { label: "Cases handled by Adv. Ram Snehi Mishra", mode: "advocates", term: "Ram Snehi Mishra" },
+  ],
+  features: [
+    {
+      icon: "calendar",
+      title: "Next hearing at a glance",
+      text: "See the next listed date, the purpose of listing and how many days you have to prepare.",
+    },
+    {
+      icon: "sparkle",
+      title: "Plain-language summary",
+      text: "Court records are dense. We read the full history and explain the current stage in simple words.",
+    },
+    {
+      icon: "doc",
+      title: "Orders & applications",
+      text: "Every interim order, judgment and interlocutory application recorded in the case file.",
+    },
+    {
+      icon: "shield",
+      title: "Private by design",
+      text: "Nothing you search is stored on this website. Records are fetched fresh from the court system.",
+    },
+  ],
+};
