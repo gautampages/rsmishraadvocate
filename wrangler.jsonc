@@ -1,0 +1,36 @@
+{
+  // ==========================================================================
+  //  Cloudflare Workers config — static assets only.
+  //
+  //  This file exists mainly to STOP wrangler from configuring the project
+  //  itself. `npx wrangler deploy` on a repo with no wrangler config runs an
+  //  interactive "auto-config" step; in CI it answers yes to every prompt,
+  //  writes its own config, wires the Cloudflare Vite plugin into the build
+  //  and then re-runs `npm run build`. That rebuild breaks the second, SSR
+  //  build in package.json: the plugin takes over Vite's environments, so
+  //  `vite build --ssr src/entry-server.jsx` is emitted as a hashed client
+  //  chunk (dist-ssr/assets/entry-server-*.js) and scripts/prerender.mjs dies
+  //  with ERR_MODULE_NOT_FOUND on dist-ssr/entry-server.js.
+  //
+  //  With a config committed, wrangler skips auto-config and just uploads.
+  //
+  //  There is no Worker script here on purpose. Every route is prerendered to
+  //  a real HTML file by scripts/prerender.mjs, so the site is pure static
+  //  assets. The dynamic parts (assistant, appointments, court records) are
+  //  separate Workers under workers/, deployed on their own.
+  // ==========================================================================
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "rsmishraadvocate",
+  "compatibility_date": "2026-08-15",
+  "assets": {
+    // Built by `npm run build`; prerender.mjs fills in one index.html per route.
+    "directory": "./dist",
+    // Unknown URLs fall through to dist/_redirects, which serves index.html
+    // with a 404 status. Do NOT use "single-page-application" here: that would
+    // return 200 for every typo'd URL and let Google index infinite soft-404s.
+    "not_found_handling": "none"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
