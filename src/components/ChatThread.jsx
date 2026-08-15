@@ -28,9 +28,7 @@ function Thinking() {
   );
 }
 
-const whatsappHref = `https://wa.me/${contact.whatsapp.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
-  "Namaste, I have a legal question."
-)}`;
+const callHref = `tel:${contact.phone.replace(/\s+/g, "")}`;
 
 /** The message list. Owns its own scrolling so both chat surfaces behave alike. */
 export default function ChatThread({ messages, busy, className = "", afterGreeting = null }) {
@@ -82,8 +80,8 @@ export default function ChatThread({ messages, busy, className = "", afterGreeti
           >
             {m.role === "bot" ? <RichText text={m.text} /> : <p className="rt__p">{m.text}</p>}
             {m.failed && (
-              <a className="chat__fallback" href={whatsappHref} target="_blank" rel="noreferrer">
-                Ask on WhatsApp instead <Icon name="arrow" width={14} height={14} />
+              <a className="chat__fallback" href={callHref}>
+                Call the chamber instead <Icon name="arrow" width={14} height={14} />
               </a>
             )}
           </div>

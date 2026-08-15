@@ -9,7 +9,7 @@ export default function AskAI() {
   const { messages, busy, send, reset, started } = useAssistant();
 
   return (
-    <section id="ask-ai" className="section section--tint askai">
+    <section id="ask-ai" className="section section--alt askai">
       <div className="dots" aria-hidden="true" />
       <div className="container">
         <Reveal className="section__head">

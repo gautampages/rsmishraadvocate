@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { istNow } from "../lib/istTime";
 
 // Live open/closed badge computed from the office schedule:
 // Mon–Fri 9:00–18:00, Sat 9:00–14:00, Sun by appointment.
+//
+// Reckoned in IST, never the device's zone — the chamber in Hajipur is open
+// or shut regardless of where the person looking at this page is sitting.
 function getStatus(now) {
   const day = now.getDay(); // 0 = Sunday
   const mins = now.getHours() * 60 + now.getMinutes();
@@ -16,12 +20,18 @@ function getStatus(now) {
 }
 
 export default function OpenStatus() {
-  const [status, setStatus] = useState(() => getStatus(new Date()));
+  // Starts null so the prerendered HTML and the first client render agree —
+  // the build machine's clock is not the visitor's. The real status appears
+  // on the first effect, a frame later.
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
-    const id = setInterval(() => setStatus(getStatus(new Date())), 60_000);
+    setStatus(getStatus(istNow()));
+    const id = setInterval(() => setStatus(getStatus(istNow())), 60_000);
     return () => clearInterval(id);
   }, []);
+
+  if (!status) return <span className="openstatus openstatus--pending" />;
 
   return (
     <span className={`openstatus openstatus--${status.state}`}>

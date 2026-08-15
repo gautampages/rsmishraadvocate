@@ -1,11 +1,15 @@
 // ============================================================================
-//  SITE CONTENT — single source of truth for the whole site.
+//  SITE CONTENT — copy for the home page and the site-wide chrome.
 //
-//  CASE NUMBERS: edit only the `cases` object inside each services.category.
-//  Every total shown elsewhere (hero stats, case breakdown, achievements)
-//  is COMPUTED from those numbers, so the figures stay consistent everywhere.
+//  Page-specific content lives alongside its page instead:
+//    practice.js    practice-area pages    legal.js       policy documents
+//    blogPosts.js   articles               fees.js        fee schedule
+//    checklists.js  downloadable guides    routes.js      URLs + page SEO
 //
-//  Fields marked TODO still need real values (blog post dates).
+//  NOTE: case counts (total / won / in running) were removed site-wide.
+//  Outcome tallies invite comparison and sit close to the Bar Council of
+//  India's restriction on advertising results, so the figures shown now
+//  describe service rather than scorekeeping.
 // ============================================================================
 
 export const advocate = {
@@ -38,8 +42,8 @@ export const profiles = [
 ];
 
 // ---------------------------------------------------------------------------
-//  Choose Your Legal Service — tabbed, detailed services.
-//  The `cases` object here is the SINGLE SOURCE for all case counts.
+//  Choose Your Legal Service — the tabbed overview on the home page.
+//  Each category has a fuller standalone page in src/data/practice.js.
 // ---------------------------------------------------------------------------
 export const services = {
   heading: "Choose Your Legal Service",
@@ -57,7 +61,6 @@ export const services = {
       description:
         "Comprehensive civil litigation and legal representation with strategic approach to " +
         "property disputes, contracts, and civil matters.",
-      cases: { total: 90, running: 50, won: 30 },
       subAreas: [
         {
           title: "Property Law",
@@ -100,7 +103,6 @@ export const services = {
       description:
         "Rigorous, evidence-driven criminal defence across bail, trial and appellate stages — " +
         "protecting your rights at every step of the process.",
-      cases: { total: 150, running: 78, won: 70 },
       subAreas: [
         {
           title: "Bail & Anticipatory Bail",
@@ -144,7 +146,6 @@ export const services = {
         "A leading choice in Hajipur and Vaishali for divorce and family disputes — offering " +
         "sensitive, discreet and strategic representation in matrimonial matters, maintenance, " +
         "alimony and child custody, always protecting your interests and those of your loved ones.",
-      cases: { total: 65, running: 25, won: 32 },
       subAreas: [
         {
           title: "Divorce & Separation",
@@ -180,28 +181,18 @@ export const services = {
 };
 
 // ---------------------------------------------------------------------------
-//  DERIVED case totals — computed from services.categories[].cases.
-//  Do not hand-edit; change the per-service numbers above instead.
+//  Hero headline stats.
+//
+//  Case counts (total / won / in running) were deliberately removed from the
+//  whole site: outcome tallies invite comparison and sit close to the Bar
+//  Council of India's restriction on advertising results. What remains speaks
+//  to service, not scorekeeping.
 // ---------------------------------------------------------------------------
-const sumCases = (key) => services.categories.reduce((acc, c) => acc + c.cases[key], 0);
-
-export const caseTotals = {
-  total: sumCases("total"),
-  running: sumCases("running"),
-  won: sumCases("won"),
-};
-
-// Hero headline stats (derived)
 export const heroStats = [
-  { value: caseTotals.total, label: "Total Cases" },
-  { value: caseTotals.won, label: "Cases Won" },
-  { value: caseTotals.running, label: "Cases In Running" },
+  { value: Number(advocate.clientSatisfaction), suffix: "%", label: "Client Satisfaction" },
+  { value: Number(advocate.yearsExperience), suffix: "+", label: "Years of Experience" },
+  { value: Number(advocate.clientsServed), suffix: "+", label: "Clients Served" },
 ];
-
-// Case distribution shown in the hero (derived, ordered by size)
-export const caseBreakdown = services.categories
-  .map((c) => ({ label: c.short, value: c.cases.total }))
-  .sort((a, b) => b.value - a.value);
 
 // Practice-area strip along the bottom of the hero banner
 export const heroCards = [
@@ -216,13 +207,6 @@ export const achievements = {
   heading: "Professional Achievements",
   subtext: "Numbers that reflect our commitment to excellence and client satisfaction",
   items: [
-    {
-      icon: "trophy",
-      value: caseTotals.total,
-      suffix: "+",
-      label: "Cases Handled",
-      desc: "Successfully handled cases across various areas of law with favorable outcomes",
-    },
     {
       icon: "smile",
       value: Number(advocate.clientSatisfaction),
@@ -284,47 +268,7 @@ export const whyChoose = {
   ],
 };
 
-// Blog / Insights — real posts shared by the advocate on LinkedIn.
-export const blog = {
-  heading: "Legal Insights & Updates",
-  subtext: "Reflections on family law, property disputes and justice — shared on LinkedIn.",
-  linkedinUrl: "https://www.linkedin.com/in/ramsnehimishra/",
-  posts: [
-    {
-      tag: "Family Law",
-      title: "When Law Enters a Family, Something Has Already Broken",
-      excerpt:
-        "Family disputes are never just about law — they are about emotions, expectations and unspoken pain. Why mediation often protects families better than litigation.",
-      body: [
-        "In my experience as a legal professional, family disputes are never just about law — they are about emotions, expectations, and often, unspoken pain.",
-        "By the time a matter reaches the court — whether it is divorce, maintenance, custody, or domestic disputes — the relationship has already gone through phases of silence, misunderstanding, and emotional distance.",
-        "The courtroom then becomes a place where personal conversations turn into legal arguments, emotions are converted into affidavits, and relationships are reduced to case files.",
-        "But one important reality often gets overlooked — a legal victory does not always mean emotional closure. A decree of divorce ends the marriage, but not the memories. A custody order decides rights, but not bonding. A maintenance order ensures support, but not respect.",
-        "This is why the law today increasingly encourages mediation and settlement in family matters. Sometimes a conversation can solve what litigation cannot, understanding can prevent years of court battles, and early resolution can protect not just individuals, but entire families.",
-        "As legal professionals, our duty is not only to fight cases — but also to guide clients towards the most humane and practical resolution. Because in family law, the goal should not just be “winning the case” — it should be “minimizing the damage.”",
-      ],
-      hashtags: ["FamilyLaw", "Mediation", "LegalAwareness", "Divorce", "Advocacy", "Justice"],
-      source: "https://www.linkedin.com/in/ramsnehimishra/",
-    },
-    {
-      tag: "Property Law",
-      title: "HUF & Ancestral Property: When Legacy Turns Into Litigation",
-      excerpt:
-        "Ancestral property under a Hindu Undivided Family often turns legacy into litigation. How clear partition and family settlements protect both land and relationships.",
-      body: [
-        "In many villages across India, land is not just an asset — it is identity, legacy, and family pride passed down through generations.",
-        "But when it comes to ancestral property under a Hindu Undivided Family (HUF), what was once shared ownership often becomes the root of serious disputes. The problem usually begins with a simple assumption: “Yeh toh hum sabka hai…” Legally, that may be true — but how much belongs to whom is where conflicts arise.",
-        "Under HUF, property is jointly owned by coparceners, rights are acquired by birth, and each member has a claim — but not always a clearly defined share until partition.",
-        "In villages these disputes become even more complex because records are unclear or outdated, oral partitions were never legally documented, and emotional attachment is stronger than legal understanding.",
-        "And then one day a sale happens without consent, a mutation is challenged, or a boundary becomes a battlefield. What follows is not just a legal fight — but a breakdown of family structure: years of litigation, strained relationships, and land that remains unusable during disputes.",
-        "As legal professionals, it is important to create awareness: partition should be clearly documented and registered, family settlements can avoid years of court battles, and every coparcener's right must be understood and respected.",
-        "Because in HUF matters, the law is clear — but emotions are not. The real challenge is not dividing the property… it is protecting the family while doing so.",
-      ],
-      hashtags: ["HUF", "AncestralProperty", "PropertyLaw", "LegalAwareness", "FamilyDisputes", "Advocacy"],
-      source: "https://www.linkedin.com/in/ramsnehimishra/",
-    },
-  ],
-};
+// Blog posts moved to src/data/blogPosts.js — each is now a page at /blog/<slug>.
 
 // Real client reviews from the Google Business Profile
 // (https://maps.app.goo.gl/7upM6fmTUfH5nXgB7). Names, ratings and wording
@@ -394,7 +338,8 @@ export const contact = {
     "For consultations and legal enquiries, please reach out. Every enquiry is treated with " +
     "confidentiality and prompt attention.",
   phone: "+91 91232 34065",
-  whatsapp: "+91 94314 49994",
+  // WhatsApp was removed from the website. The chamber's WhatsApp line is
+  // +91 94314 49994 — restore this field and the buttons if it comes back.
   email: "info@ramsnehimishra.in",
   address: "Reliance Tower Campus, Near Pyara Bachpan School, East Anwarpur, Hajipur, Bihar 844101",
   hours: "Mon – Sat: 9:00 AM – 6:00 PM",
@@ -454,14 +399,63 @@ export const faqs = {
   ],
 };
 
+// Primary navigation.
+//
+// `href` is a real router path. Entries of the form "/#section" scroll to a
+// section of the home page and work from any page — ScrollManager handles the
+// cross-page case. `section` is the element id used for scroll-spy on the
+// home page only.
 export const nav = [
-  { label: "Home", href: "#home" },
-  { label: "Case Status", href: "#case-status" },
-  { label: "Ask AI", href: "#ask-ai" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/", section: "home" },
+  { label: "Case Status", href: "/#case-status", section: "case-status" },
+  { label: "Services", href: "/#services", section: "services" },
+  { label: "Legal Tools", href: "/tools" },
+  { label: "Blog", href: "/blog" },
+  { label: "Fees", href: "/fees" },
+  { label: "Contact", href: "/#contact", section: "contact" },
+];
+
+// Grouped links for the footer.
+export const footerNav = [
+  {
+    title: "Practice",
+    links: [
+      { label: "Divorce & Family Law", href: "/practice/divorce-family-lawyer-hajipur" },
+      { label: "Criminal Defence", href: "/practice/criminal-lawyer-hajipur" },
+      { label: "Civil Litigation", href: "/practice/civil-lawyer-hajipur" },
+      { label: "Property & Land Law", href: "/practice/property-lawyer-hajipur" },
+    ],
+  },
+  {
+    title: "Free Tools",
+    links: [
+      { label: "Stamp Duty Calculator", href: "/tools/stamp-duty-calculator" },
+      { label: "Court Fee Calculator", href: "/tools/court-fee-calculator" },
+      { label: "Maintenance Estimator", href: "/tools/maintenance-estimator" },
+      { label: "Limitation Checker", href: "/tools/limitation-checker" },
+      { label: "Cause List Lookup", href: "/tools/cause-list" },
+      { label: "Free Checklist PDFs", href: "/checklists" },
+    ],
+  },
+  {
+    title: "Chamber",
+    links: [
+      { label: "Case Status Tracker", href: "/#case-status" },
+      { label: "Ask the AI Assistant", href: "/#ask-ai" },
+      { label: "Legal Insights", href: "/blog" },
+      { label: "Fees & Engagement", href: "/fees" },
+      { label: "Book a Consultation", href: "/book" },
+      { label: "Visit the Office", href: "/#office" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Use", href: "/terms" },
+      { label: "Disclaimer", href: "/disclaimer" },
+    ],
+  },
 ];
 
 // AI legal assistant (chat)

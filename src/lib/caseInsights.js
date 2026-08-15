@@ -8,6 +8,8 @@
    `caseAiAnalysis`, that text is preferred over the derived summary.
    ========================================================================= */
 
+import { daysFromISTToday } from "./istTime.js";
+
 const DAY = 86400000;
 
 export const parseDate = (value) => {
@@ -26,13 +28,15 @@ export const formatDate = (value, { long = false } = {}) => {
   });
 };
 
-/** Whole days from today; negative for past dates. */
+/**
+ * Whole days from today; negative for past dates.
+ *
+ * Counted against today in India — a hearing date belongs to the court's
+ * calendar, so "in 3 days" must not change because the visitor is abroad.
+ */
 export const daysFromToday = (value) => {
-  const d = parseDate(value);
-  if (!d) return null;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return Math.round((d - today) / DAY);
+  if (!value) return null;
+  return daysFromISTToday(String(value).slice(0, 10));
 };
 
 export const relativeDay = (value) => {

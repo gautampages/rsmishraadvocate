@@ -1,44 +1,111 @@
 # Advocate Ram Snehi Mishra — Website
 
-A modern, responsive, single-page static website for **Advocate Ram Snehi Mishra**, built with React + Vite. No backend required — deploys anywhere static files are served.
+A multi-page website for **Advocate Ram Snehi Mishra**, built with React + Vite and
+**prerendered to static HTML** — every URL is a complete document before any
+JavaScript runs, then hydrates into a single-page app.
+
+## Pages
+
+| Route | What it is |
+| --- | --- |
+| `/` | Home — hero, live case-status tracker, practice overview, AI assistant, contact |
+| `/practice/<slug>` | Four practice-area pages (divorce & family, criminal, civil, property) |
+| `/blog`, `/blog/<slug>` | Legal insight articles, one URL each |
+| `/book` | Appointment booking with real slots, calendar export and WhatsApp fallback |
+| `/tools`, `/tools/<slug>` | Five free calculators and lookups |
+| `/checklists`, `/checklists/<slug>` | Printable document checklists |
+| `/fees` | Fees and engagement terms |
+| `/privacy-policy`, `/terms`, `/disclaimer` | Policy documents |
 
 ## Features
 
-- Fixed glass navbar with smooth-scroll navigation and a mobile menu
-- Cinematic hero with practice stats and an advocate profile card
-- About, Practice Areas, Why Choose Us, Testimonials and Contact sections
-- Scroll-reveal animations (respect `prefers-reduced-motion`)
-- Automatic light/dark theme (follows the visitor's OS setting)
-- Fully responsive (desktop, tablet, mobile)
-- Contact form that opens the visitor's email client (static-friendly, no server)
-- Navy + gold "legal" aesthetic, Fraunces + Inter typography
-- SEO / Open Graph meta tags, custom scales-of-justice favicon
+- Prerendered HTML per route, with per-page `<title>`, description, canonical URL
+  and JSON-LD; `sitemap.xml` generated at build time from the same route table
+- Live eCourts case-status tracker and an AI legal assistant (Cloudflare Workers)
+- Free legal tools: Bihar stamp duty, Bihar court fee, maintenance estimator,
+  limitation checker, Vaishali cause-list lookup — all computed in the browser
+- Appointment booking against the chamber's real office hours, with `.ics` export
+- Scroll-reveal animations (respect `prefers-reduced-motion`), print stylesheet
+- Navy + gold aesthetic, Fraunces + Inter typography, fully responsive
 
 ## Editing content
 
-All text lives in one file — **[`src/data/content.js`](src/data/content.js)**.
-Update the advocate name, bio, practice areas, testimonials and contact details there.
-Fields marked `// TODO` still contain placeholder data (phone, email, chamber
-address, credentials) — replace them with the real information.
+Content is split by concern, all under [`src/data/`](src/data/):
+
+| File | Holds |
+| --- | --- |
+| `content.js` | Home page copy, navigation, contact details, office hours |
+| `routes.js` | **Every URL** + its page title and description (drives prerender + sitemap) |
+| `practice.js` | Practice-area pages |
+| `blogPosts.js` | Articles — add an entry to publish a new one |
+| `tools.js` | Tool index metadata |
+| `checklists.js` | Document checklists |
+| `fees.js` | Fee schedule and engagement terms |
+| `legal.js` | Privacy policy, terms, disclaimer |
+
+Calculation logic for the tools lives in [`src/lib/legalTools.js`](src/lib/legalTools.js).
+
+### Outstanding TODOs
+
+- **`src/data/fees.js`** — set `FEES_PUBLISHED = true` and fill in the `amount`
+  fields. Until then the page reads "Quoted per matter" rather than showing
+  invented figures.
+- **`src/data/blogPosts.js`** — fill in each post's `date`. While it is null the
+  page shows no date and `datePublished` is omitted from the structured data.
+
+## Adding a page
+
+1. Add an entry to `src/data/routes.js` (path, title, description).
+2. Add a `<Route>` in `src/App.jsx`.
+
+Prerendering and the sitemap follow automatically.
 
 ## Development
 
 ```bash
-npm install      # install dependencies
-npm run dev      # start dev server (http://localhost:5173)
-npm run build    # production build → dist/
-npm run preview  # preview the production build
-npm run lint     # run oxlint
+npm install         # install dependencies
+npm run dev         # start dev server (http://localhost:5173)
+npm run build       # client build + SSR build + prerender → dist/
+npm run build:client # client bundle only (no prerender)
+npm run preview     # preview the production build
+npm run lint        # run oxlint
 ```
+
+`npm run build` runs three steps: the client bundle, an SSR bundle of
+`src/entry-server.jsx`, and then [`scripts/prerender.mjs`](scripts/prerender.mjs),
+which renders every route in `src/data/routes.js` to its own `index.html` and
+regenerates `sitemap.xml`.
 
 ## Deployment
 
-The `dist/` folder is a fully static site. Deploy to any static host:
+The `dist/` folder is a fully static site — each route is a real directory with
+its own `index.html`, so any static host serves it correctly with no SPA rewrite
+rules. Deploy to **Cloudflare Pages**, **Netlify**, **Vercel**, GitHub Pages or
+any web server.
 
-- **GitHub Pages**, **Netlify**, **Vercel**, **Cloudflare Pages**, or any web server.
+## Backend services
 
-For GitHub Pages served from a sub-path, set `base` in `vite.config.js` to your
-repo name (e.g. `base: '/rsmishraadvocate/'`) before building.
+| Service | Powers | Without it |
+| --- | --- | --- |
+| `api.ramsnehimishra.in` | `/book` submissions + the appointment status popup | Booking falls back to WhatsApp |
+| `workers/legal-data` | Case-status tracker | Tracker shows an error |
+| (assistant worker) | AI legal assistant | Chat suggests WhatsApp instead |
+
+### Appointments API
+
+`GET /appointment?status=PENDING` returns the visitor's current appointment and
+their history. The API identifies visitors **by IP address**, so there is
+nothing to authenticate and nothing stored in the browser.
+[`AppointmentStatus`](src/components/AppointmentStatus.jsx) calls it on every
+page load and opens a popup when an appointment is active; a failed call is
+silent, since a visitor who never booked anything should not see an error.
+
+`POST /appointment` submits a booking. Validation failures (e.g.
+`PAST_APPOINTMENT`) are shown inline for the visitor to correct; only an
+unreachable service falls through to the WhatsApp hand-off.
+
+The API's CORS policy names the production hostname, so `npm run dev` routes
+through the `/api/appointment` proxy in `vite.config.js`.
 
 ## Tech stack
 

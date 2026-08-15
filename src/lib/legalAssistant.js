@@ -11,7 +11,7 @@
    ⚠ The worker must send CORS headers for the browser to be allowed to read
    the reply. See docs/worker-cors.md for the exact patch. Until that is
    deployed, requests from the website fail the preflight and the UI falls
-   back to a "reach us on WhatsApp" message.
+   back to a "call the chamber" message.
    ========================================================================= */
 
 const WORKER_URL = "https://cold-disk-f361.gautampages.workers.dev/";
@@ -67,13 +67,13 @@ export async function askAssistant(question, history = []) {
     clearTimeout(timer);
     if (err?.name === "AbortError") {
       throw new AssistantError(
-        "That took longer than expected. Please try asking again, or send your question on WhatsApp.",
+        "That took longer than expected. Please try asking again, or call the chamber.",
         { code: "TIMEOUT" }
       );
     }
     // A blocked CORS preflight surfaces here as a generic TypeError.
     throw new AssistantError(
-      "The assistant could not be reached from your browser. Please try again in a moment — or send your question on WhatsApp and the chamber will reply.",
+      "The assistant could not be reached from your browser. Please try again in a moment, or call the chamber.",
       { code: "NETWORK" }
     );
   }

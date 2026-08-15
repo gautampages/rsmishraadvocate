@@ -1,4 +1,4 @@
-import { advocate, heroStats, caseBreakdown, heroCards, contact } from "../data/content";
+import { advocate, heroStats, heroCards, contact } from "../data/content";
 import { Icon } from "./Icons";
 import Counter from "./Counter";
 
@@ -91,22 +91,10 @@ export default function Hero() {
         </div>
 
         <div className="hero__below">
-          <div className="hero__breakdown">
-            <span className="hero__breakdownlabel">Case Breakdown</span>
-            <ul className="hero__breakdownlist">
-              {caseBreakdown.map((c) => (
-                <li key={c.label}>
-                  <span>{c.label}</span>
-                  <strong>{c.value}</strong>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           <div className="hero__stats">
             {heroStats.map((s) => (
               <div key={s.label} className="hero__stat">
-                <Counter value={s.value} className="hero__statval" />
+                <Counter value={s.value} suffix={s.suffix} className="hero__statval" />
                 <span className="hero__statlabel">{s.label}</span>
               </div>
             ))}

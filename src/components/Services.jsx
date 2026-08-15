@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { services } from "../data/content";
 import { Icon } from "./Icons";
-import Counter from "./Counter";
 import Reveal from "./Reveal";
 
 export default function Services() {
@@ -45,11 +44,6 @@ export default function Services() {
               <span className="eyebrow">{cat.eyebrow}</span>
               <h3 className="svc__headline">{cat.headline}</h3>
               <p className="svc__desc">{cat.description}</p>
-              <div className="svc__stats">
-                <div><Counter value={cat.cases.total} className="svc__statnum" /><span>{cat.short} Cases</span></div>
-                <div><Counter value={cat.cases.running} className="svc__statnum" /><span>In Running</span></div>
-                <div><Counter value={cat.cases.won} className="svc__statnum" /><span>Cases Won</span></div>
-              </div>
             </div>
           </div>
 

@@ -165,7 +165,11 @@ function OrderItem({ order, cnr }) {
   const [open, setOpen] = useState(false);
   const hasDetail = Boolean(order.text || order.ai);
 
-  const requestHref = `https://wa.me/${contact.whatsapp.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
+  // Requesting a copy is an email now: it needs the order date and the CNR,
+  // which are easier to get right in writing than read out over the phone.
+  const requestHref = `mailto:${contact.email}?subject=${encodeURIComponent(
+    `Certified copy request — CNR ${cnr}`
+  )}&body=${encodeURIComponent(
     `Namaste, I would like a certified copy of the order dated ${formatDate(order.date)} in case CNR ${cnr}.`
   )}`;
 
@@ -193,7 +197,7 @@ function OrderItem({ order, cnr }) {
             <Icon name="chevron" width={15} height={15} style={{ transform: open ? "rotate(180deg)" : "none" }} />
           </button>
         ) : (
-          <a className="orders__btn orders__btn--ghost" href={requestHref} target="_blank" rel="noreferrer">
+          <a className="orders__btn orders__btn--ghost" href={requestHref}>
             Request copy
           </a>
         )}
@@ -234,7 +238,7 @@ function OrderItem({ order, cnr }) {
             </div>
           )}
 
-          <a className="orders__copylink" href={requestHref} target="_blank" rel="noreferrer">
+          <a className="orders__copylink" href={requestHref}>
             Request a certified copy <Icon name="arrow" width={14} height={14} />
           </a>
         </div>

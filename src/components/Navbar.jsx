@@ -1,55 +1,76 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
 import { advocate, nav } from "../data/content";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(nav[0].href);
+  const [activeSection, setActiveSection] = useState("home");
+  const { pathname } = useLocation();
+
+  const onHome = pathname === "/";
 
   useEffect(() => {
-    const ids = nav.map((n) => n.href.slice(1));
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      const y = window.scrollY + 140;
-      let current = nav[0].href;
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.offsetTop <= y) current = `#${id}`;
-      }
-      setActive(current);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const close = () => setOpen(false);
+  // Scroll-spy only makes sense on the home page, where the nav's section
+  // links point at elements that are actually on screen.
+  useEffect(() => {
+    if (!onHome) return;
+    const ids = nav.filter((n) => n.section).map((n) => n.section);
+    const onScroll = () => {
+      const y = window.scrollY + 140;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) current = id;
+      }
+      setActiveSection(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [onHome]);
+
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => setOpen(false), [pathname]);
+
+  const isActive = (item) => {
+    if (item.href.startsWith("/#") || item.href === "/") {
+      return onHome && item.section === activeSection;
+    }
+    return pathname === item.href || pathname.startsWith(`${item.href}/`);
+  };
 
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="container nav__inner">
-        <a href="#home" className="nav__brand" onClick={close}>
+        <Link to="/" className="nav__brand">
           <span className="nav__monogram">RSM</span>
           <span className="nav__brandtext">
             <strong>{advocate.name}</strong>
             <em>{advocate.title}</em>
           </span>
-        </a>
+        </Link>
 
         <nav className={`nav__links ${open ? "nav__links--open" : ""}`}>
           {nav.map((n) => (
-            <a
+            <Link
               key={n.href}
-              href={n.href}
-              onClick={close}
-              className={active === n.href ? "is-active" : ""}
+              to={n.href}
+              className={isActive(n) ? "is-active" : ""}
+              aria-current={isActive(n) ? "page" : undefined}
             >
               {n.label}
-            </a>
+            </Link>
           ))}
-          <a href="#contact" className="btn btn--sm nav__cta" onClick={close}>
+          <Link to="/book" className="btn btn--sm nav__cta">
             Book Consultation
-          </a>
+          </Link>
         </nav>
 
         <button
