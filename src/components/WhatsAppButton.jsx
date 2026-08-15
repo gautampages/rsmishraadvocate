@@ -1,6 +1,6 @@
 import { contact } from "../data/content";
 
-const number = contact.phone.replace(/[^\d]/g, "");
+const number = contact.whatsapp.replace(/[^\d]/g, "");
 const message = encodeURIComponent(
   "Namaste, I found your website and would like a legal consultation with Advocate Ram Snehi Mishra."
 );

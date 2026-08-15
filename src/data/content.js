@@ -393,7 +393,8 @@ export const contact = {
   subtext:
     "For consultations and legal enquiries, please reach out. Every enquiry is treated with " +
     "confidentiality and prompt attention.",
-  phone: "+91 92845 93714",
+  phone: "+91 91232 34065",
+  whatsapp: "+91 94314 49994",
   email: "info@ramsnehimishra.in",
   address: "Reliance Tower Campus, Near Pyara Bachpan School, East Anwarpur, Hajipur, Bihar 844101",
   hours: "Mon – Sat: 9:00 AM – 6:00 PM",

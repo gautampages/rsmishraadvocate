@@ -8,6 +8,13 @@ export default function Contact() {
 
   const details = [
     { icon: "phone", label: "Phone", value: contact.phone, href: `tel:${contact.phone.replace(/\s+/g, "")}` },
+    {
+      icon: "phone",
+      label: "WhatsApp",
+      value: contact.whatsapp,
+      href: `https://wa.me/${contact.whatsapp.replace(/[^\d]/g, "")}`,
+      external: true,
+    },
     { icon: "mail", label: "Email", value: contact.email, href: `mailto:${contact.email}` },
     { icon: "pin", label: "Chamber", value: contact.address },
     { icon: "clock", label: "Office Hours", value: contact.hours },
@@ -33,7 +40,7 @@ export default function Contact() {
     const text = encodeURIComponent(
       `Namaste, I have a legal enquiry.\n\nName: ${data.get("name")}\nPhone: ${data.get("phone")}\n\n${data.get("message")}`
     );
-    const number = contact.phone.replace(/[^\d]/g, "");
+    const number = contact.whatsapp.replace(/[^\d]/g, "");
     window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener");
   };
 
