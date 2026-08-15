@@ -1,0 +1,14 @@
+name = "legal-data"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# The eCourts partner token is a secret, never a plain var:
+#   npx wrangler secret put ECOURTS_TOKEN
+
+# Per-IP rate limiting. Without this binding the worker still runs, but every
+# request is unlimited and a warning is written to the log.
+[[unsafe.bindings]]
+name = "MY_RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"          # any unique number within this account
+simple = { limit = 30, period = 60 }   # 30 requests per minute per IP
