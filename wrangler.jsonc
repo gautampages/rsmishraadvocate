@@ -25,10 +25,10 @@
   "assets": {
     // Built by `npm run build`; prerender.mjs fills in one index.html per route.
     "directory": "./dist",
-    // Unknown URLs fall through to dist/_redirects, which serves index.html
-    // with a 404 status. Do NOT use "single-page-application" here: that would
-    // return 200 for every typo'd URL and let Google index infinite soft-404s.
-    "not_found_handling": "none"
+    // Unknown URLs get dist/404.html (written by prerender.mjs) with a real
+    // 404 status. Do NOT use "single-page-application" here: that returns 200
+    // for every typo'd URL and lets Google index infinite soft-404s.
+    "not_found_handling": "404-page"
   },
   "observability": {
     "enabled": true

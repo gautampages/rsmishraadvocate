@@ -124,8 +124,39 @@ ${routes
 `;
 await writeFile(join(dist, "sitemap.xml"), sitemap, "utf8");
 
-// Cloudflare Pages serves dist/<path>/index.html for /<path> directly, so no
-// SPA rewrite is needed for known routes. This catches only unknown URLs.
-await writeFile(join(dist, "_redirects"), "/*  /index.html  404\n", "utf8");
+// ---------------------------------------------------------------------------
+//  404.html — the page Cloudflare serves for any URL not uploaded above.
+//
+//  Known routes need no rewrite rule: each one is a real dist/<path>/index.html
+//  that Workers Assets serves directly. Only unknown URLs need handling, and
+//  wrangler.jsonc points not_found_handling at this file.
+//
+//  It is deliberately NOT a _redirects rule. Workers Assets only accepts 200,
+//  301, 302, 303, 307 and 308 there — a `/*  /index.html  404` line is valid on
+//  Pages but makes `wrangler deploy` fail with API error 100324.
+//
+//  Rendering an unrouted path makes App.jsx fall through to its <Route path="*">
+//  catch-all, so this is the same NotFound page a visitor sees when the SPA is
+//  already loaded. Status 404 comes from Cloudflare, not from the document.
+// ---------------------------------------------------------------------------
+// A 404 must not claim a canonical URL or invite indexing — that is how an
+// error page ends up ranking for the address that was mistyped to reach it.
+// setMeta REPLACES the template's existing robots tag; appending a second one
+// would leave the page carrying both "index" and "noindex".
+const notFoundHtml = setMeta(
+  buildPage(
+    {
+      path: "/404",
+      title: "Page not found | Advocate Ram Snehi Mishra",
+      description: "The page you were looking for does not exist.",
+    },
+    render("/404")
+  ).replace(/\n?\s*<link rel="canonical" href="[^"]*"\s*\/>/i, ""),
+  "name",
+  "robots",
+  "noindex, follow"
+);
+
+await writeFile(join(dist, "404.html"), notFoundHtml, "utf8");
 
 console.log(`\n✓ ${written} routes prerendered · sitemap.xml written (${SITE_URL})`);
