@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router";
 import { absolute, routeFor } from "../data/routes";
+import { jsonLdFor } from "../data/structuredData";
 
 /** Create the tag if it is missing, then set one attribute on it. */
 function upsert(selector, create, attr, value) {
@@ -13,6 +14,20 @@ function upsert(selector, create, attr, value) {
   return el;
 }
 
+const metaByName = (name) => [
+  `meta[name="${name}"]`,
+  () => Object.assign(document.createElement("meta"), { name }),
+];
+
+const metaByProp = (prop) => [
+  `meta[property="${prop}"]`,
+  () => {
+    const m = document.createElement("meta");
+    m.setAttribute("property", prop);
+    return m;
+  },
+];
+
 /**
  * Keeps the document head in step with the current route.
  *
@@ -21,11 +36,17 @@ function upsert(selector, create, attr, value) {
  * clicks from the home page to /privacy-policy keeps the home page's title,
  * which is what social scrapers and the browser history menu would show.
  *
- * `title` / `description` override the route table, for dynamic pages such as
- * individual blog posts whose metadata is not known statically.
+ * `title` / `description` override the route table, for dynamic pages whose
+ * metadata is not known statically. `jsonLd` defaults to the same graph the
+ * prerenderer bakes in, so a page gets correct structured data without doing
+ * anything at all — see src/data/structuredData.js.
  */
-export default function Seo({ title, description, canonical, jsonLd }) {
+export default function Seo({ title, description, canonical, jsonLd, noindex = false }) {
   const { pathname } = useLocation();
+
+  // jsonLdFor returns a fresh object each call; without memoising it the
+  // effect below would tear down and re-add the script tag on every render.
+  const graph = useMemo(() => jsonLd ?? jsonLdFor(pathname), [jsonLd, pathname]);
 
   useEffect(() => {
     const known = routeFor(pathname) || {};
@@ -33,71 +54,49 @@ export default function Seo({ title, description, canonical, jsonLd }) {
     const finalDesc = description || known.description;
     const finalCanonical = canonical || absolute(pathname);
 
-    if (finalTitle) document.title = finalTitle;
+    if (finalTitle) {
+      document.title = finalTitle;
+      upsert(...metaByProp("og:title"), "content", finalTitle);
+      upsert(...metaByName("twitter:title"), "content", finalTitle);
+    }
 
     if (finalDesc) {
-      upsert(
-        'meta[name="description"]',
-        () => Object.assign(document.createElement("meta"), { name: "description" }),
-        "content",
-        finalDesc
-      );
-      upsert(
-        'meta[property="og:description"]',
-        () => {
-          const m = document.createElement("meta");
-          m.setAttribute("property", "og:description");
-          return m;
-        },
-        "content",
-        finalDesc
-      );
+      upsert(...metaByName("description"), "content", finalDesc);
+      upsert(...metaByProp("og:description"), "content", finalDesc);
+      upsert(...metaByName("twitter:description"), "content", finalDesc);
     }
 
-    if (finalTitle) {
-      upsert(
-        'meta[property="og:title"]',
-        () => {
-          const m = document.createElement("meta");
-          m.setAttribute("property", "og:title");
-          return m;
-        },
-        "content",
-        finalTitle
-      );
-    }
+    upsert(...metaByName("robots"), "content", noindex ? "noindex, follow" : "index, follow, max-image-preview:large");
 
-    upsert(
-      'link[rel="canonical"]',
-      () => Object.assign(document.createElement("link"), { rel: "canonical" }),
-      "href",
-      finalCanonical
-    );
-    upsert(
-      'meta[property="og:url"]',
-      () => {
-        const m = document.createElement("meta");
-        m.setAttribute("property", "og:url");
-        return m;
-      },
-      "content",
-      finalCanonical
-    );
-  }, [pathname, title, description, canonical]);
+    // A noindex page (the 404) must not also claim a canonical URL — that is
+    // how an error page ends up ranking for the address that was mistyped.
+    const canonicalTag = document.head.querySelector('link[rel="canonical"]');
+    if (noindex) {
+      canonicalTag?.remove();
+    } else {
+      upsert(
+        'link[rel="canonical"]',
+        () => Object.assign(document.createElement("link"), { rel: "canonical" }),
+        "href",
+        finalCanonical
+      );
+      upsert(...metaByProp("og:url"), "content", finalCanonical);
+    }
+  }, [pathname, title, description, canonical, noindex]);
 
   // Page-specific structured data, replaced on every route change so a stale
   // FAQPage or BlogPosting block never trails the visitor to the next page.
   useEffect(() => {
     const id = "route-jsonld";
     document.getElementById(id)?.remove();
-    if (!jsonLd) return;
+    if (!graph) return;
     const tag = document.createElement("script");
     tag.type = "application/ld+json";
     tag.id = id;
-    tag.textContent = JSON.stringify(jsonLd);
+    tag.textContent = JSON.stringify(graph);
     document.head.appendChild(tag);
     return () => tag.remove();
-  }, [jsonLd]);
+  }, [graph]);
 
   return null;
 }

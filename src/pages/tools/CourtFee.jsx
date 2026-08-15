@@ -2,25 +2,13 @@ import { useState } from "react";
 import ToolShell from "../../components/ToolShell";
 import { Icon } from "../../components/Icons";
 import { COURT_FEE, computeCourtFee, inr, rupees } from "../../lib/legalTools";
+import { faqsForTool } from "../../data/toolFaqs";
 
-const FAQS = [
-  {
-    q: "How is court fee calculated on a civil suit in Bihar?",
-    a: "Court fee in Bihar is ad valorem — it rises with the value of the claim. Under the Court Fees (Bihar Amendment) Act, 1995, the scale steps up by ₹80 for every ₹5,000 of value or part thereof, subject to a maximum of ₹50,000. Because it is charged per part-slab, a claim of ₹5,001 attracts the same step as one of ₹10,000.",
-  },
-  {
-    q: "Is there a maximum court fee?",
-    a: "Yes. The ad valorem scale is capped at ₹50,000. Beyond a claim value of roughly ₹31 lakh the fee stops rising, so a very large suit costs the same in court fee as one at the ceiling. This is why the effective percentage falls sharply on high-value claims.",
-  },
-  {
-    q: "Do I pay court fee on the relief claimed or on the property's market value?",
-    a: "It depends on the relief. A suit for recovery of money is valued at the sum claimed; a suit for declaration or possession is valued under the rules applicable to that relief, which may look to the market value of the property or to a notional value. Getting the valuation wrong invites an objection and can delay the suit at the threshold.",
-  },
-  {
-    q: "Is court fee refundable if the case settles?",
-    a: "Where a matter is settled through mediation, Lok Adalat or a court-referred settlement, the court fee paid is ordinarily refundable. This is a deliberate statutory encouragement to settle, and it is worth factoring in before deciding to fight a matter to judgment.",
-  },
-];
+// A ready-reckoner for the claim values people actually type in. Someone who
+// arrived from a search for "court fee on a 5 lakh suit in Bihar" wants the
+// number in the page, not a form to fill in — and a table of computed figures
+// is also the shape an answer engine can quote.
+const COMMON_VALUES = [50000, 100000, 200000, 500000, 1000000, 2000000, 3100000, 5000000];
 
 export default function CourtFee() {
   const [value, setValue] = useState("");
@@ -30,7 +18,7 @@ export default function CourtFee() {
   return (
     <ToolShell
       path="/tools/court-fee-calculator"
-      faqs={FAQS}
+      faqs={faqsForTool("/tools/court-fee-calculator")}
       authority={
         <p>
           The Court Fees (Bihar Amendment) Act, 1995 substituted Schedule I of the Court Fees Act,
@@ -106,6 +94,47 @@ export default function CourtFee() {
             </>
           )}
         </div>
+      </div>
+
+      <div className="reckoner">
+        <h2>Court fee in Bihar at common claim values</h2>
+        <p className="reckoner__intro">
+          Computed on the same ad valorem scale as the calculator above — ₹{COURT_FEE.feePerStep}{" "}
+          per ₹{inr(COURT_FEE.step)} of value or part of it, capped at {rupees(COURT_FEE.ceiling)}.
+          Notice how the effective percentage collapses once the ceiling is reached.
+        </p>
+        <div className="reckoner__scroll">
+          <table className="reckoner__table">
+            <thead>
+              <tr>
+                <th scope="col">Value of the suit</th>
+                <th scope="col">Slabs of ₹{inr(COURT_FEE.step)}</th>
+                <th scope="col">Court fee</th>
+                <th scope="col">Effective rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMMON_VALUES.map((v) => {
+                const r = computeCourtFee(v);
+                return (
+                  <tr key={v} className={r.atCeiling ? "is-ceiling" : ""}>
+                    <th scope="row">{rupees(v)}</th>
+                    <td>{inr(r.steps)}</td>
+                    <td>
+                      <strong>{rupees(r.fee)}</strong>
+                      {r.atCeiling && <span className="reckoner__tag">ceiling</span>}
+                    </td>
+                    <td>{r.effectivePercent.toFixed(2)}%</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="reckoner__foot">
+          Figures are the ad valorem court fee only. Process fee, the cost of certified copies and
+          the advocate's professional fee are separate and payable in addition.
+        </p>
       </div>
     </ToolShell>
   );

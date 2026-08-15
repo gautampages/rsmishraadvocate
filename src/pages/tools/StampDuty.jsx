@@ -2,25 +2,7 @@ import { useState } from "react";
 import ToolShell from "../../components/ToolShell";
 import { Icon } from "../../components/Icons";
 import { STAMP_CATEGORIES, computeStampDuty, rupees } from "../../lib/legalTools";
-
-const FAQS = [
-  {
-    q: "What is stamp duty on a sale deed in Bihar?",
-    a: "Bihar charges 6% stamp duty with a 2% registration fee as the general rate, adjusted by the gender of the parties: 5.7% + 1.9% where a male transfers to a female, and 6.3% + 2.1% where a female transfers to a male. The concession is a policy measure to encourage property being held in women's names.",
-  },
-  {
-    q: "What is MVR, and why is my duty higher than I expected?",
-    a: "The Minimum Value Register (MVR) is the government's own circle-rate valuation for the plot. Duty is charged on the consideration stated in the deed or the MVR value, whichever is higher. If the MVR rate for your area exceeds the price you agreed, duty is computed on the MVR figure — this is the single most common surprise at the registry office.",
-  },
-  {
-    q: "Is stamp duty payable on a gift deed within the family?",
-    a: "A gift deed still attracts stamp duty and registration fee, though the applicable rate can differ from an ordinary sale. Transfers between specified close relatives are treated differently in several states, so the position for your particular relationship and property should be confirmed before the deed is drawn.",
-  },
-  {
-    q: "Are stamp duty and registration fee the same thing?",
-    a: "No. Stamp duty is a tax on the instrument, paid to the State. The registration fee is charged separately for registering that instrument with the Sub-Registrar. Both are payable, which is why the effective cost of registering a sale deed in Bihar is around 8% of value rather than 6%.",
-  },
-];
+import { faqsForTool } from "../../data/toolFaqs";
 
 export default function StampDuty() {
   const [consideration, setConsideration] = useState("");
@@ -33,7 +15,7 @@ export default function StampDuty() {
   return (
     <ToolShell
       path="/tools/stamp-duty-calculator"
-      faqs={FAQS}
+      faqs={faqsForTool("/tools/stamp-duty-calculator")}
       authority={
         <p>
           Bihar levies stamp duty at <strong>6%</strong> with a <strong>2%</strong> registration fee,

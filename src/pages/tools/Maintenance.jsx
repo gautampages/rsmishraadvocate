@@ -2,29 +2,7 @@ import { useState } from "react";
 import ToolShell from "../../components/ToolShell";
 import { Icon } from "../../components/Icons";
 import { MAINTENANCE, estimateMaintenance, rupees } from "../../lib/legalTools";
-
-const FAQS = [
-  {
-    q: "Is there a formula for maintenance in India?",
-    a: "No. No statute prescribes a percentage. What exists is judicial guidance: in Kalyan Dey Chowdhury v. Rita Dey Chowdhury (2017) the Supreme Court held that 25% of the husband's net salary would be just and proper as maintenance for the wife — and expressly said 25% of gross salary was not permissible. Courts work around that benchmark, not to it.",
-  },
-  {
-    q: "What does a court actually look at?",
-    a: "In Rajnesh v. Neha (2020) the Supreme Court set out the framework: the status of the parties, the reasonable needs of the claimant and the children, the claimant's own qualifications and earning capacity, the respondent's income and liabilities, and the standard of living enjoyed during the marriage. It also made an Affidavit of Disclosure of Assets and Liabilities mandatory in every maintenance proceeding.",
-  },
-  {
-    q: "Is maintenance calculated on gross or net income?",
-    a: "Net. The Supreme Court's 25% benchmark is expressly on net salary, after statutory deductions. Courts do scrutinise what is claimed as a deduction, however — voluntary deductions such as loan instalments taken on after the proceedings began are frequently added back to net income.",
-  },
-  {
-    q: "Can maintenance be claimed while the divorce case is still running?",
-    a: "Yes. Interim maintenance can be sought during the proceedings, and a claim under Section 144 of the BNSS (formerly Section 125 CrPC) is available independently of any divorce petition. Rajnesh v. Neha directs that interim applications be decided within 60 days, and maintenance is ordinarily awarded from the date of the application.",
-  },
-  {
-    q: "What if the respondent hides their real income?",
-    a: "This is the usual battleground. The mandatory disclosure affidavit exists precisely for it, and a court can draw an adverse inference where disclosure is evasive, look at lifestyle and standard of living rather than declared income, and in appropriate cases direct production of bank statements, income tax returns and employer records.",
-  },
-];
+import { faqsForTool } from "../../data/toolFaqs";
 
 export default function Maintenance() {
   const [respondentNetMonthly, setNet] = useState("");
@@ -43,7 +21,7 @@ export default function Maintenance() {
   return (
     <ToolShell
       path="/tools/maintenance-estimator"
-      faqs={FAQS}
+      faqs={faqsForTool("/tools/maintenance-estimator")}
       authority={
         <>
           <p>

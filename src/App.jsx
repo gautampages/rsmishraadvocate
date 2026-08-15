@@ -5,6 +5,9 @@ import PracticeArea from "./pages/PracticeArea";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import Booking from "./pages/Booking";
+import CaseStatus from "./pages/CaseStatus";
+import CaseStatusDistrict from "./pages/CaseStatusDistrict";
+import Ask from "./pages/Ask";
 import ToolsIndex from "./pages/ToolsIndex";
 import StampDuty from "./pages/tools/StampDuty";
 import CourtFee from "./pages/tools/CourtFee";
@@ -32,6 +35,9 @@ export default function App() {
         <Route path="blog" element={<BlogIndex />} />
         <Route path="blog/:slug" element={<BlogPost />} />
         <Route path="book" element={<Booking />} />
+        <Route path="case-status" element={<CaseStatus />} />
+        <Route path="case-status/:slug" element={<CaseStatusDistrict />} />
+        <Route path="ask" element={<Ask />} />
         <Route path="tools" element={<ToolsIndex />} />
         <Route path="tools/stamp-duty-calculator" element={<StampDuty />} />
         <Route path="tools/court-fee-calculator" element={<CourtFee />} />

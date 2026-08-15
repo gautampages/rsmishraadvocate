@@ -7,32 +7,37 @@
 //       navigates the SPA.
 //    2. At build time by scripts/prerender.mjs, which renders each `path`
 //       to a real HTML file so crawlers and link previews get a complete
-//       document instead of an empty <div id="root">.
+//       document instead of an empty <div id="root">, and which bakes in the
+//       `jsonLd` graph attached to each entry below.
 //
 //  Adding a page = adding an entry here + a <Route> in src/App.jsx.
-//  Anything listed here is automatically prerendered and put in the sitemap.
+//  Anything listed here is automatically prerendered, given its structured
+//  data, and put in the sitemap.
 // ============================================================================
 
 // NOTE: file extensions are mandatory in this module's import chain.
 // scripts/prerender.mjs loads routes.js through Node's ESM loader, which —
 // unlike Vite — does not resolve extensionless specifiers.
+import { SITE_URL, absolute } from "./site.js";
+import { jsonLdFor } from "./structuredData.js";
 import { practiceAreas } from "./practice.js";
 import { blogPosts, blogMeta } from "./blogPosts.js";
 import { tools } from "./tools.js";
 import { checklists } from "./checklists.js";
+import { districts, courtName, placeLabel } from "./courts.js";
 
-export const SITE_URL = "https://ramsnehimishra.in";
-
-/** Absolute URL for a route path. */
-export const absolute = (path) => `${SITE_URL}${path === "/" ? "/" : path}`;
+// Re-exported so the many pages that already import them from here keep
+// working; the definitions themselves live in site.js to break an import
+// cycle with structuredData.js.
+export { SITE_URL, absolute };
 
 // `changefreq` / `priority` feed sitemap.xml generation.
-export const routes = [
+const table = [
   {
     path: "/",
     title: "Best Advocate & Lawyer in Hajipur, Vaishali (Bihar) | Advocate Ram Snehi Mishra",
     description:
-      "Advocate Ram Snehi Mishra is a Senior Advocate in Hajipur, Vaishali, Bihar with 28+ years of experience — divorce & family disputes, criminal defence, civil and property law. Book a confidential consultation.",
+      "Advocate Ram Snehi Mishra is a Senior Advocate in Hajipur, Vaishali, Bihar with 28+ years of experience — divorce & family disputes, criminal defence, civil and property law. Free case status tracker, legal calculators and consultation booking.",
     priority: "1.0",
     changefreq: "monthly",
   },
@@ -45,6 +50,40 @@ export const routes = [
     priority: "0.9",
     changefreq: "monthly",
   })),
+
+  // ---- Case status ----------------------------------------------------------
+  //
+  //  The hub plus one page per Bihar district. "Case status" is the single
+  //  highest-volume legal query in the state and it is asked district by
+  //  district — "Hajipur court case status", "Muzaffarpur case number" — so
+  //  it is answered district by district.
+  {
+    path: "/case-status",
+    title: "Court Case Status Online — Check by CNR Number or Name | Bihar & All India",
+    description:
+      "Free court case status check. Enter a CNR number, party name or advocate name to see the next hearing date, case stage, complete hearing history and orders — live from public eCourts records, for every district court in Bihar and across India.",
+    priority: "0.95",
+    changefreq: "daily",
+  },
+  ...districts.map((d) => ({
+    path: `/case-status/${d.slug}`,
+    title: `${d.district} District Court Case Status — Check Online by CNR or Name${
+      d.hq === d.district ? "" : ` (${d.hq} Court)`
+    }`,
+    description: `Check case status for the ${courtName(d)} free. Search by CNR number, party name or advocate name for the next hearing date, case stage, hearing history and orders from live eCourts records for ${placeLabel(d)}, Bihar.`,
+    priority: d.home ? "0.9" : "0.7",
+    changefreq: "weekly",
+  })),
+
+  // ---- AI legal assistant ---------------------------------------------------
+  {
+    path: "/ask",
+    title: "Ask a Legal Question Free — AI Legal Assistant (India) | Adv. Ram Snehi Mishra",
+    description:
+      "Ask any question about Indian law and get a clear answer in plain English or Hindi — free, instant and at any hour. Divorce, maintenance, property, FIR, bail, cheque bounce and consumer matters explained simply.",
+    priority: "0.85",
+    changefreq: "monthly",
+  },
 
   // ---- Blog (index + one URL per post) --------------------------------------
   {
@@ -143,6 +182,11 @@ export const routes = [
     changefreq: "yearly",
   },
 ];
+
+// Structured data is attached here rather than written out by hand on every
+// entry: one builder, one graph per URL, and the prerenderer and <Seo> cannot
+// disagree about what a page claims to be.
+export const routes = table.map((r) => ({ ...r, jsonLd: jsonLdFor(r.path) }));
 
 /** Look up a route by path, for <Seo>. */
 export const routeFor = (path) => routes.find((r) => r.path === path);

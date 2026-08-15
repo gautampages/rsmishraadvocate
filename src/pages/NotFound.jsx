@@ -5,7 +5,13 @@ import Seo from "../components/Seo";
 export default function NotFound() {
   return (
     <>
-      <Seo title="Page not found | Advocate Ram Snehi Mishra" description="The page you were looking for does not exist." />
+      {/* noindex: an unrouted URL must never be allowed to rank, and must not
+          claim a canonical of its own — see <Seo>. */}
+      <Seo
+        title="Page not found | Advocate Ram Snehi Mishra"
+        description="The page you were looking for does not exist."
+        noindex
+      />
       <section className="section section--tight">
         <div className="container container--narrow cst__empty">
           <Icon name="search" width={34} height={34} />

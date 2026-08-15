@@ -11,7 +11,6 @@ import {
   CHECKLIST_DISCLAIMER,
   checklistBySlug,
 } from "../data/checklists";
-import { absolute } from "../data/routes";
 import { advocate, contact } from "../data/content";
 
 /** Plain-text rendering, for the clipboard. */
@@ -40,7 +39,6 @@ export default function ChecklistDetail() {
   // so it is appended here rather than repeated in the data five times.
   const groups = [...list.groups, BEFORE_CONSULTATION];
   const allItems = groups.flatMap((g) => g.items);
-  const url = absolute(`/checklists/${list.slug}`);
 
   const toggle = (key) =>
     setTicked((prev) => {
@@ -60,39 +58,9 @@ export default function ChecklistDetail() {
     }
   };
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "HowTo",
-        name: list.title,
-        description: list.seoDescription,
-        url,
-        step: groups.map((g, i) => ({
-          "@type": "HowToSection",
-          position: i + 1,
-          name: g.title,
-          itemListElement: g.items.map((item, j) => ({
-            "@type": "HowToStep",
-            position: j + 1,
-            text: item,
-          })),
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: absolute("/") },
-          { "@type": "ListItem", position: 2, name: "Checklists", item: absolute("/checklists") },
-          { "@type": "ListItem", position: 3, name: list.short, item: url },
-        ],
-      },
-    ],
-  };
-
   return (
     <>
-      <Seo title={list.seoTitle} description={list.seoDescription} jsonLd={jsonLd} />
+      <Seo title={list.seoTitle} description={list.seoDescription} />
       <PageHeader
         eyebrow="Document Checklist"
         title={list.title}

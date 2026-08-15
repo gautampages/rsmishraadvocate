@@ -5,7 +5,14 @@ import ChatComposer from "./ChatComposer";
 import { assistant } from "../data/content";
 import { useAssistant } from "../lib/assistantContext";
 
-export default function AskAI() {
+/**
+ * The assistant, as a page section.
+ *
+ * `heading` / `eyebrow` are overridable because /ask puts the same words in
+ * its <h1>; repeating them verbatim in the <h2> below reads as a stutter to a
+ * visitor and as keyword padding to a search engine.
+ */
+export default function AskAI({ eyebrow = assistant.eyebrow, heading = assistant.heading, subtext = assistant.subtext }) {
   const { messages, busy, send, reset, started } = useAssistant();
 
   return (
@@ -13,12 +20,14 @@ export default function AskAI() {
       <div className="dots" aria-hidden="true" />
       <div className="container">
         <Reveal className="section__head">
-          <span className="eyebrow eyebrow--chip">
-            <Icon name="sparkle" width={14} height={14} /> {assistant.eyebrow}
-          </span>
-          <h2 className="section__title">{assistant.heading}</h2>
+          {eyebrow && (
+            <span className="eyebrow eyebrow--chip">
+              <Icon name="sparkle" width={14} height={14} /> {eyebrow}
+            </span>
+          )}
+          <h2 className="section__title">{heading}</h2>
           <span className="section__rule section__rule--center" />
-          <p className="section__subtitle">{assistant.subtext}</p>
+          <p className="section__subtitle">{subtext}</p>
         </Reveal>
 
         <Reveal className="chat" delay={70}>

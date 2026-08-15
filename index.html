@@ -19,15 +19,24 @@
     <!-- Largest Contentful Paint image -->
     <link rel="preload" as="image" href="/advocate-ram-snehi-mishra-hajipur.jpg" fetchpriority="high" />
 
+    <!-- The case tracker and the AI assistant each call a Cloudflare Worker on
+         first interaction. Warming the TLS handshake here takes a visible bite
+         out of the wait between pressing "Track case" and seeing a result. -->
+    <link rel="preconnect" href="https://legal-data.gautampages.workers.dev" crossorigin />
+    <link rel="dns-prefetch" href="https://cold-disk-f361.gautampages.workers.dev" />
+
     <!-- Primary SEO -->
     <title>Best Advocate & Lawyer in Hajipur, Vaishali (Bihar) | Advocate Ram Snehi Mishra</title>
     <meta
       name="description"
-      content="Advocate Ram Snehi Mishra is a top Senior Advocate & lawyer in Hajipur, Vaishali, Bihar with 28+ years of experience — a leading choice for divorce & family disputes, plus criminal, civil & property law. Book a confidential legal consultation today."
+      content="Advocate Ram Snehi Mishra is a Senior Advocate in Hajipur, Vaishali, Bihar with 28+ years of experience — divorce & family disputes, criminal defence, civil and property law. Free case status tracker, legal calculators and consultation booking."
     />
+    <!-- The keywords meta is ignored by every major engine. It is kept only
+         because it costs nothing; the terms that matter are earned by the
+         per-page titles, headings and copy, not declared here. -->
     <meta
       name="keywords"
-      content="advocate in Hajipur, best advocate in Hajipur, lawyer in Hajipur, best lawyer in Hajipur, advocate in Vaishali, lawyer in Vaishali Bihar, best legal services Hajipur, divorce lawyer Hajipur, best divorce advocate in Hajipur, family lawyer Hajipur, matrimonial lawyer Vaishali, divorce and family dispute lawyer Bihar, maintenance and child custody lawyer, criminal lawyer Hajipur, civil lawyer Hajipur, property lawyer Bihar, advocate near me, Ram Snehi Mishra advocate"
+      content="advocate in Hajipur, best advocate in Hajipur, lawyer in Hajipur, advocate in Vaishali, case status Bihar, court case status Hajipur, CNR number check, divorce lawyer Hajipur, family lawyer Hajipur, criminal lawyer Hajipur, civil lawyer Hajipur, property lawyer Bihar, Bihar court fee calculator, Bihar stamp duty calculator, Ram Snehi Mishra advocate"
     />
     <meta name="author" content="Advocate Ram Snehi Mishra" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -81,7 +90,9 @@
       "email": "info@ramsnehimishra.in",
       "priceRange": "₹₹",
       "slogan": "Excellence in Every Case",
-      "founder": { "@type": "Person", "name": "Ram Snehi Mishra", "jobTitle": "Senior Advocate", "sameAs": "https://www.linkedin.com/in/ramsnehimishra/" },
+      "founder": { "@type": "Person", "@id": "https://ramsnehimishra.in/#advocate", "name": "Ram Snehi Mishra", "jobTitle": "Senior Advocate", "sameAs": "https://www.linkedin.com/in/ramsnehimishra/" },
+      "availableLanguage": ["Hindi", "English"],
+      "currenciesAccepted": "INR",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Reliance Tower Campus, Near Pyara Bachpan School, East Anwarpur",
@@ -134,51 +145,22 @@
     }
     </script>
 
-    <!-- Structured data: FAQ (mirrors the visible FAQ section) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Who is the best advocate in Hajipur, Bihar?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Advocate Ram Snehi Mishra is a Senior Advocate with over 28 years of experience serving Hajipur, Vaishali and across Bihar, handling criminal, civil, family and property matters with a strong track record of favorable outcomes." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you handle divorce and family dispute cases in Hajipur?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Advocate Ram Snehi Mishra is one of the most trusted divorce and family lawyers in Hajipur and Vaishali, handling mutual-consent and contested divorce, maintenance and alimony, child custody and guardianship, and domestic-violence matters with sensitivity and confidentiality." }
-        },
-        {
-          "@type": "Question",
-          "name": "What legal services do you provide in Hajipur and Vaishali?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We provide comprehensive legal services including divorce and family law, criminal defence, civil litigation, and property and real estate law across Hajipur, Vaishali, Patna and Bihar." }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is your law office located in Hajipur?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our office is located at Reliance Tower Campus, Near Pyara Bachpan School, East Anwarpur, Hajipur, Bihar - 844101, India." }
-        },
-        {
-          "@type": "Question",
-          "name": "What are your office hours?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our office is open Monday to Friday from 9:00 AM to 6:00 PM, Saturday from 9:00 AM to 2:00 PM, and Sunday by appointment." }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I book a legal consultation?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You can book a consultation by contacting our Hajipur office directly or by filling out the enquiry form on this website. Initial case assessments are handled promptly and treated with full confidentiality." }
-        }
-      ]
-    }
-    </script>
   </head>
   <body>
     <div id="root"></div>
-    <!-- Crawlable fallback for clients without JavaScript -->
+    <!-- Crawlable fallback for clients without JavaScript.
+         Every route is prerendered, so this is only ever seen at the shell
+         stage — but it carries the site's main links so that a crawler which
+         renders nothing still finds its way around. -->
     <noscript>
-      <h1>Advocate Ram Snehi Mishra — Best Advocate &amp; Lawyer in Hajipur, Vaishali, Bihar</h1>
+      <!-- Deliberately a paragraph, not a top-level heading: this block is
+           inherited by all 65 prerendered pages, each of which already has a
+           real heading of its own. A second one — saying "best advocate in
+           Hajipur" on the court-fee calculator — would be a heading conflict
+           on every page of the site. -->
+      <p>
+        <strong>Advocate Ram Snehi Mishra — Best Advocate &amp; Lawyer in Hajipur, Vaishali, Bihar</strong>
+      </p>
       <p>
         Senior Advocate with 28+ years of experience providing expert legal services in Hajipur,
         Vaishali and across Bihar — a leading choice for divorce and family disputes, along with
@@ -187,6 +169,19 @@
         Mon–Fri 9:00 AM–6:00 PM, Saturday 9:00 AM–2:00 PM. Phone: +91 91232 34065.
         Email: info@ramsnehimishra.in. LinkedIn: https://www.linkedin.com/in/ramsnehimishra/
       </p>
+      <ul>
+        <li><a href="/case-status">Check court case status online (CNR or party name)</a></li>
+        <li><a href="/tools/court-fee-calculator">Bihar court fee calculator</a></li>
+        <li><a href="/tools/stamp-duty-calculator">Bihar stamp duty &amp; registration calculator</a></li>
+        <li><a href="/tools">All free legal calculators</a></li>
+        <li><a href="/checklists">Free legal document checklists (PDF)</a></li>
+        <li><a href="/practice/divorce-family-lawyer-hajipur">Divorce &amp; family lawyer in Hajipur</a></li>
+        <li><a href="/practice/criminal-lawyer-hajipur">Criminal lawyer in Hajipur</a></li>
+        <li><a href="/practice/civil-lawyer-hajipur">Civil lawyer in Hajipur</a></li>
+        <li><a href="/practice/property-lawyer-hajipur">Property &amp; land lawyer in Hajipur</a></li>
+        <li><a href="/fees">Legal fees &amp; engagement</a></li>
+        <li><a href="/book">Book a consultation</a></li>
+      </ul>
     </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>

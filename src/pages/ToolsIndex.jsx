@@ -5,24 +5,12 @@ import Reveal from "../components/Reveal";
 import ConsultCta from "../components/ConsultCta";
 import { Icon } from "../components/Icons";
 import { tools } from "../data/tools";
-import { absolute } from "../data/routes";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Free legal tools",
-  itemListElement: tools.map((t, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: t.name,
-    url: absolute(t.path),
-  })),
-};
 
 export default function ToolsIndex() {
   return (
     <>
-      <Seo jsonLd={jsonLd} />
+      <Seo />
       <PageHeader
         eyebrow="Free Tools"
         title="Legal Calculators & Lookups"

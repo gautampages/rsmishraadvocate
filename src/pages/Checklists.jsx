@@ -5,24 +5,12 @@ import Reveal from "../components/Reveal";
 import ConsultCta from "../components/ConsultCta";
 import { Icon } from "../components/Icons";
 import { checklists } from "../data/checklists";
-import { absolute } from "../data/routes";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Legal document checklists",
-  itemListElement: checklists.map((c, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: c.title,
-    url: absolute(`/checklists/${c.slug}`),
-  })),
-};
 
 export default function Checklists() {
   return (
     <>
-      <Seo jsonLd={jsonLd} />
+      <Seo />
       <PageHeader
         eyebrow="Free Resources"
         title="Document Checklists"

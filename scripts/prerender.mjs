@@ -62,9 +62,10 @@ function setMeta(html, attr, value, content) {
 
 const escapeAttr = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
-// The FAQPage block in index.html describes the home page's FAQ section. It
-// would be inaccurate on /terms or /privacy-policy, so it is stripped there.
-const FAQ_JSONLD = /\n?\s*<!-- Structured data: FAQ[\s\S]*?<\/script>/;
+// JSON-LD is escaped for a <script> context, not an HTML attribute: the only
+// sequence that can break out is a literal "</script>" inside a string value.
+const escapeJsonLd = (obj) =>
+  JSON.stringify(obj, null, 2).replace(/</g, "\\u003c").replace(/-->/g, "--\\u003e");
 
 function buildPage(route, appHtml) {
   let html = template;
@@ -82,11 +83,15 @@ function buildPage(route, appHtml) {
     `<link rel="canonical" href="${absolute(route.path)}" />`
   );
 
-  if (route.path !== "/") html = html.replace(FAQ_JSONLD, "");
+  // Page-level structured data, built by src/data/structuredData.js.
+  //
+  // The id matters: <Seo> removes #route-jsonld before inserting its own copy
+  // on navigation. Without the id, hydration would leave the baked-in block
+  // in place and append a second, identical one.
   if (route.jsonLd) {
     html = html.replace(
       "</head>",
-      `  <script type="application/ld+json">\n${JSON.stringify(route.jsonLd, null, 2)}\n    </script>\n  </head>`
+      `  <script type="application/ld+json" id="route-jsonld">\n${escapeJsonLd(route.jsonLd)}\n    </script>\n  </head>`
     );
   }
 

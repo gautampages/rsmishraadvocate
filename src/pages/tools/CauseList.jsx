@@ -2,29 +2,7 @@ import { Link } from "react-router";
 import ToolShell from "../../components/ToolShell";
 import { Icon } from "../../components/Icons";
 import { CAUSE_LIST_LINKS, VAISHALI_COURT_COMPLEXES } from "../../lib/legalTools";
-
-const FAQS = [
-  {
-    q: "What is a cause list?",
-    a: "A cause list — also called the daily board — is the list of cases a particular court will take up on a particular day, in the order it will take them. It is published the previous evening or the same morning. If your case is not on the board, it is not being heard that day.",
-  },
-  {
-    q: "How do I find my case on the Vaishali cause list?",
-    a: "Open the eCourts cause list page, select Bihar as the State and Vaishali as the District, then choose the court complex and the specific court establishment, and the date. You can then search the published list for your case number or the party name. Having your CNR number to hand makes this considerably faster.",
-  },
-  {
-    q: "Why can I not search the cause list on this website directly?",
-    a: "eCourts publishes cause lists only through its own web portal — there is no public data interface for them, unlike case status which this site does fetch. Rather than scrape the portal, we link to it and show you exactly what to select. The next hearing date for a specific case is available here through the case tracker.",
-  },
-  {
-    q: "The cause list shows my case but nothing happened. Why?",
-    a: "Being listed does not guarantee a hearing. Matters are commonly adjourned because the presiding officer is on leave, the other side seeks time, a witness is absent, or the board simply does not reach your item before the court rises. The case status record is updated afterwards with the next date.",
-  },
-  {
-    q: "Should I rely on the cause list or on my advocate?",
-    a: "Both, and neither alone. The cause list is the court's own record of what it will take up, but dates move, listings are transferred between courts, and an item can be advanced. Always confirm with the advocate on record before travelling to court.",
-  },
-];
+import { faqsForTool } from "../../data/toolFaqs";
 
 const STEPS = [
   {
@@ -49,7 +27,7 @@ export default function CauseList() {
   return (
     <ToolShell
       path="/tools/cause-list"
-      faqs={FAQS}
+      faqs={faqsForTool("/tools/cause-list")}
       authority={
         <p>
           Cause lists are published by the judiciary through the{" "}

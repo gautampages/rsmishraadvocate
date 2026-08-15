@@ -407,9 +407,13 @@ export const faqs = {
 // home page only.
 export const nav = [
   { label: "Home", href: "/", section: "home" },
-  { label: "Case Status", href: "/#case-status", section: "case-status" },
+  // Points at the standalone page rather than the home-page section: the
+  // tracker is the most-searched thing on this site and needs a URL of its
+  // own that can be linked to, shared and ranked.
+  { label: "Case Status", href: "/case-status" },
   { label: "Services", href: "/#services", section: "services" },
   { label: "Legal Tools", href: "/tools" },
+  { label: "Ask AI", href: "/ask" },
   { label: "Blog", href: "/blog" },
   { label: "Fees", href: "/fees" },
   { label: "Contact", href: "/#contact", section: "contact" },
@@ -440,12 +444,23 @@ export const footerNav = [
   {
     title: "Chamber",
     links: [
-      { label: "Case Status Tracker", href: "/#case-status" },
-      { label: "Ask the AI Assistant", href: "/#ask-ai" },
+      { label: "Case Status Tracker", href: "/case-status" },
+      { label: "Ask the AI Assistant", href: "/ask" },
       { label: "Legal Insights", href: "/blog" },
       { label: "Fees & Engagement", href: "/fees" },
       { label: "Book a Consultation", href: "/book" },
       { label: "Visit the Office", href: "/#office" },
+    ],
+  },
+  {
+    title: "Case Status in Bihar",
+    links: [
+      { label: "Vaishali (Hajipur) Court", href: "/case-status/vaishali" },
+      { label: "Patna District Court", href: "/case-status/patna" },
+      { label: "Muzaffarpur Court", href: "/case-status/muzaffarpur" },
+      { label: "Samastipur Court", href: "/case-status/samastipur" },
+      { label: "Saran (Chhapra) Court", href: "/case-status/saran" },
+      { label: "All 38 districts", href: "/case-status" },
     ],
   },
   {

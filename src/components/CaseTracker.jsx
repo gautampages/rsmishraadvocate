@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router";
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
 import CaseResult from "./CaseResult";
@@ -122,7 +123,16 @@ function SearchResults({ data, onOpen }) {
  * Section
  * ---------------------------------------------------------------- */
 
-export default function CaseTracker() {
+/**
+ * The live eCourts lookup.
+ *
+ * Used twice: as a section of the home page (with its own heading), and as
+ * the working part of the /case-status pages, where the <h1> comes from the
+ * page masthead instead — hence `showHead`. There is deliberately one
+ * implementation: a second copy of a search that talks to court records is a
+ * second copy to keep correct.
+ */
+export default function CaseTracker({ showHead = true, heading, subtext, id = "case-status" }) {
   const [mode, setMode] = useState("cnr");
   const [term, setTerm] = useState("");
   const [view, setView] = useState({ status: "idle" });
@@ -193,16 +203,18 @@ export default function CaseTracker() {
   };
 
   return (
-    <section id="case-status" className="section section--dark cst">
+    <section id={id} className={`section section--dark cst ${showHead ? "" : "cst--bare"}`}>
       <div className="cst__aura" aria-hidden="true" />
       <div className="container">
-        <Reveal className="section__head">
-          <span className="eyebrow eyebrow--light">
-            <Icon name="sparkle" width={14} height={14} /> {caseTracker.eyebrow}
-          </span>
-          <h2 className="section__title section__title--light">{caseTracker.heading}</h2>
-          <p className="section__subtitle section__subtitle--light">{caseTracker.subtext}</p>
-        </Reveal>
+        {showHead && (
+          <Reveal className="section__head">
+            <span className="eyebrow eyebrow--light">
+              <Icon name="sparkle" width={14} height={14} /> {caseTracker.eyebrow}
+            </span>
+            <h2 className="section__title section__title--light">{heading || caseTracker.heading}</h2>
+            <p className="section__subtitle section__subtitle--light">{subtext || caseTracker.subtext}</p>
+          </Reveal>
+        )}
 
         <Reveal className="console" delay={80}>
           <div className="console__modes" role="tablist" aria-label="Search by">
@@ -299,6 +311,18 @@ export default function CaseTracker() {
         </div>
 
         <p className="cst__note">{caseTracker.note}</p>
+
+        {/* On the home page this is the doorway to the district pages, which
+            is where the search traffic for "<district> court case status"
+            actually lands. On those pages themselves it would be a loop. */}
+        {showHead && (
+          <p className="cst__more">
+            <Link to="/case-status">
+              How to find your CNR, read the record, and check any of Bihar's 38 district courts
+              <Icon name="arrow" width={15} height={15} />
+            </Link>
+          </p>
+        )}
       </div>
     </section>
   );

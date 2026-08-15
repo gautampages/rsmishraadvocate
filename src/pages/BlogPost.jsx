@@ -6,58 +6,20 @@ import PostCard from "../components/PostCard";
 import { Icon } from "../components/Icons";
 import NotFound from "./NotFound";
 import { blogPosts, formatPostDate, postBySlug, readingTime } from "../data/blogPosts";
-import { absolute } from "../data/routes";
 
 export default function BlogPost() {
   const { slug } = useParams();
   const post = postBySlug(slug);
 
   if (!post) return <NotFound />;
-
-  const url = absolute(`/blog/${post.slug}`);
   const date = formatPostDate(post.date);
   const others = blogPosts.filter((p) => p.slug !== slug);
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BlogPosting",
-        "@id": `${url}#post`,
-        headline: post.title,
-        description: post.seoDescription || post.excerpt,
-        articleSection: post.tag,
-        url,
-        mainEntityOfPage: url,
-        // datePublished is omitted rather than guessed — see the TODO in
-        // src/data/blogPosts.js.
-        ...(post.date ? { datePublished: post.date } : {}),
-        keywords: post.hashtags.join(", "),
-        author: {
-          "@type": "Person",
-          name: "Ram Snehi Mishra",
-          jobTitle: "Senior Advocate",
-          url: "https://www.linkedin.com/in/ramsnehimishra/",
-        },
-        publisher: { "@id": "https://ramsnehimishra.in/#organization" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: absolute("/") },
-          { "@type": "ListItem", position: 2, name: "Blog", item: absolute("/blog") },
-          { "@type": "ListItem", position: 3, name: post.title, item: url },
-        ],
-      },
-    ],
-  };
 
   return (
     <>
       <Seo
         title={post.seoTitle || post.title}
         description={post.seoDescription || post.excerpt}
-        jsonLd={jsonLd}
       />
 
       <PageHeader

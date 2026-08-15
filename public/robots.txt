@@ -1,4 +1,26 @@
+# Every page on this site is meant to be found. There is nothing to hide from
+# a crawler: the case tracker, the calculators and the checklists are free
+# public utilities, and the chamber's own pages are the point of the site.
+
 User-agent: *
+Allow: /
+
+# Answer engines are told the same thing explicitly. They are a growing share
+# of how someone in Bihar asks "how do I check my case status" and there is no
+# reason for this site to be absent from the answer.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://ramsnehimishra.in/sitemap.xml

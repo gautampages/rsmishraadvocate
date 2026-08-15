@@ -7,7 +7,6 @@ import FaqList from "../components/FaqList";
 import { Icon } from "../components/Icons";
 import NotFound from "./NotFound";
 import { practiceAreas, practiceBySlug } from "../data/practice";
-import { absolute } from "../data/routes";
 import { contact } from "../data/content";
 
 export default function PracticeArea() {
@@ -17,56 +16,10 @@ export default function PracticeArea() {
   if (!area) return <NotFound />;
 
   const others = practiceAreas.filter((p) => p.slug !== slug);
-  const url = absolute(`/practice/${area.slug}`);
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        "@id": `${url}#service`,
-        name: area.title,
-        serviceType: area.short,
-        description: area.seoDescription,
-        url,
-        provider: { "@id": "https://ramsnehimishra.in/#organization" },
-        areaServed: [
-          { "@type": "City", name: "Hajipur" },
-          { "@type": "AdministrativeArea", name: "Vaishali" },
-          { "@type": "State", name: "Bihar" },
-        ],
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: area.title,
-          itemListElement: area.handles.map((h) => ({
-            "@type": "Offer",
-            itemOffered: { "@type": "Service", name: h.title, description: h.desc },
-          })),
-        },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${url}#faq`,
-        mainEntity: area.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: absolute("/") },
-          { "@type": "ListItem", position: 2, name: "Practice Areas", item: absolute("/#services") },
-          { "@type": "ListItem", position: 3, name: area.short, item: url },
-        ],
-      },
-    ],
-  };
 
   return (
     <>
-      <Seo title={area.seoTitle} description={area.seoDescription} jsonLd={jsonLd} />
+      <Seo title={area.seoTitle} description={area.seoDescription} />
       <PageHeader
         eyebrow="Practice Area"
         title={area.title}

@@ -14,23 +14,12 @@ import {
   feesIntro,
   statutoryCosts,
 } from "../data/fees";
-import { absolute } from "../data/routes";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": `${absolute("/fees")}#faq`,
-  mainEntity: feeFaqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
 
 export default function Fees() {
   return (
     <>
-      <Seo jsonLd={jsonLd} />
+      <Seo />
       <PageHeader
         eyebrow={feesIntro.eyebrow}
         title={feesIntro.title}

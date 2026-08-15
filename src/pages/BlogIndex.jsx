@@ -5,30 +5,12 @@ import PostCard from "../components/PostCard";
 import ConsultCta from "../components/ConsultCta";
 import { Icon } from "../components/Icons";
 import { blogMeta, blogPosts } from "../data/blogPosts";
-import { absolute } from "../data/routes";
 
 export default function BlogIndex() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "@id": `${absolute("/blog")}#blog`,
-    name: blogMeta.heading,
-    description: blogMeta.subtext,
-    url: absolute("/blog"),
-    publisher: { "@id": "https://ramsnehimishra.in/#organization" },
-    blogPost: blogPosts.map((p) => ({
-      "@type": "BlogPosting",
-      headline: p.title,
-      description: p.excerpt,
-      url: absolute(`/blog/${p.slug}`),
-      ...(p.date ? { datePublished: p.date } : {}),
-      author: { "@type": "Person", name: "Ram Snehi Mishra" },
-    })),
-  };
 
   return (
     <>
-      <Seo jsonLd={jsonLd} />
+      <Seo />
       <PageHeader
         eyebrow="Insights"
         title={blogMeta.heading}

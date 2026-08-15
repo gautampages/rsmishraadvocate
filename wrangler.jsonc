@@ -28,7 +28,12 @@
     // Unknown URLs get dist/404.html (written by prerender.mjs) with a real
     // 404 status. Do NOT use "single-page-application" here: that returns 200
     // for every typo'd URL and lets Google index infinite soft-404s.
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // One URL per page, explicitly. dist/case-status/index.html is served at
+    // /case-status, and /case-status/ redirects to it rather than serving the
+    // same document at a second address — which is exactly the canonical form
+    // every page on this site declares.
+    "html_handling": "auto-trailing-slash"
   },
   "observability": {
     "enabled": true

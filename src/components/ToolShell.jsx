@@ -5,7 +5,6 @@ import ConsultCta from "./ConsultCta";
 import FaqList from "./FaqList";
 import { Icon } from "./Icons";
 import { toolFor, tools } from "../data/tools";
-import { absolute } from "../data/routes";
 
 /**
  * Chrome shared by every calculator: masthead, the calculator itself, the
@@ -19,45 +18,10 @@ export default function ToolShell({ path, children, authority, notes = [], faqs 
   const tool = toolFor(path);
   const others = tools.filter((t) => t.path !== path);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        name: tool.name,
-        url: absolute(path),
-        applicationCategory: "LegalService",
-        operatingSystem: "Any",
-        description: tool.description,
-        offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
-        publisher: { "@id": "https://ramsnehimishra.in/#organization" },
-      },
-      ...(faqs.length
-        ? [
-            {
-              "@type": "FAQPage",
-              mainEntity: faqs.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
-              })),
-            },
-          ]
-        : []),
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: absolute("/") },
-          { "@type": "ListItem", position: 2, name: "Legal Tools", item: absolute("/tools") },
-          { "@type": "ListItem", position: 3, name: tool.short, item: absolute(path) },
-        ],
-      },
-    ],
-  };
 
   return (
     <>
-      <Seo title={tool.seoTitle} description={tool.seoDescription} jsonLd={jsonLd} />
+      <Seo title={tool.seoTitle} description={tool.seoDescription} />
       <PageHeader
         eyebrow="Free Legal Tool"
         title={tool.name}

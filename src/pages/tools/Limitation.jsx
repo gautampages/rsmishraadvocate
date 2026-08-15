@@ -4,25 +4,7 @@ import ToolShell from "../../components/ToolShell";
 import { Icon } from "../../components/Icons";
 import { LIMITATION_GROUPS, LIMITATION_ITEMS, computeDeadline } from "../../lib/legalTools";
 import { formatISODate } from "../../lib/istTime";
-
-const FAQS = [
-  {
-    q: "What happens if I file after the limitation period expires?",
-    a: "The suit or appeal is liable to be dismissed as barred by limitation, and the court is bound to take the point even if the other side does not raise it. Section 5 of the Limitation Act allows delay in appeals and applications (not ordinarily in suits) to be condoned where sufficient cause is shown — but that is a discretion to be earned on affidavit, not a right.",
-  },
-  {
-    q: "When does limitation actually start running?",
-    a: "This is the question that decides most limitation disputes, and it is the one a calculator cannot answer. The starting point differs by the nature of the claim: the date a debt fell due, the date possession became adverse, the date you learned of a fraud, the date of the decree. Getting the starting date wrong makes every calculation downstream of it wrong.",
-  },
-  {
-    q: "Can the period be extended?",
-    a: "It can be interrupted or extended in defined situations — a fresh acknowledgement of liability in writing signed by the debtor starts time afresh under Section 18, a part payment can have the same effect under Section 19, and time during which the plaintiff was under a legal disability or was prosecuting proceedings in a wrong court in good faith may be excluded.",
-  },
-  {
-    q: "Is time spent getting a certified copy excluded when filing an appeal?",
-    a: "Yes. Section 12 excludes the time requisite for obtaining a copy of the decree or order appealed from. This routinely gives an appellant more working time than the bare period suggests, but only the time genuinely requisite is excluded — not delay in applying for the copy in the first place.",
-  },
-];
+import { faqsForTool } from "../../data/toolFaqs";
 
 export default function Limitation() {
   const [key, setKey] = useState(LIMITATION_ITEMS[0].key);
@@ -34,7 +16,7 @@ export default function Limitation() {
   return (
     <ToolShell
       path="/tools/limitation-checker"
-      faqs={FAQS}
+      faqs={faqsForTool("/tools/limitation-checker")}
       authority={
         <p>
           Periods are taken from the Schedule to the <strong>Limitation Act, 1963</strong>. Each head

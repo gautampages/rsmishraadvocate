@@ -5,7 +5,6 @@ import Seo from "../components/Seo";
 import { Icon } from "../components/Icons";
 import { contact, office } from "../data/content";
 import { practiceAreas } from "../data/practice";
-import { absolute } from "../data/routes";
 import {
   BOOKING_WINDOW_DAYS,
   CONSULT_MODES,
@@ -35,13 +34,6 @@ import RevokeButton from "../components/RevokeButton";
 
 const MATTERS = [...practiceAreas.map((p) => p.short), "Cheque bounce / recovery", "Other / not sure"];
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ReservationPackage",
-  name: "Legal consultation with Advocate Ram Snehi Mishra",
-  url: absolute("/book"),
-  provider: { "@id": "https://ramsnehimishra.in/#organization" },
-};
 
 const modeLabel = (key) => CONSULT_MODES.find((m) => m.key === key)?.label || key;
 
@@ -284,7 +276,7 @@ export default function Booking() {
 
   return (
     <>
-      <Seo jsonLd={jsonLd} />
+      <Seo />
       <PageHeader
         eyebrow="Consultation"
         title="Book a Consultation"
