@@ -38,7 +38,7 @@ export { SITE_URL, absolute };
 const table = [
   {
     path: "/",
-    title: "Best Advocate & Lawyer in Hajipur, Vaishali (Bihar) | Advocate Ram Snehi Mishra",
+    title: "Senior Advocate & Lawyer in Hajipur, Vaishali (Bihar) | Advocate Ram Snehi Mishra",
     description:
       "Advocate Ram Snehi Mishra is a Senior Advocate in Hajipur, Vaishali (Bihar) with 28+ years in divorce & family, criminal, civil and property law. Book a consultation.",
     priority: "1.0",

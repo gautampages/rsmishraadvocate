@@ -16,7 +16,7 @@ export const advocate = {
   name: "Ram Snehi Mishra",
   title: "Senior Advocate",
   tagline: "Excellence in Every Case",
-  credentials: "Best Advocate & Lawyer in Hajipur, Vaishali (Bihar)",
+  credentials: "Senior Advocate & Lawyer in Hajipur, Vaishali (Bihar)",
   heroHeadline: "Trusted Legal Advocate",
   heroSubtitle: "Excellence in Every Case",
   heroSubtext:
