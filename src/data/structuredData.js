@@ -29,7 +29,7 @@ import { advocate, contact, faqs, profiles } from "./content.js";
 import { practiceAreas, practiceBySlug } from "./practice.js";
 import { tools, toolFor } from "./tools.js";
 import { faqsForTool } from "./toolFaqs.js";
-import { blogPosts, postBySlug } from "./blogPosts.js";
+import { blogPosts, postBySlug, postText } from "./blogPosts.js";
 import { checklists, checklistBySlug } from "./checklists.js";
 import { feeFaqs } from "./fees.js";
 import { districts, districtBySlug, courtName, placeLabel } from "./courts.js";
@@ -204,10 +204,15 @@ const blogPost = (slug) => {
       publisher: { "@id": ORG_ID },
       inLanguage: "en-IN",
       image: OG_IMAGE,
+      wordCount: postText(post).join(" ").split(/\s+/).length,
       // datePublished is omitted rather than invented when the real date is
       // unknown — a wrong date is worse than a missing one.
       ...(post.date ? { datePublished: post.date, dateModified: post.date } : {}),
     },
+    // The FAQ block mirrors the questions rendered on the page. Markup that
+    // describes questions a visitor cannot see is a manual-action risk, so
+    // this is driven by the same array the page renders.
+    faqNode(`${url}#faq`, post.faqs),
     crumbs(["Blog", "/blog"], [post.tag, "/blog"]),
   ]);
 };

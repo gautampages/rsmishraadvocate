@@ -25,9 +25,20 @@ export default function PostCard({ post }) {
         <Link to={`/blog/${post.slug}`} className="card__link">
           Read the article <Icon name="arrow" width={15} height={15} />
         </Link>
-        <a href={post.source} target="_blank" rel="noreferrer" className="postcard__li" aria-label="View on LinkedIn">
-          <Icon name="linkedin" width={18} height={18} />
-        </a>
+        {/* Only the two original LinkedIn essays have a `source`. Rendering
+            the icon unconditionally gave every article a LinkedIn link that
+            pointed nowhere. */}
+        {post.source && (
+          <a
+            href={post.source}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="postcard__li"
+            aria-label={`View "${post.title}" on LinkedIn`}
+          >
+            <Icon name="linkedin" width={18} height={18} />
+          </a>
+        )}
       </div>
     </article>
   );
