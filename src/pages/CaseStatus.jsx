@@ -203,7 +203,7 @@ export default function CaseStatus() {
 
       <ConsultCta
         heading="The record says pending. What does that mean for you?"
-        text="A case number and a next date tell you where a file sits, not what to do about it. Bring the papers to the chamber and get a straight answer on your position and your options."
+        text="A case number and a next date tell you where a file sits, not what to do about it. Bring the papers to the chamber at Hajipur (Vaishali) and get a straight answer on your position and your options."
       />
     </>
   );

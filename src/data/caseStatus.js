@@ -14,11 +14,11 @@ import { DIVISIONS, courtName, placeLabel } from "./courts.js";
 
 export const hub = {
   eyebrow: "Case Status",
-  title: "Check Court Case Status Online — Bihar & All India",
+  title: "Check Your Bihar Court Case Status Online",
   intro:
-    "Enter a CNR number, a party's name or an advocate's name and get the current stage of the case, the next hearing date, the full hearing history and every order on record — drawn live from the eCourts system that the district judiciary itself maintains.",
+    "Enter a CNR number, a party's name or an advocate's name and get the current stage of the case, the next hearing date, the full hearing history and every order on record — drawn live from the eCourts system that the district judiciary itself maintains, for every district court in Bihar (and any court in India).",
   meta:
-    "Free · No registration · Works for every district court in Bihar and across India",
+    "Free · No registration · Every district court in Bihar — works across India too",
 };
 
 // ---------------------------------------------------------------------------

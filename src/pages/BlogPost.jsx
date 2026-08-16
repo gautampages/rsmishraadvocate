@@ -122,7 +122,7 @@ export default function BlogPost() {
 
       <ConsultCta
         heading="Facing this situation yourself?"
-        text="This article describes the general position. What matters in your case is the paperwork, the dates and the forum — bring them to the chamber."
+        text="This article describes the general position. What matters in your case is the paperwork, the dates and the forum — bring them to the chamber at Hajipur (Vaishali district)."
       />
 
       {others.length > 0 && (

@@ -58,9 +58,12 @@ export const services = {
       subtitle: "Legal Excellence",
       eyebrow: "Civil Law Practice",
       headline: "Civil Law Expertise",
+      href: "/practice/civil-lawyer-hajipur",
+      pageLabel: "Civil Lawyer in Hajipur",
       description:
-        "Comprehensive civil litigation and legal representation with strategic approach to " +
-        "property disputes, contracts, and civil matters.",
+        "Comprehensive civil litigation — title, possession, injunction, recovery and specific " +
+        "performance — filed and argued before the civil courts and the District Judge at " +
+        "Hajipur (Vaishali district).",
       subAreas: [
         {
           title: "Property Law",
@@ -100,9 +103,11 @@ export const services = {
       subtitle: "Legal Protection",
       eyebrow: "Criminal Law Practice",
       headline: "Criminal Defense Expertise",
+      href: "/practice/criminal-lawyer-hajipur",
+      pageLabel: "Criminal Lawyer in Hajipur",
       description:
         "Rigorous, evidence-driven criminal defence across bail, trial and appellate stages — " +
-        "protecting your rights at every step of the process.",
+        "before the Magistrates and the Sessions Court at Hajipur, and the Patna High Court.",
       subAreas: [
         {
           title: "Bail & Anticipatory Bail",
@@ -142,6 +147,8 @@ export const services = {
       subtitle: "Family Matters",
       eyebrow: "Family & Divorce Law Practice",
       headline: "Divorce & Family Law Expertise",
+      href: "/practice/divorce-family-lawyer-hajipur",
+      pageLabel: "Divorce & Family Lawyer in Hajipur",
       description:
         "A leading choice in Hajipur and Vaishali for divorce and family disputes — offering " +
         "sensitive, discreet and strategic representation in matrimonial matters, maintenance, " +
@@ -342,7 +349,9 @@ export const contact = {
   // +91 94314 49994 — restore this field and the buttons if it comes back.
   email: "info@ramsnehimishra.in",
   address: "Reliance Tower Campus, Near Pyara Bachpan School, East Anwarpur, Hajipur, Bihar 844101",
-  hours: "Mon – Sat: 9:00 AM – 6:00 PM",
+  // Must agree with the office.hours table below, the JSON-LD
+  // openingHoursSpecification in index.html and the noscript block there.
+  hours: "Mon – Fri: 9:00 AM – 6:00 PM · Sat: 9:00 AM – 2:00 PM",
 };
 
 // Visit Our Office section
@@ -364,7 +373,7 @@ export const office = {
     { day: "Sunday", time: "By Appointment", status: "Appointment Only" },
   ],
   areasTitle: "Areas We Serve",
-  areasServed: ["Hajipur", "Vaishali", "Patna", "Muzaffarpur", "Sonepur", "Patna High Court"],
+  areasServed: ["Hajipur", "Vaishali", "Patna", "Muzaffarpur", "Chapra (Saran)", "Sonepur", "Patna High Court"],
 };
 
 // Frequently Asked Questions (also emitted as FAQ structured data for SEO)
@@ -424,10 +433,10 @@ export const footerNav = [
   {
     title: "Practice",
     links: [
-      { label: "Divorce & Family Law", href: "/practice/divorce-family-lawyer-hajipur" },
-      { label: "Criminal Defence", href: "/practice/criminal-lawyer-hajipur" },
-      { label: "Civil Litigation", href: "/practice/civil-lawyer-hajipur" },
-      { label: "Property & Land Law", href: "/practice/property-lawyer-hajipur" },
+      { label: "Divorce & Family Lawyer in Hajipur", href: "/practice/divorce-family-lawyer-hajipur" },
+      { label: "Criminal Lawyer in Hajipur", href: "/practice/criminal-lawyer-hajipur" },
+      { label: "Civil Lawyer in Hajipur", href: "/practice/civil-lawyer-hajipur" },
+      { label: "Property & Land Lawyer in Hajipur", href: "/practice/property-lawyer-hajipur" },
     ],
   },
   {
@@ -505,12 +514,12 @@ export const assistant = {
     "This assistant gives general legal information, not legal advice. Answers can vary with the facts of your case, " +
     "the court and the nature of the matter. Please do not share confidential details here.",
   suggestions: [
+    "How do I check my Vaishali (Hajipur) court case status?",
     "How do I file for divorce by mutual consent?",
-    "What documents are needed in a property dispute?",
-    "How can I claim maintenance for my child?",
+    "What is stamp duty on a land purchase in Bihar?",
     "What is anticipatory bail and who can apply?",
+    "दाखिल-खारिज के लिए क्या करना होगा?",
     "What should I do if the police refuse to lodge my FIR?",
-    "What are my options in a cheque bounce case?",
   ],
 };
 
@@ -519,8 +528,9 @@ export const caseTracker = {
   eyebrow: "AI Case Intelligence",
   heading: "Track Your Case Status",
   subtext:
-    "Check any Indian court case in seconds. Enter your CNR number or search by name, and get the next " +
-    "hearing date, complete hearing history, orders and a plain-language summary of where your case stands.",
+    "Check any Bihar court case in seconds — Vaishali (Hajipur), Patna, Muzaffarpur or any court in India. " +
+    "Enter your CNR number or search by name, and get the next hearing date, complete hearing history, " +
+    "orders and a plain-language summary of where your case stands.",
   note:
     "Data is drawn from public eCourts records maintained by the judiciary. Summaries are generated automatically " +
     "and are for information only — they are not legal advice.",

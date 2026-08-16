@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { services } from "../data/content";
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
@@ -79,6 +80,11 @@ export default function Services() {
               <div className="svc__cta">
                 <strong>{cat.ctaHeading}</strong>
                 <p>{cat.ctaText}</p>
+                {cat.href && (
+                  <Link to={cat.href} className="btn btn--ghost btn--block">
+                    {cat.pageLabel} <Icon name="arrow" width={18} height={18} />
+                  </Link>
+                )}
                 <a href="#contact" className="btn btn--primary btn--block">
                   Book Consultation <Icon name="arrow" width={18} height={18} />
                 </a>

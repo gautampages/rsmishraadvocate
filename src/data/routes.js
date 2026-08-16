@@ -38,7 +38,7 @@ const table = [
     path: "/",
     title: "Best Advocate & Lawyer in Hajipur, Vaishali (Bihar) | Advocate Ram Snehi Mishra",
     description:
-      "Advocate Ram Snehi Mishra is a Senior Advocate in Hajipur, Vaishali, Bihar with 28+ years of experience — divorce & family disputes, criminal defence, civil and property law. Free case status tracker, legal calculators and consultation booking.",
+      "Advocate Ram Snehi Mishra is a Senior Advocate in Hajipur, Vaishali (Bihar) with 28+ years in divorce & family, criminal, civil and property law. Book a consultation.",
     priority: "1.0",
     changefreq: "monthly",
   },
@@ -60,20 +60,25 @@ const table = [
   //  it is answered district by district.
   {
     path: "/case-status",
-    title: "Court Case Status Online — Check by CNR Number or Name | Bihar & All India",
+    title: "Bihar Court Case Status — Check Online by CNR or Name",
     description:
-      "Free court case status check. Enter a CNR number, party name or advocate name to see the next hearing date, case stage, complete hearing history and orders — live from public eCourts records, for every district court in Bihar and across India.",
-    priority: "0.95",
+      "Free case status check for every Bihar district court — Vaishali (Hajipur), Patna, Muzaffarpur and all 38 districts — by CNR, party or advocate name. Works for any Indian court too.",
+    priority: "0.8",
     changefreq: "daily",
   },
+  // The town people actually search for leads the title: "Hajipur Court Case
+  // Status", "Sasaram Court Case Status" — with the district name kept for the
+  // records-facing query form. Where town and district share a name, the
+  // "X District Court" phrasing is itself the query.
   ...districts.map((d) => ({
     path: `/case-status/${d.slug}`,
-    title: `${d.district} District Court Case Status — Check Online by CNR or Name${
-      d.hq === d.district ? "" : ` (${d.hq} Court)`
-    }`,
-    description: `Check case status for the ${courtName(d)} free. Search by CNR number, party name or advocate name for the next hearing date, case stage, hearing history and orders from live eCourts records for ${placeLabel(d)}, Bihar.`,
-    priority: d.home ? "0.9" : "0.7",
-    changefreq: "weekly",
+    title:
+      d.hq === d.district
+        ? `${d.district} District Court Case Status — by CNR or Name`
+        : `${d.hq} Court Case Status — ${d.district} District, by CNR or Name`,
+    description: `Check ${courtName(d)} case status free — by CNR, party or advocate name. Next hearing date, stage and orders from live eCourts records. ${placeLabel(d)}, Bihar.`,
+    priority: d.home ? "0.9" : d.target ? "0.8" : "0.5",
+    changefreq: d.home || d.target ? "weekly" : "monthly",
   })),
 
   // ---- Case-law research ----------------------------------------------------
@@ -87,10 +92,10 @@ const table = [
   //  the sitemap.
   {
     path: "/case-law",
-    title: "Search Indian Case Law Free — Supreme Court, High Courts & Patna HC | Adv. Ram Snehi Mishra",
+    title: "Patna High Court & Supreme Court Judgments — Free Search",
     description:
-      "Free full-text search of Indian judgments, orders and Acts — Supreme Court, every High Court including Patna, and the tribunals. Filter by court, date, judge or case title, and read the judgment with every citation linked.",
-    priority: "0.9",
+      "Free full-text search of judgments, orders and Acts — the Patna High Court, Supreme Court, every High Court and the tribunals. Filter by court, date, judge or case title.",
+    priority: "0.7",
     changefreq: "weekly",
   },
   ...caseLawTopics.map((t) => ({
@@ -110,10 +115,10 @@ const table = [
   // ---- AI legal assistant ---------------------------------------------------
   {
     path: "/ask",
-    title: "Ask a Legal Question Free — AI Legal Assistant (India) | Adv. Ram Snehi Mishra",
+    title: "Ask a Legal Question Free — AI Legal Assistant for Bihar",
     description:
-      "Ask any question about Indian law and get a clear answer in plain English or Hindi — free, instant and at any hour. Divorce, maintenance, property, FIR, bail, cheque bounce and consumer matters explained simply.",
-    priority: "0.85",
+      "Ask any legal question and get a plain answer in English or Hindi — divorce, maintenance, dakhil-kharij, bail, cheque bounce and court procedure in Bihar explained simply. Free, instant, any hour.",
+    priority: "0.6",
     changefreq: "monthly",
   },
 

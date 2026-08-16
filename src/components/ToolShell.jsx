@@ -89,7 +89,7 @@ export default function ToolShell({ path, children, authority, notes = [], faqs 
 
       <ConsultCta
         heading="Need the real figure, not an estimate?"
-        text="Bring your papers to the chamber and get the number that actually applies — along with what to do about it."
+        text="Bring your papers to the chamber at Hajipur (Vaishali) and get the number that actually applies — along with what to do about it."
       />
     </>
   );

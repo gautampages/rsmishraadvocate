@@ -171,7 +171,7 @@ export default function CaseStatusDistrict() {
         text={
           d.home
             ? `Advocate Ram Snehi Mishra has appeared before the courts at Hajipur for 28+ years, across criminal, civil, family and property matters. Call ${contact.phone} or book a consultation.`
-            : "A first conversation is confidential and costs nothing to arrange. Bring whatever papers you have — even incomplete ones — and get a straight view of where you stand."
+            : "A first conversation is confidential and costs nothing to arrange. Bring whatever papers you have — even incomplete ones — and get a straight view of where you stand. The chamber sits at Hajipur (by the Vaishali district court), with appearances at Patna, Muzaffarpur and the Patna High Court."
         }
       />
 

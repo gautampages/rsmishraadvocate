@@ -4,8 +4,8 @@ import { contact } from "../data/content";
 
 /** Closing call-to-action reused at the foot of every routed page. */
 export default function ConsultCta({
-  heading = "Speak to the chamber",
-  text = "Every enquiry is treated confidentially. Describe your matter and we will tell you plainly whether you have one.",
+  heading = "Speak to the chamber in Hajipur",
+  text = "Every enquiry is treated confidentially. Describe your matter and we will tell you plainly whether you have one — at the chamber near the Hajipur civil court (Vaishali), by phone, or before the courts at Patna and Muzaffarpur.",
 }) {
   return (
     <section className="consultcta">

@@ -138,7 +138,7 @@ export default function CaseLawTopic() {
 
       <ConsultCta
         heading={`Have a ${topic.short.toLowerCase()} matter of your own?`}
-        text="Reading the case law tells you what courts have decided. What it means for your facts, your papers and your dates is a different question — and the one worth half an hour of a Senior Advocate's time."
+        text="Reading the case law tells you what courts have decided. What it means for your facts, your papers and your dates is a different question — and the one worth half an hour at the chamber in Hajipur, after 28+ years of arguing these matters."
       />
 
       <section className="section section--alt section--tight">

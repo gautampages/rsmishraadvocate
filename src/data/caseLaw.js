@@ -97,7 +97,7 @@ export const topics = [
     icon: "family",
     short: "Maintenance",
     title: "Maintenance Judgments — Section 125 CrPC / Section 144 BNSS",
-    seoTitle: "Section 125 CrPC Maintenance Judgments — Search Case Law | Adv. Ram Snehi Mishra",
+    seoTitle: "Section 125 CrPC Maintenance Case Law — Patna HC & Supreme Court",
     seoDescription:
       "Search Supreme Court and High Court judgments on maintenance under Section 125 CrPC and Section 144 BNSS — quantum, interim maintenance, the 25% benchmark, and enforcement of arrears. Free full-text case law search.",
     query: '"Section 125" maintenance wife children',
@@ -167,7 +167,7 @@ export const topics = [
     icon: "home",
     short: "Partition",
     title: "Partition & Ancestral Property Judgments — Coparcenary and HUF",
-    seoTitle: "Partition Suit & Ancestral Property Case Law (India) | Adv. Ram Snehi Mishra, Hajipur",
+    seoTitle: "Partition & Ancestral Property Case Law — Patna HC & Supreme Court",
     seoDescription:
       "Search judgments on partition suits, coparcenary rights, ancestral property and Hindu Undivided Family disputes — including daughters' rights after Vineeta Sharma. Free full-text case law search.",
     query: "partition coparcenary ancestral property suit",
@@ -203,7 +203,7 @@ export const topics = [
     icon: "family",
     short: "Divorce",
     title: "Divorce Judgments — Mutual Consent, Cruelty and Irretrievable Breakdown",
-    seoTitle: "Divorce Case Law India — Mutual Consent, Cruelty, Breakdown | Adv. Ram Snehi Mishra",
+    seoTitle: "Divorce Case Law — Supreme Court & Patna High Court Judgments",
     seoDescription:
       "Search judgments on divorce under the Hindu Marriage Act — mutual consent under Section 13B, waiver of the six-month period, cruelty, desertion and irretrievable breakdown of marriage. Free case law search.",
     query: '"mutual consent" divorce "Section 13B" waiver',
@@ -239,7 +239,7 @@ export const topics = [
     icon: "doc",
     short: "Cheque bounce",
     title: "Cheque Bounce Judgments — Section 138, Negotiable Instruments Act",
-    seoTitle: "Section 138 NI Act Cheque Bounce Case Law | Adv. Ram Snehi Mishra, Hajipur",
+    seoTitle: "Section 138 Cheque Bounce Case Law — Patna HC & Supreme Court",
     seoDescription:
       "Search judgments on cheque dishonour under Section 138 of the Negotiable Instruments Act — the statutory presumption, legally enforceable debt, notice periods, jurisdiction and compounding. Free case law search.",
     query: '"Section 138" "Negotiable Instruments" dishonour presumption',
@@ -273,7 +273,7 @@ export const topics = [
     icon: "shield",
     short: "Domestic violence",
     title: "Domestic Violence Judgments — Protection of Women from Domestic Violence Act, 2005",
-    seoTitle: "Domestic Violence Act Case Law — Residence & Protection Orders | Adv. Ram Snehi Mishra",
+    seoTitle: "Domestic Violence Act Case Law — Patna HC & Supreme Court",
     seoDescription:
       "Search judgments under the Protection of Women from Domestic Violence Act, 2005 — right to residence in a shared household, protection and monetary relief, and who may be made a respondent. Free case law search.",
     query: '"Domestic Violence Act" "shared household" residence order',

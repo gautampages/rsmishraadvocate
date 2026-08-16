@@ -74,9 +74,18 @@ const webPage = (path, name, description, extra = {}) => ({
   ...extra,
 });
 
+// The chamber's full service area — kept in step with the static areaServed
+// list in index.html's organization block (which cannot import this module).
+// "Chhapra" carries the popular "Chapra" transliteration as an alternateName
+// so both spellings resolve to the same place.
 const BIHAR = [
   { "@type": "City", name: "Hajipur" },
   { "@type": "AdministrativeArea", name: "Vaishali" },
+  { "@type": "City", name: "Patna" },
+  { "@type": "City", name: "Muzaffarpur" },
+  { "@type": "City", name: "Chhapra", alternateName: "Chapra" },
+  { "@type": "AdministrativeArea", name: "Saran" },
+  { "@type": "City", name: "Sonepur" },
   { "@type": "State", name: "Bihar" },
 ];
 
@@ -368,8 +377,8 @@ const caseStatusHub = () => {
   return G([
     caseStatusApp(
       url,
-      "Court Case Status Tracker — Bihar & All India",
-      "Check the status of any Indian court case by CNR number, party name or advocate name: current stage, next hearing date, hearing history and orders, drawn live from public eCourts records."
+      "Bihar Court Case Status Tracker",
+      "Check the status of a case in any Bihar district court — or any Indian court — by CNR number, party name or advocate name: current stage, next hearing date, hearing history and orders, drawn live from public eCourts records."
     ),
     faqNode(`${url}#faq`, hubFaqs),
     {
@@ -423,7 +432,7 @@ const caseLawHub = () => {
     {
       "@type": "WebApplication",
       "@id": `${url}#app`,
-      name: "Indian Case Law Search",
+      name: "Case Law Search — Supreme Court & Patna High Court",
       url,
       applicationCategory: "LegalService",
       applicationSubCategory: "Legal research",
@@ -491,7 +500,7 @@ const askPage = () => {
     {
       "@type": "WebApplication",
       "@id": `${url}#app`,
-      name: "AI Legal Assistant — Indian law, in plain words",
+      name: "AI Legal Assistant for Bihar — plain-language answers",
       url,
       applicationCategory: "LegalService",
       operatingSystem: "Any",

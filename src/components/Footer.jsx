@@ -13,7 +13,7 @@ export default function Footer() {
             <strong>{advocate.title} {advocate.name}</strong>
             <p className="muted">{advocate.tagline}</p>
             <p className="footer__blurb">
-              {advocate.yearsExperience}+ years serving Hajipur, Vaishali, Patna and across Bihar.
+              {advocate.yearsExperience}+ years serving Hajipur (Vaishali), Patna, Chapra, Muzaffarpur and across Bihar.
             </p>
             <div className="footer__socials">
               {profiles.map((p) => (

@@ -43,9 +43,9 @@ export const tools = [
     tagline: "Built on the Supreme Court's 25% benchmark",
     description:
       "See the range a court is likely to work within for spousal and child maintenance, anchored on the Supreme Court's guidance that 25% of net salary is just and proper.",
-    seoTitle: "Maintenance & Alimony Estimator (India) | Adv. Ram Snehi Mishra, Hajipur",
+    seoTitle: "Maintenance & Alimony Calculator — Bihar Family Courts",
     seoDescription:
-      "Estimate spousal and child maintenance under Section 125 CrPC / 144 BNSS using the Supreme Court's 25%-of-net-salary benchmark from Kalyan Dey Chowdhury and the factors from Rajnesh v. Neha.",
+      "Estimate spousal and child maintenance under Section 125 CrPC / 144 BNSS for the family courts in Bihar, using the Supreme Court's 25%-of-net-salary benchmark and the factors from Rajnesh v. Neha.",
   },
   {
     path: "/tools/limitation-checker",
@@ -55,9 +55,9 @@ export const tools = [
     tagline: "How long is left to file",
     description:
       "Check the limitation period for a suit, appeal or application under the Limitation Act, 1963, and see how many days remain from the date time began to run.",
-    seoTitle: "Limitation Period Checker — Suits, Appeals & Applications | Adv. Ram Snehi Mishra",
+    seoTitle: "Limitation Period Checker for Bihar Courts — Suits & Appeals",
     seoDescription:
-      "Free limitation period checker for Indian civil suits, appeals and applications under the Limitation Act, 1963 — see the applicable period, the date it runs from, and the days remaining.",
+      "Free limitation period checker for suits, appeals and applications in Bihar courts under the Limitation Act, 1963 — the applicable period, the date it runs from, and the days remaining.",
   },
   {
     path: "/tools/cause-list",

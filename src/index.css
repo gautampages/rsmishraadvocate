@@ -1103,6 +1103,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .step__title { display: block; color: var(--navy-800); font-size: 0.98rem; margin-bottom: 3px; }
 .step__desc { font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
 .svc__cta { margin-top: 18px; padding-top: 22px; border-top: 1px solid var(--line-strong); text-align: center; }
+.svc__cta .btn + .btn { margin-top: 10px; }
 .svc__cta strong { display: block; font-family: var(--font-serif); font-size: 1.15rem; color: var(--navy-700); margin-bottom: 6px; }
 .svc__cta p { font-size: 0.88rem; color: var(--ink-soft); margin: 0 0 16px; }
 

@@ -120,7 +120,6 @@ for (const route of routes) {
 //  sitemap.xml — generated from the same table, so a new page can never be
 //  added to the site and forgotten here.
 // ---------------------------------------------------------------------------
-const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
@@ -129,10 +128,12 @@ ${routes
   // Search Console.
   .filter((r) => !r.noindex)
   .map(
+    // lastmod is emitted only when a route declares a real date. Stamping the
+    // build date on every URL claims all 80 pages changed on every deploy,
+    // which teaches Google to distrust the field entirely.
     (r) => `  <url>
     <loc>${absolute(r.path)}</loc>
-    <lastmod>${r.lastmod || today}</lastmod>
-    <changefreq>${r.changefreq || "monthly"}</changefreq>
+${r.lastmod ? `    <lastmod>${r.lastmod}</lastmod>\n` : ""}    <changefreq>${r.changefreq || "monthly"}</changefreq>
     <priority>${r.priority || "0.5"}</priority>
   </url>`
   )

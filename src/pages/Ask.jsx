@@ -130,7 +130,7 @@ export default function Ask() {
 
       <ConsultCta
         heading="An answer is not advice"
-        text="The assistant explains how the law generally works. What it means for your matter depends on your papers and your dates — bring both to the chamber."
+        text="The assistant explains how the law generally works. What it means for your matter depends on your papers and your dates — bring both to the chamber at Hajipur (Vaishali)."
       />
     </>
   );

@@ -21,11 +21,14 @@ export default function Home() {
     <>
       <Seo />
       <Hero />
+      {/* Services (the local, converting content) renders before the
+          CaseTracker/AskAI utilities so the page leads with what the
+          chamber does at Hajipur, not with the all-India tools. */}
+      <Services />
       <CaseTracker />
       <AskAI />
       <Achievements />
       <Philosophy />
-      <Services />
       <WhyChoose />
       <BlogTeaser />
       <Testimonials />
