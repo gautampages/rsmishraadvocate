@@ -29,11 +29,20 @@
     // 404 status. Do NOT use "single-page-application" here: that returns 200
     // for every typo'd URL and lets Google index infinite soft-404s.
     "not_found_handling": "404-page",
-    // One URL per page, explicitly. dist/case-status/index.html is served at
-    // /case-status, and /case-status/ redirects to it rather than serving the
-    // same document at a second address — which is exactly the canonical form
-    // every page on this site declares.
-    "html_handling": "auto-trailing-slash"
+    // One URL per page, and it must be the SAME url the page's own canonical
+    // tag and sitemap.xml declare — which is the form without a trailing
+    // slash (see absolute() in src/data/site.js).
+    //
+    // NOT "auto-trailing-slash". That was tried, and it resolves the other
+    // way: dist/blog/index.html looks like a directory, so /blog answered 307
+    // → /blog/. Every one of the 74 sitemap URLs redirected, and every
+    // canonical pointed at a URL that redirected away from itself — which
+    // Search Console reports as "Page with redirect" and which costs an extra
+    // round trip on every crawl of every page.
+    //
+    // "drop-trailing-slash" serves /blog directly and redirects /blog/ to it,
+    // so the served URL, the canonical and the sitemap all finally agree.
+    "html_handling": "drop-trailing-slash"
   },
   "observability": {
     "enabled": true
