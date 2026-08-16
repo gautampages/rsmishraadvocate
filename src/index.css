@@ -4375,8 +4375,42 @@ a.contact__item:hover .contact__value { color: var(--gold-500); }
   padding-top: 18px;
   border-top: 1px dashed var(--line-strong);
 }
-.field--split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* The date pair needs two inputs' worth of room, not one field's.
+   Left in a single auto-fit column each date input gets about 85px of content
+   width, at which Chrome clips the dd/mm/yyyy placeholder and hides the
+   calendar picker entirely — so the control looks broken rather than narrow. */
+.field--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  grid-column: span 2;
+  align-items: start;
+}
+.field--split > div { display: grid; gap: 7px; min-width: 0; }
 .field--split label { display: block; }
+/* min-width: 0 lets a grid item shrink below its intrinsic width instead of
+   overflowing the card; width: 100% makes the input fill the column it got. */
+.field--split input {
+  width: 100%;
+  min-width: 0;
+}
+/* Native date inputs sit a little taller than text inputs because of the
+   picker button; match the others so the row lines up. */
+.field input[type="date"] {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  min-height: 48px;
+}
+.field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+.field input[type="date"]:hover::-webkit-calendar-picker-indicator { opacity: 1; }
+
+@media (max-width: 560px) {
+  .field--split { grid-template-columns: 1fr; }
+}
 
 .clform__echo {
   margin: 16px 0 0;
