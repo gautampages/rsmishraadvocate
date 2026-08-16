@@ -7,6 +7,7 @@ import FaqList from "../components/FaqList";
 import { Icon } from "../components/Icons";
 import NotFound from "./NotFound";
 import { practiceAreas, practiceBySlug } from "../data/practice";
+import { topics as caseLawTopics } from "../data/caseLaw";
 import { contact } from "../data/content";
 
 export default function PracticeArea() {
@@ -16,6 +17,9 @@ export default function PracticeArea() {
   if (!area) return <NotFound />;
 
   const others = practiceAreas.filter((p) => p.slug !== slug);
+  // Derived rather than duplicated: each case-law topic already names the
+  // practice page it belongs to, so the link back needs no second mapping.
+  const caseLaw = caseLawTopics.filter((t) => t.related === `/practice/${slug}`);
 
   return (
     <>
@@ -90,6 +94,34 @@ export default function PracticeArea() {
         heading={`Discuss your ${area.short.toLowerCase()} matter`}
         text="A first conversation is confidential and costs nothing to arrange. Bring whatever papers you have — even incomplete ones."
       />
+
+      {caseLaw.length > 0 && (
+        <section className="section section--tight">
+          <div className="container container--narrow">
+            <h2 className="section__title" style={{ fontSize: "1.4rem" }}>
+              The case law on this
+            </h2>
+            <p className="pagehead__meta" style={{ margin: "6px 0 0" }}>
+              What the Supreme Court and the High Courts have decided, with the full text free to
+              read.
+            </p>
+            <div className="linkcards">
+              {caseLaw.map((t) => (
+                <Link key={t.slug} to={`/case-law/${t.slug}`} className="linkcard">
+                  <span className="linkcard__icon">
+                    <Icon name="book" width={22} height={22} />
+                  </span>
+                  <div>
+                    <strong>{t.short}</strong>
+                    <span>{t.title}</span>
+                  </div>
+                  <Icon name="arrow" width={17} height={17} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section section--alt section--tight">
         <div className="container container--narrow">

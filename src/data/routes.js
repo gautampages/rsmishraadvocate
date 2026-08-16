@@ -25,6 +25,7 @@ import { blogPosts, blogMeta } from "./blogPosts.js";
 import { tools } from "./tools.js";
 import { checklists } from "./checklists.js";
 import { districts, courtName, placeLabel } from "./courts.js";
+import { topics as caseLawTopics } from "./caseLaw.js";
 
 // Re-exported so the many pages that already import them from here keep
 // working; the definitions themselves live in site.js to break an import
@@ -74,6 +75,37 @@ const table = [
     priority: d.home ? "0.9" : "0.7",
     changefreq: "weekly",
   })),
+
+  // ---- Case-law research ----------------------------------------------------
+  //
+  //  The hub and the subject pages are real pages and are indexed. Result sets
+  //  (/case-law?q=…) and the judgment reader are not: they are views over
+  //  someone else's corpus, and indexing five million of them would bury this
+  //  site's own pages under near-duplicate content it could never win with.
+  //  The reader is still prerendered — the shell has to exist as a file for a
+  //  direct link to it to resolve at all — but it is noindex and stays out of
+  //  the sitemap.
+  {
+    path: "/case-law",
+    title: "Search Indian Case Law Free — Supreme Court, High Courts & Patna HC | Adv. Ram Snehi Mishra",
+    description:
+      "Free full-text search of Indian judgments, orders and Acts — Supreme Court, every High Court including Patna, and the tribunals. Filter by court, date, judge or case title, and read the judgment with every citation linked.",
+    priority: "0.9",
+    changefreq: "weekly",
+  },
+  ...caseLawTopics.map((t) => ({
+    path: `/case-law/${t.slug}`,
+    title: t.seoTitle,
+    description: t.seoDescription,
+    priority: "0.8",
+    changefreq: "monthly",
+  })),
+  {
+    path: "/case-law/judgment",
+    title: "Judgment | Advocate Ram Snehi Mishra",
+    description: "Read the full text of an Indian judgment, with every citation in it linked.",
+    noindex: true,
+  },
 
   // ---- AI legal assistant ---------------------------------------------------
   {

@@ -148,6 +148,16 @@ export function Icon({ name, ...props }) {
       </>
     ),
     zap: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
+    sliders: (
+      <>
+        <path d="M4 6h9M17 6h3" />
+        <path d="M4 12h4M12 12h8" />
+        <path d="M4 18h11M19 18h1" />
+        <circle cx="15" cy="6" r="2" />
+        <circle cx="10" cy="12" r="2" />
+        <circle cx="17" cy="18" r="2" />
+      </>
+    ),
     target: (
       <>
         <circle cx="12" cy="12" r="9" />

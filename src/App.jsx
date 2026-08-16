@@ -8,6 +8,9 @@ import Booking from "./pages/Booking";
 import CaseStatus from "./pages/CaseStatus";
 import CaseStatusDistrict from "./pages/CaseStatusDistrict";
 import Ask from "./pages/Ask";
+import CaseLaw from "./pages/CaseLaw";
+import CaseLawTopic from "./pages/CaseLawTopic";
+import Judgment from "./pages/Judgment";
 import ToolsIndex from "./pages/ToolsIndex";
 import StampDuty from "./pages/tools/StampDuty";
 import CourtFee from "./pages/tools/CourtFee";
@@ -38,6 +41,10 @@ export default function App() {
         <Route path="case-status" element={<CaseStatus />} />
         <Route path="case-status/:slug" element={<CaseStatusDistrict />} />
         <Route path="ask" element={<Ask />} />
+        <Route path="case-law" element={<CaseLaw />} />
+        {/* Static segment before the dynamic one: the reader is not a topic. */}
+        <Route path="case-law/judgment" element={<Judgment />} />
+        <Route path="case-law/:slug" element={<CaseLawTopic />} />
         <Route path="tools" element={<ToolsIndex />} />
         <Route path="tools/stamp-duty-calculator" element={<StampDuty />} />
         <Route path="tools/court-fee-calculator" element={<CourtFee />} />

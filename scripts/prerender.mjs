@@ -78,10 +78,18 @@ function buildPage(route, appHtml) {
   html = setMeta(html, "name", "twitter:title", route.title);
   html = setMeta(html, "name", "twitter:description", route.description);
 
-  html = html.replace(
-    /<link rel="canonical" href="[^"]*"\s*\/>/i,
-    `<link rel="canonical" href="${absolute(route.path)}" />`
-  );
+  // A noindex route still needs a real file — a direct link to the judgment
+  // reader must resolve to something rather than to the 404 page — but it must
+  // not invite indexing, and must not claim a canonical URL of its own.
+  if (route.noindex) {
+    html = setMeta(html, "name", "robots", "noindex, follow");
+    html = html.replace(/\n?\s*<link rel="canonical" href="[^"]*"\s*\/>/i, "");
+  } else {
+    html = html.replace(
+      /<link rel="canonical" href="[^"]*"\s*\/>/i,
+      `<link rel="canonical" href="${absolute(route.path)}" />`
+    );
+  }
 
   // Page-level structured data, built by src/data/structuredData.js.
   //
@@ -116,6 +124,10 @@ const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
+  // A sitemap is a list of pages you want indexed. Listing a noindex URL in it
+  // asks Google to do two contradictory things and is reported as an error in
+  // Search Console.
+  .filter((r) => !r.noindex)
   .map(
     (r) => `  <url>
     <loc>${absolute(r.path)}</loc>

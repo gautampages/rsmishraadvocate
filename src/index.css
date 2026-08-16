@@ -275,7 +275,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   flex-shrink: 0;
 }
 .nav__brandtext { display: flex; flex-direction: column; line-height: 1.15; }
-.nav__brandtext strong { font-family: var(--font-serif); font-size: 1.05rem; }
+.nav__brandtext strong { font-family: var(--font-serif); font-size: 1.05rem; white-space: nowrap; }
 .nav__brandtext em { font-style: normal; font-size: 0.74rem; color: var(--ink-muted); letter-spacing: 0.04em; }
 
 .nav__links { display: flex; align-items: center; gap: 6px; }
@@ -285,7 +285,24 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 0.92rem;
   font-weight: 500;
   color: var(--ink-soft);
+  /* The bar carries nine destinations; a label that breaks across two lines
+     wrecks the row's alignment, so labels never wrap and the row tightens
+     instead as the viewport narrows. */
+  white-space: nowrap;
   transition: color 0.15s ease, background 0.15s ease;
+}
+
+/* Between the mobile breakpoint and a comfortable desktop, the bar tightens
+   rather than wrapping: smaller gaps and padding first, then type. */
+@media (min-width: 961px) and (max-width: 1240px) {
+  .nav__links { gap: 1px; }
+  .nav__links > a { padding: 9px 9px; font-size: 0.86rem; }
+  .nav__cta { margin-left: 6px; }
+  .nav__brandtext strong { font-size: 0.97rem; }
+}
+@media (min-width: 961px) and (max-width: 1080px) {
+  .nav__links > a { padding: 9px 7px; font-size: 0.82rem; }
+  .nav__brandtext em { display: none; }
 }
 .nav__links > a:hover { color: var(--ink); background: color-mix(in srgb, var(--gold-500) 12%, transparent); }
 .nav__links > a.is-active { color: var(--gold-500); font-weight: 600; }
@@ -4264,3 +4281,327 @@ a.contact__item:hover .contact__value { color: var(--gold-500); }
   vertical-align: middle;
 }
 .reckoner__foot { font-size: 0.85rem; color: var(--ink-muted); margin: 12px 0 0; }
+
+/* ===========================================================================
+   CASE-LAW RESEARCH  (/case-law, /case-law/<topic>, /case-law/judgment)
+   =========================================================================== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- The search form ---------- */
+.clform {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 22px;
+}
+.clform__main { display: flex; flex-wrap: wrap; gap: 12px; }
+.clform__field {
+  flex: 1 1 320px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.clform__field:focus-within { border-color: var(--gold-500); box-shadow: 0 0 0 3px var(--ring); }
+.clform__field > svg { color: var(--ink-muted); flex: none; }
+.clform__field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  padding: 14px 0;
+  font: inherit;
+  font-size: 0.97rem;
+  color: var(--ink);
+  outline: none;
+}
+.clform__clear {
+  border: 0; background: none; cursor: pointer; color: var(--ink-muted);
+  display: inline-flex; padding: 4px;
+}
+.clform__clear:hover { color: var(--ink); }
+.clform__submit { flex: none; }
+
+.clform__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.clform__inline { display: inline-flex; align-items: center; gap: 9px; font-size: 0.88rem; color: var(--ink-muted); }
+.clform__inline select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  padding: 7px 10px;
+  border-radius: 9px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  max-width: 100%;
+}
+.clform__toggle,
+.clform__reset {
+  display: inline-flex; align-items: center; gap: 7px;
+  border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 0.88rem; color: var(--gold-600);
+  padding: 4px 0;
+}
+.clform__toggle:hover, .clform__reset:hover { text-decoration: underline; text-underline-offset: 3px; }
+.clform__toggle.is-open svg { transform: rotate(90deg); transition: transform 0.2s ease; }
+.clform__reset { margin-left: auto; color: var(--ink-muted); }
+
+.clform__adv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line-strong);
+}
+.field--split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.field--split label { display: block; }
+
+.clform__echo {
+  margin: 16px 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+}
+.clform__echo code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  background: var(--gold-100);
+  color: var(--ink);
+  padding: 3px 8px;
+  border-radius: 6px;
+  word-break: break-word;
+}
+
+/* ---------- Results ---------- */
+.cl__results:not(:empty) { margin-top: 26px; }
+.cl__count { font-size: 0.9rem; color: var(--ink-muted); margin: 0 0 14px; }
+.cl__count strong { color: var(--ink); font-family: var(--font-serif); font-size: 1.02rem; }
+
+.cl__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.cldoc {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.cldoc:hover { border-color: var(--gold-400); box-shadow: var(--shadow-md); }
+.cldoc__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 9px; }
+.cldoc__date, .cldoc__cite { font-size: 0.8rem; color: var(--ink-muted); }
+.cldoc__cite { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.76rem; }
+.cldoc__title { font-family: var(--font-serif); font-size: 1.1rem; margin: 0 0 8px; line-height: 1.35; }
+.cldoc__title a { color: var(--ink); }
+.cldoc__title a:hover { color: var(--gold-600); }
+.cldoc__snippet {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cldoc__snippet mark, .jmatch mark {
+  background: var(--gold-100);
+  color: var(--ink);
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.cldoc__foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+.cldoc__foot > span { display: inline-flex; align-items: center; gap: 6px; }
+.cldoc__foot svg { color: var(--gold-600); }
+.cldoc__open { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--gold-600); font-weight: 600; }
+
+.clpager {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line);
+  font-size: 0.86rem; color: var(--ink-muted);
+}
+.clpager__back { transform: rotate(180deg); }
+
+/* Loading skeleton — three ruled lines per result, so the layout does not jump. */
+.clskel { display: grid; gap: 12px; }
+.clskel__row {
+  display: grid; gap: 9px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.clskel__row span {
+  height: 11px; border-radius: 6px;
+  background: linear-gradient(90deg, var(--bg-alt) 25%, var(--line) 50%, var(--bg-alt) 75%);
+  background-size: 200% 100%;
+  animation: clshimmer 1.3s linear infinite;
+}
+.clskel__row span:first-child { width: 34%; height: 9px; }
+.clskel__row span:nth-child(2) { width: 82%; height: 15px; }
+.clskel__row span:last-child { width: 65%; }
+@keyframes clshimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .clskel__row span { animation: none; }
+}
+
+/* ---------- Topic pages: the authorities ---------- */
+.authlist { display: grid; gap: 14px; }
+.auth {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold-500);
+  border-radius: 4px var(--radius) var(--radius) 4px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+}
+.auth__case { font-family: var(--font-serif); font-size: 1.06rem; color: var(--ink); margin: 0 0 7px; }
+.auth__holding { font-size: 0.94rem; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+
+/* ---------- The judgment reader ---------- */
+.jstats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 26px;
+}
+.jstats > div { background: var(--surface); padding: 18px 20px; }
+.jstats b {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.jstats span { display: block; margin-top: 4px; font-size: 0.78rem; color: var(--ink-muted); }
+
+.jmatch {
+  background: var(--gold-100);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 26px;
+}
+.jmatch h2 { display: flex; align-items: center; gap: 9px; font-family: var(--font-serif); font-size: 1.05rem; margin: 0 0 12px; }
+.jmatch ol { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.jmatch li { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+.jmatch mark { background: var(--gold-300); }
+
+.jtags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 24px; }
+.jtags__label { font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.jtag {
+  font-size: 0.82rem;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  text-transform: capitalize;
+}
+.jtag:hover { border-color: var(--gold-400); color: var(--ink); }
+
+/* The judgment itself. Court text is monospaced <pre> in the original, which
+   is unreadable on a phone at its natural width, so it wraps. */
+.judgment {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 32px;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+.judgment .doc_title { font-family: var(--font-serif); font-size: 1.3rem; color: var(--ink); margin: 0 0 10px; line-height: 1.3; }
+.judgment .doc_citations,
+.judgment .doc_author,
+.judgment .doc_bench {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+  margin: 0 0 6px;
+}
+.judgment h2, .judgment h3 { font-family: var(--font-serif); color: var(--ink); }
+.judgment p { margin: 0 0 15px; }
+.judgment pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.84rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 0 0 18px;
+  overflow-x: auto;
+}
+.judgment blockquote {
+  margin: 0 0 16px;
+  padding: 4px 0 4px 18px;
+  border-left: 2px solid var(--line-strong);
+  color: var(--ink);
+}
+.judgment a { color: var(--gold-600); text-decoration: underline; text-underline-offset: 3px; }
+.judgment .hidden_text { display: none; }
+
+.jrelated { margin-top: 30px; }
+.jrelated h2 { font-family: var(--font-serif); font-size: 1.1rem; margin: 0 0 12px; }
+.jrelated__list { display: flex; flex-wrap: wrap; gap: 9px; }
+.jrelated__list a {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.86rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+.jrelated__list a:hover { border-color: var(--gold-400); color: var(--ink); }
+
+.jsource {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 0.83rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 620px) {
+  .clform { padding: 16px; }
+  .clform__submit { width: 100%; justify-content: center; }
+  .judgment { padding: 22px 18px; }
+  .cldoc__open { margin-left: 0; }
+}

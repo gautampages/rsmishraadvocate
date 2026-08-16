@@ -411,11 +411,11 @@ export const nav = [
   // tracker is the most-searched thing on this site and needs a URL of its
   // own that can be linked to, shared and ranked.
   { label: "Case Status", href: "/case-status" },
+  { label: "Case Law", href: "/case-law" },
   { label: "Services", href: "/#services", section: "services" },
   { label: "Legal Tools", href: "/tools" },
   { label: "Ask AI", href: "/ask" },
   { label: "Blog", href: "/blog" },
-  { label: "Fees", href: "/fees" },
   { label: "Contact", href: "/#contact", section: "contact" },
 ];
 
@@ -438,6 +438,7 @@ export const footerNav = [
       { label: "Maintenance Estimator", href: "/tools/maintenance-estimator" },
       { label: "Limitation Checker", href: "/tools/limitation-checker" },
       { label: "Cause List Lookup", href: "/tools/cause-list" },
+      { label: "Case Law Search", href: "/case-law" },
       { label: "Free Checklist PDFs", href: "/checklists" },
     ],
   },
@@ -450,6 +451,17 @@ export const footerNav = [
       { label: "Fees & Engagement", href: "/fees" },
       { label: "Book a Consultation", href: "/book" },
       { label: "Visit the Office", href: "/#office" },
+    ],
+  },
+  {
+    title: "Case Law",
+    links: [
+      { label: "Search all judgments", href: "/case-law" },
+      { label: "Patna High Court", href: "/case-law/patna-high-court" },
+      { label: "Maintenance — S.125 CrPC", href: "/case-law/maintenance-section-125-crpc" },
+      { label: "Anticipatory bail", href: "/case-law/anticipatory-bail" },
+      { label: "Partition & ancestral property", href: "/case-law/partition-and-ancestral-property" },
+      { label: "Cheque bounce — S.138", href: "/case-law/cheque-bounce-section-138" },
     ],
   },
   {

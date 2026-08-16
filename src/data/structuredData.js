@@ -34,6 +34,7 @@ import { checklists, checklistBySlug } from "./checklists.js";
 import { feeFaqs } from "./fees.js";
 import { districts, districtBySlug, courtName, placeLabel } from "./courts.js";
 import { hubFaqs, districtFaqs } from "./caseStatus.js";
+import { hubFaqs as caseLawFaqs, topics as caseLawTopics, topicBySlug } from "./caseLaw.js";
 
 const G = (nodes) => ({ "@context": "https://schema.org", "@graph": nodes.filter(Boolean) });
 
@@ -409,6 +410,76 @@ const caseStatusDistrict = (slug) => {
   ]);
 };
 
+// ---- Case law -------------------------------------------------------------
+
+const caseLawHub = () => {
+  const url = absolute("/case-law");
+  return G([
+    {
+      "@type": "WebApplication",
+      "@id": `${url}#app`,
+      name: "Indian Case Law Search",
+      url,
+      applicationCategory: "LegalService",
+      applicationSubCategory: "Legal research",
+      operatingSystem: "Any",
+      browserRequirements: "Requires JavaScript",
+      description:
+        "Free full-text search of Indian judgments, orders and Acts — the Supreme Court, every High Court including Patna, and the tribunals — filtered by court, date, judge or case title.",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+      isAccessibleForFree: true,
+      publisher: { "@id": ORG_ID },
+      featureList: [
+        "Full-text search of Indian judgments",
+        "Filter by court, including the Patna High Court",
+        "Filter by date of decision",
+        "Search by case title or by the judge who wrote it",
+        "Exact-phrase search",
+        "Read the judgment with its citations linked",
+      ],
+      // The corpus belongs to Indian Kanoon and is credited as such rather
+      // than presented as this chamber's own database.
+      citation: "https://indiankanoon.org/",
+    },
+    faqNode(`${url}#faq`, caseLawFaqs),
+    {
+      "@type": "ItemList",
+      "@id": `${url}#topics`,
+      name: "Case law by subject",
+      itemListElement: caseLawTopics.map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: t.title,
+        url: absolute(`/case-law/${t.slug}`),
+      })),
+    },
+    crumbs(["Case Law", "/case-law"]),
+  ]);
+};
+
+const caseLawTopic = (slug) => {
+  const t = topicBySlug(slug);
+  if (!t) return null;
+  const url = absolute(`/case-law/${slug}`);
+
+  return G([
+    {
+      "@type": "Article",
+      "@id": `${url}#article`,
+      headline: t.title,
+      description: t.seoDescription,
+      url,
+      mainEntityOfPage: url,
+      author: { "@id": PERSON_ID },
+      publisher: { "@id": ORG_ID },
+      inLanguage: "en-IN",
+      about: t.landmarks.map((l) => ({ "@type": "Thing", name: l.case })),
+      isAccessibleForFree: true,
+    },
+    crumbs(["Case Law", "/case-law"], [t.short, `/case-law/${slug}`]),
+  ]);
+};
+
 const askPage = () => {
   const url = absolute("/ask");
   return G([
@@ -445,6 +516,7 @@ const STATIC = {
   "/fees": feesPage,
   "/book": bookingPage,
   "/case-status": caseStatusHub,
+  "/case-law": caseLawHub,
   "/ask": askPage,
   "/privacy-policy": () =>
     policyPage(
@@ -475,6 +547,9 @@ export function jsonLdFor(path) {
   if (head === "blog") return blogPost(tail);
   if (head === "checklists") return checklistPage(tail);
   if (head === "case-status") return caseStatusDistrict(tail);
+  // The judgment reader is noindex and describes someone else's document;
+  // it deliberately claims no structured data of its own.
+  if (head === "case-law") return tail === "judgment" ? null : caseLawTopic(tail);
   if (head === "tools") return toolPage(clean);
 
   return null;

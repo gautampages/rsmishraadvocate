@@ -36,6 +36,15 @@ export default defineConfig({
       // a proxied call carries none, so we set one here. That this works with
       // one line is the point: Origin filtering deters other sites and casual
       // scrapers, it does not authenticate anyone.
+      // Dev-only shim for the case-law worker (Indian Kanoon). Same story as
+      // the others: its CORS header names the production hostname, so a call
+      // from localhost is refused at the preflight.
+      '/api/kanoon': {
+        target: 'https://kanoon.ramsnehimishra.in',
+        changeOrigin: true,
+        headers: { Origin: 'https://ramsnehimishra.in' },
+        rewrite: (p) => p.replace(/^\/api\/kanoon/, ''),
+      },
       '/api/ecourts': {
         target: 'https://legal-data.gautampages.workers.dev',
         changeOrigin: true,

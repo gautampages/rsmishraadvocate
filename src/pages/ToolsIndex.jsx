@@ -42,6 +42,24 @@ export default function ToolsIndex() {
             ))}
 
             <Reveal delay={tools.length * 70}>
+              <Link to="/case-law" className="toolcard toolcard--alt">
+                <span className="toolcard__icon">
+                  <Icon name="book" width={26} height={26} />
+                </span>
+                <h2 className="toolcard__title">Case Law Search</h2>
+                <p className="toolcard__tagline">Every reported judgment, free to read</p>
+                <p className="toolcard__desc">
+                  Full-text search of Indian judgments, orders and Acts — the Supreme Court, every
+                  High Court including Patna, and the tribunals. Filter by court, date, judge or
+                  case title.
+                </p>
+                <span className="card__link">
+                  Search case law <Icon name="arrow" width={15} height={15} />
+                </span>
+              </Link>
+            </Reveal>
+
+            <Reveal delay={(tools.length + 1) * 70}>
               <Link to="/checklists" className="toolcard toolcard--alt">
                 <span className="toolcard__icon">
                   <Icon name="doc" width={26} height={26} />
