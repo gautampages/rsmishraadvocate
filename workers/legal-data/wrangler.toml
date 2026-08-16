@@ -2,8 +2,18 @@ name = "legal-data"
 main = "worker.js"
 compatibility_date = "2026-01-01"
 
-# The eCourts partner token is a secret, never a plain var:
-#   npx wrangler secret put ECOURTS_TOKEN
+# The Indian Kanoon token is a secret, never a plain var:
+#   npx wrangler secret put INDIAN_KANOON_TOKEN
+
+# Which models are allowed to answer. Both on: Gemma answers and Llama
+# catches its failures. One on: that model answers alone. Both off: the
+# endpoint returns 503. These override GEMMA_ENABLED / LLAMA_ENABLED in
+# worker.js, and can be flipped in the Workers dashboard for an instant
+# switch during an outage. Remove a line to hand the decision back to
+# the flag in worker.js.
+[vars]
+AI_GEMMA_ENABLED = "true"
+AI_LLAMA_ENABLED = "true"
 
 # Per-IP rate limiting. Without this binding the worker still runs, but every
 # request is unlimited and a warning is written to the log.
