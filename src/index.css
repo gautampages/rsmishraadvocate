@@ -4605,3 +4605,45 @@ a.contact__item:hover .contact__value { color: var(--gold-500); }
   .judgment { padding: 22px 18px; }
   .cldoc__open { margin-left: 0; }
 }
+
+/* ---------- Indian Kanoon attribution ----------
+   Their API terms require the "powered by IKanoon" logo above the results,
+   "full and clearly visible, never altered, resized or partially covered".
+   So: intrinsic size only, and max-width: none to defeat the global
+   `img { max-width: 100% }` reset, which would silently scale it in a narrow
+   container and put the site in breach without anything looking wrong. */
+.cl__attrib {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.cl__attrib p {
+  flex: 1 1 300px;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+.ikanoon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  /* No hover transform, no opacity shift, no filter: the mark is not to be
+     altered, and a dimmed logo is an altered logo. */
+  line-height: 0;
+}
+.ikanoon img {
+  max-width: none;
+  width: 150px;
+  height: 61px;
+}
+@media (max-width: 640px) {
+  .ikanoon img { width: 28px; height: 42px; }
+  .cl__attrib { gap: 12px; padding: 12px 14px; }
+}

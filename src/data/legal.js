@@ -11,7 +11,7 @@
 
 import { contact } from "./content";
 
-export const POLICY_UPDATED = "15 August 2026";
+export const POLICY_UPDATED = "16 August 2026";
 
 // A section is { heading, paragraphs?, list?, note? }.
 export const privacyPolicy = {
@@ -37,6 +37,7 @@ export const privacyPolicy = {
       list: [
         "Appointment requests — the name, phone number, email, preferred date and description of your matter that you type in. This is collected only when you submit the form.",
         "Case-status searches — the CNR number or name you enter is sent to the court-records service to fetch that case and is not stored by this website.",
+      "Case-law searches — the words you search for, and the judgment you open, are sent to the case-law service (Indian Kanoon) to fetch that result. They are not linked to you and are not stored by this website.",
         "AI assistant conversations — the text of your question is sent to a Cloudflare Workers AI model to generate an answer. Conversations are not linked to your identity and are not stored as a chat history on our servers.",
         "Calculators and checklists — stamp duty, court fee, maintenance and limitation calculations run entirely inside your browser. The figures you enter are never transmitted to us.",
         "Technical logs — our hosting provider (Cloudflare) records standard request data such as IP address, timestamp and user agent for security and rate limiting.",
@@ -152,6 +153,25 @@ export const termsOfUse = {
         "through the advocate on record before acting on it.",
     },
     {
+      // Indian Kanoon's API terms require the source of their data to be
+      // disclosed in a prominent place as well as beside the results
+      // themselves. This is that place.
+      heading: "The case-law library",
+      paragraphs: [
+        "The case-law search and the judgment reader are powered by Indian Kanoon (indiankanoon.org), whose " +
+          "database reproduces judgments, orders and statutes published by the courts and by government. That " +
+          "material is supplied by Indian Kanoon and is not the work of this chamber. Its appearance on this site " +
+          "is not an endorsement of the chamber by Indian Kanoon, and no view expressed on this site should be " +
+          "attributed to them.",
+        "Judgments are public documents and are reproduced here for reading and research. A printout from this " +
+          "website is not a substitute for a certified copy or a citation to a recognised report, and no court " +
+          "will accept one in place of either.",
+      ],
+      note:
+        "A judgment that reads in your favour may have been overruled, distinguished, or decided by a court that " +
+        "does not bind yours. Have any authority checked before you rely on it.",
+    },
+    {
       heading: "The calculators",
       paragraphs: [
         "The stamp duty, court fee, maintenance and limitation tools give indicative estimates from the rates and " +
@@ -179,8 +199,9 @@ export const termsOfUse = {
     {
       heading: "Third-party material",
       paragraphs: [
-        "This site embeds Google Maps and links to LinkedIn, Google Maps reviews and legal directories. Those " +
-          "services are governed by their own terms and privacy policies, and we are not responsible for their content.",
+        "This site embeds Google Maps and links to LinkedIn, Google Maps reviews and legal directories. It draws " +
+          "case records from the judiciary's eCourts system and case law from Indian Kanoon. Those services are " +
+          "governed by their own terms and privacy policies, and we are not responsible for their content.",
       ],
     },
     {

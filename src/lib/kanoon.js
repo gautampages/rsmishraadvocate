@@ -153,6 +153,81 @@ export function parseQuery(query) {
  * Transport
  * -------------------------------------------------------------------------- */
 
+/* --------------------------------------------------------------------------
+   Caching.
+
+   The case-law API is prepaid: every call is deducted from a balance, and when
+   the balance is gone the service stops returning results rather than failing
+   loudly. That makes a repeated call not merely slow but expensive, and the
+   patterns that repeat are the common ones — the back button from a judgment
+   to the results that led to it, re-running the same subject search, React
+   firing an effect twice.
+
+   Two layers, both deliberately modest:
+     · An in-flight map, so two components asking for the same thing at the
+       same moment produce one request.
+     · A short-lived cache, in memory for everything and additionally in
+       sessionStorage for searches, which are small. Judgments are ~200KB and
+       stay in memory only, where they cannot exhaust the storage quota.
+
+   Thirty minutes: long enough to cover a research session, short enough that
+   a judgment uploaded this morning is not hidden all day.
+   -------------------------------------------------------------------------- */
+const CACHE_TTL = 30 * 60 * 1000;
+const memory = new Map();
+const inflight = new Map();
+
+const fresh = (entry) => entry && Date.now() - entry.t < CACHE_TTL;
+
+function readSession(key) {
+  try {
+    const raw = window.sessionStorage.getItem(key);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeSession(key, entry) {
+  try {
+    window.sessionStorage.setItem(key, JSON.stringify(entry));
+  } catch {
+    // Quota exceeded, or storage disabled (private browsing, blocked cookies).
+    // The memory cache still applies; there is nothing to report.
+  }
+}
+
+/**
+ * Run `fn` at most once per key per TTL.
+ * `persist` additionally survives a reload, and is only for small payloads.
+ */
+function cached(key, fn, { persist = false } = {}) {
+  const hit = memory.get(key);
+  if (fresh(hit)) return Promise.resolve(hit.v);
+
+  if (persist && typeof window !== "undefined") {
+    const stored = readSession(`kanoon:${key}`);
+    if (fresh(stored)) {
+      memory.set(key, stored);
+      return Promise.resolve(stored.v);
+    }
+  }
+
+  if (inflight.has(key)) return inflight.get(key);
+
+  const p = fn()
+    .then((v) => {
+      const entry = { t: Date.now(), v };
+      memory.set(key, entry);
+      if (persist && typeof window !== "undefined") writeSession(`kanoon:${key}`, entry);
+      return v;
+    })
+    .finally(() => inflight.delete(key));
+
+  inflight.set(key, p);
+  return p;
+}
+
 async function call(path, params) {
   const url = new URL(`${BASE}${path}`, typeof window === "undefined" ? "https://ramsnehimishra.in" : window.location.origin);
   Object.entries(params || {}).forEach(([k, v]) => {
@@ -267,17 +342,18 @@ const normaliseResult = (d) => ({
 export async function searchCaseLaw({ query, page = 0 }) {
   if (!query || !query.trim()) throw new KanoonError("Enter something to search for.", "EMPTY");
 
-  const body = await call("/legal/search", {
-    q: query.trim(),
-    page,
-    pageSize: PAGE_SIZE,
-  });
+  const q = query.trim();
+  const body = await cached(
+    `search:${q}:${page}`,
+    () => call("/legal/search", { q, page, pageSize: PAGE_SIZE }),
+    { persist: true }
+  );
 
   const { from, to, total } = parseFound(body.found);
   const results = (body.docs || []).map(normaliseResult);
 
   return {
-    query: query.trim(),
+    query: q,
     page,
     from,
     to,
@@ -291,7 +367,9 @@ export async function searchCaseLaw({ query, page = 0 }) {
 
 /** The full text of one judgment, act or order. */
 export async function fetchJudgment(tid) {
-  const body = await call(`/legal/document/${encodeURIComponent(tid)}`);
+  const body = await cached(`doc:${tid}`, () =>
+    call(`/legal/document/${encodeURIComponent(tid)}`)
+  );
   const d = body.data || {};
 
   if (d.errmsg || !d.doc) {
@@ -329,7 +407,11 @@ export async function fetchJudgment(tid) {
  * right thing to hand to an AI summariser later.
  */
 export async function fetchFragment(tid, query) {
-  const body = await call(`/legal/document/${encodeURIComponent(tid)}/fragment`, { query });
+  const body = await cached(
+    `frag:${tid}:${query}`,
+    () => call(`/legal/document/${encodeURIComponent(tid)}/fragment`, { query }),
+    { persist: true }
+  );
   const d = body.data || {};
   const headline = Array.isArray(d.headline) ? d.headline : [d.headline].filter(Boolean);
 

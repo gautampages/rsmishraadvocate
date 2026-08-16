@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { Icon } from "./Icons";
+import KanoonAttribution from "./KanoonAttribution";
 import {
   COURTS,
   EMPTY_FILTERS,
@@ -289,6 +290,20 @@ export default function CaseLawSearch({
       </form>
 
       <div className="cl__results" ref={resultsRef}>
+        {/* Required by Indian Kanoon's API terms: their logo goes on top of
+            the results, not beneath them. Rendered as soon as a search is in
+            flight, so it is never absent while their data is on screen. */}
+        {(busy || data) && (
+          <div className="cl__attrib">
+            <KanoonAttribution />
+            <p>
+              Judgments, orders and Acts are supplied by Indian Kanoon, which reproduces the
+              courts' own published record. They are not the work of this chamber, and nothing
+              here is an endorsement by Indian Kanoon.
+            </p>
+          </div>
+        )}
+
         {busy && (
           <div className="clskel" role="status" aria-live="polite">
             <span className="visually-hidden">Searching case law…</span>

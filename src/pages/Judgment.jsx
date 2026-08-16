@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader";
 import Seo from "../components/Seo";
 import ConsultCta from "../components/ConsultCta";
 import { Icon } from "../components/Icons";
+import KanoonAttribution from "../components/KanoonAttribution";
 import { KanoonError, fetchFragment, fetchJudgment, sanitiseJudgment } from "../lib/kanoon";
 
 const inr = (n) => new Intl.NumberFormat("en-IN").format(n);
@@ -139,6 +140,19 @@ export default function Judgment() {
 
       <section className="section section--tight">
         <div className="container container--narrow">
+          {/* On top of the document, per Indian Kanoon's API terms — the whole
+              page is their data, so the attribution leads it. */}
+          {view.status !== "error" && (
+            <div className="cl__attrib">
+              <KanoonAttribution />
+              <p>
+                This judgment is reproduced from Indian Kanoon's copy of the court's own published
+                record. It is not the work of this chamber, and its presence here is not an
+                endorsement by Indian Kanoon.
+              </p>
+            </div>
+          )}
+
           {view.status === "loading" && (
             <div className="clskel" role="status" aria-live="polite">
               {Array.from({ length: 6 }).map((_, i) => (
@@ -230,13 +244,13 @@ export default function Judgment() {
               )}
 
               <p className="jsource">
-                Full text supplied by{" "}
+                Judgments are public documents; this page reproduces one for reading and research.
+                For filing, a certified copy or a recognised report citation is required — a
+                printout from a website is not accepted.{" "}
                 <a href={doc.source} target="_blank" rel="noreferrer noopener">
-                  Indian Kanoon
+                  View this document on Indian Kanoon
                 </a>
-                , which reproduces the courts' own published record. Judgments are public
-                documents; this page reproduces one for reading and research. For filing, a
-                certified copy or a recognised report citation is required.
+                .
               </p>
             </>
           )}
