@@ -91,7 +91,7 @@ export const readingResults = [
 export const hubFaqs = [
   {
     q: "How do I check my court case status online in Bihar?",
-    a: "Enter your 16-character CNR number in the search box on this page, or search by the name of a party or the advocate on record. The tracker queries the eCourts records maintained by the district judiciary and returns the current stage, the next hearing date, the complete hearing history and the orders on file. It covers every district court in Bihar — Patna, Muzaffarpur, Vaishali (Hajipur), Gaya, Darbhanga, Bhagalpur, Purnia and the rest — and works for courts across India as well.",
+    a: "Enter your 16-character CNR number in the search box on this page, or search by the name of a party or the advocate on record. The tracker queries the eCourts records maintained by the district judiciary and returns the current stage, the next hearing date, the complete hearing history and the orders on file. It covers every district court in Bihar — Vaishali (Hajipur), Patna, Muzaffarpur, Gaya, Darbhanga, Bhagalpur, Purnia and the rest — and works for courts across India as well.",
   },
   {
     q: "What is a CNR number and where do I find it?",

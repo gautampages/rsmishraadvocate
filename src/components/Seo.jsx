@@ -54,6 +54,10 @@ export default function Seo({ title, description, canonical, jsonLd, noindex = f
     const finalDesc = description || known.description;
     const finalCanonical = canonical || absolute(pathname);
 
+    // The prerenderer bakes the correct lang into each static file; this keeps
+    // it correct when the visitor navigates between the /hi pages and the rest.
+    document.documentElement.lang = known.lang || "en";
+
     if (finalTitle) {
       document.title = finalTitle;
       upsert(...metaByProp("og:title"), "content", finalTitle);

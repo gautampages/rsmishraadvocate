@@ -8,6 +8,30 @@ import { Icon } from "../components/Icons";
 import NotFound from "./NotFound";
 import { blogPosts, formatPostDate, postBySlug, readingTime } from "../data/blogPosts";
 
+const LINK = /\[([^\]]+)\]\((\/[^)\s]+)\)/g;
+
+/**
+ * Paragraph strings may carry [text](/path) links so a post can point at a
+ * practice page or tool mid-argument. Parsed into <Link> elements, never
+ * injected as HTML; anything that is not a well-formed internal link stays
+ * literal text.
+ */
+function rich(text) {
+  const out = [];
+  let last = 0;
+  for (const m of String(text).matchAll(LINK)) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <Link key={m.index} to={m[2]}>
+        {m[1]}
+      </Link>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < String(text).length) out.push(String(text).slice(last));
+  return out;
+}
+
 /** The onward links a post declares — practice area, case law, tool, checklist. */
 function furtherReading(post) {
   return [
@@ -49,7 +73,7 @@ export default function BlogPost() {
                 <section key={s.heading || `s${i}`}>
                   {s.heading && <h2>{s.heading}</h2>}
                   {(s.paragraphs || []).map((p) => (
-                    <p key={p.slice(0, 40)}>{p}</p>
+                    <p key={p.slice(0, 40)}>{rich(p)}</p>
                   ))}
                   {s.list && (
                     <ul className="prose__list">
@@ -63,7 +87,7 @@ export default function BlogPost() {
                   )}
                 </section>
               ))
-            : post.body.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
+            : post.body.map((p) => <p key={p.slice(0, 40)}>{rich(p)}</p>)}
 
           {post.hashtags && (
             <div className="article__tags">

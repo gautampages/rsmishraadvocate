@@ -263,6 +263,73 @@ export const practiceAreas = [
       },
     ],
   },
+
+  {
+    slug: "patna-high-court-advocate",
+    icon: "scales",
+    short: "Patna High Court",
+    title: "Advocate for Patna High Court Matters",
+    seoTitle: "Patna High Court Advocate — Appeals, Bail & Writs",
+    seoDescription:
+      "Appeals, revisions, anticipatory bail and writ petitions before the Patna High Court — for matters arising from Hajipur, Vaishali and Patna. Advocate Ram Snehi Mishra, 28+ years of practice.",
+    intro:
+      "Most matters end in the district court. The ones that do not — an appeal against a decree, a revision, " +
+      "anticipatory bail after the sessions court, a writ against a government order — go to the Patna High " +
+      "Court, and they are won or lost on the record built below and the ground chosen for challenge.",
+    overview: [
+      "The chamber's High Court work grows out of its district practice: appeals and revisions carried from the " +
+        "courts at Hajipur, anticipatory bail applications after the Sessions Court, and writ petitions against " +
+        "revenue and administrative orders affecting land in Vaishali district. Clients from Patna itself are " +
+        "taken for High Court matters.",
+      "An appeal is not a second trial. What the High Court examines is the record — the pleadings, the " +
+        "evidence and the judgment under challenge — which is why the honest first step is a reading of that " +
+        "record and a plain answer on whether a challenge is worth your money.",
+    ],
+    handles: [
+      {
+        title: "Civil appeals & revisions",
+        desc: "First and second appeals against decrees of the courts at Hajipur and other district courts, and civil revisions where a jurisdictional error needs correcting.",
+        points: ["First appeals against decrees", "Second appeals on substantial questions of law", "Civil revisions", "Stay of execution pending appeal"],
+      },
+      {
+        title: "Criminal appeals & bail",
+        desc: "Appeals against conviction, criminal revisions, and anticipatory or regular bail before the High Court after the sessions court has refused it.",
+        points: ["Anticipatory bail (Section 482 BNSS)", "Regular bail after rejection below", "Appeals against conviction", "Quashing petitions"],
+      },
+      {
+        title: "Writ petitions",
+        desc: "Petitions under Article 226 against government and revenue orders — mutation and demarcation disputes, service matters, and administrative action affecting rights.",
+        points: ["Writs against revenue orders", "Land and mutation-linked writs", "Service matters", "Mandamus for inaction"],
+      },
+      {
+        title: "From the district court to the High Court",
+        desc: "The connected work an appeal actually needs: certified copies in time, limitation watched, and the record from the Hajipur file prepared for the appellate court.",
+        points: ["Certified copies & limitation", "Preparation of the appeal record", "Engagement alongside existing counsel", "Advice on whether to appeal at all"],
+      },
+    ],
+    localNote:
+      "Appeals and writs arising from matters before the courts at Hajipur (Vaishali district) are heard by " +
+      "the Patna High Court. The chamber appears there for its district clients and takes High Court " +
+      "matters from Patna directly.",
+    faqs: [
+      {
+        q: "Do you take cases filed in Patna?",
+        a: "Yes, for High Court work — appeals, revisions, bail applications and writ petitions before the Patna High Court. Trial-level work is concentrated at the courts at Hajipur, the chamber's home court.",
+      },
+      {
+        q: "How long do I have to appeal a decree of the Hajipur court?",
+        a: "Limitation for an appeal to the High Court is generally ninety days from the decree, and the time spent obtaining the certified copy is excluded. Apply for the certified copy immediately — the copy application date is what protects you. The limitation checker on this site shows the periods; confirm your own dates with the chamber.",
+      },
+      {
+        q: "Can I go straight to the High Court for anticipatory bail?",
+        a: "The usual course is to move the Sessions Court first, and approach the High Court if it is refused. Moving the High Court directly is possible in an appropriate case, but the choice of forum is tactical and depends on the matter — take advice before filing, not after.",
+      },
+      {
+        q: "Will my case be argued by you personally at the High Court?",
+        a: "Yes. The same advocate who knows the file from the district side argues it at the High Court, engaging additional counsel only where a matter genuinely needs it and with your agreement.",
+      },
+    ],
+  },
 ];
 
 export const practiceBySlug = (slug) => practiceAreas.find((p) => p.slug === slug);

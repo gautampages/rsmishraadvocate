@@ -54,6 +54,35 @@ if (stray.length) {
   process.exit(1);
 }
 
+// ---------------------------------------------------------------------------
+//  NAP / service-area guard — same idea as the phone guard, for the rest of
+//  the entity record. index.html's static JSON-LD cannot import from the app,
+//  and its areaServed list has drifted from the shared constant once already.
+// ---------------------------------------------------------------------------
+const { SERVICE_AREA } = await import(
+  pathToFileURL(join(root, "src", "data", "structuredData.js")).href
+);
+
+const napTokens = ["East Anwarpur", "Hajipur", "844101"];
+const missingNap = napTokens.filter((t) => !template.includes(t));
+if (missingNap.length) {
+  console.error(
+    `\n✗ index.html no longer carries the office address (missing: ${missingNap.join(", ")}).\n` +
+      `  Keep the JSON-LD PostalAddress and the noscript block in step with src/data/content.js.\n`
+  );
+  process.exit(1);
+}
+
+const areaBlock = /"areaServed":\s*\[[\s\S]*?\]/.exec(template)?.[0] ?? "";
+const missingAreas = SERVICE_AREA.map((a) => a.name).filter((n) => !areaBlock.includes(`"${n}"`));
+if (missingAreas.length) {
+  console.error(
+    `\n✗ index.html's areaServed has drifted from the shared constant in structuredData.js.\n` +
+      `  Missing: ${missingAreas.join(", ")}. Update index.html's organization block.\n`
+  );
+  process.exit(1);
+}
+
 /** Replace the content of a meta tag matched by `attr="value"`. */
 function setMeta(html, attr, value, content) {
   const re = new RegExp(`(<meta\\s+${attr}="${value}"[^>]*content=")[^"]*(")`, "i");
@@ -77,6 +106,33 @@ function buildPage(route, appHtml) {
   html = setMeta(html, "property", "og:url", absolute(route.path));
   html = setMeta(html, "name", "twitter:title", route.title);
   html = setMeta(html, "name", "twitter:description", route.description);
+
+  // Language: the template is English; a route may declare another. Both the
+  // document language and the Open Graph locale must agree with the content,
+  // or a Hindi page announces itself to crawlers as English.
+  if (route.lang && route.lang !== "en") {
+    html = html.replace('<html lang="en">', `<html lang="${route.lang}">`);
+    if (route.lang === "hi") html = setMeta(html, "property", "og:locale", "hi_IN");
+  }
+
+  // hreflang pairs (English ↔ Hindi). Only routes with declared alternates
+  // emit them — hreflang on a page with no language twin is noise.
+  if (route.alternates) {
+    const links = Object.entries(route.alternates)
+      .map(([hl, p]) => `<link rel="alternate" hreflang="${hl}" href="${absolute(p)}" />`)
+      .join("\n    ");
+    html = html.replace("</head>", `  ${links}\n  </head>`);
+  }
+
+  // Blog posts are articles, not the site-wide og:type=website the template
+  // carries; the published date rides along for scrapers that read it.
+  if (route.ogType) html = setMeta(html, "property", "og:type", route.ogType);
+  if (route.published) {
+    html = html.replace(
+      "</head>",
+      `  <meta property="article:published_time" content="${route.published}" />\n  </head>`
+    );
+  }
 
   // A noindex route still needs a real file — a direct link to the judgment
   // reader must resolve to something rather than to the 404 page — but it must

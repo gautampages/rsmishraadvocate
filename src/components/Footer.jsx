@@ -13,7 +13,7 @@ export default function Footer() {
             <strong>{advocate.title} {advocate.name}</strong>
             <p className="muted">{advocate.tagline}</p>
             <p className="footer__blurb">
-              {advocate.yearsExperience}+ years serving Hajipur (Vaishali), Patna, Chapra, Muzaffarpur and across Bihar.
+              {advocate.yearsExperience}+ years at the Hajipur civil courts (Vaishali), with appeals and writs at the Patna High Court.
             </p>
             <div className="footer__socials">
               {profiles.map((p) => (

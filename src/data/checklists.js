@@ -326,7 +326,7 @@ export const checklists = [
     tagline: "Build the record before you escalate",
     pdf: "/checklists/consumer-complaint-checklist.pdf",
     pages: 2,
-    seoTitle: "Consumer Complaint Document Checklist (Free PDF) | Adv. Ram Snehi Mishra, Hajipur",
+    seoTitle: "Consumer Complaint Checklist — Vaishali & Bihar (Free PDF)",
     seoDescription:
       "Free downloadable checklist for a consumer grievance — invoices and payment proof, evidence of the defect, complaint and resolution attempts, and National Consumer Helpline details.",
     intro:

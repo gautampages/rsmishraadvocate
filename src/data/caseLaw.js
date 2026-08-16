@@ -307,7 +307,7 @@ export const topics = [
     icon: "scales",
     short: "Specific performance",
     title: "Specific Performance Judgments — Agreement to Sell and Readiness to Perform",
-    seoTitle: "Specific Performance of Agreement to Sell — Case Law | Adv. Ram Snehi Mishra, Hajipur",
+    seoTitle: "Specific Performance Case Law — Patna HC & Supreme Court",
     seoDescription:
       "Search judgments on specific performance of an agreement to sell — readiness and willingness, the 2018 amendment to the Specific Relief Act, limitation and the discretion of the court. Free case law search.",
     query: '"specific performance" "agreement to sell" readiness willingness',

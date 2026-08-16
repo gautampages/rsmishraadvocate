@@ -26,6 +26,8 @@ import { tools } from "./tools.js";
 import { checklists } from "./checklists.js";
 import { districts, courtName, placeLabel } from "./courts.js";
 import { topics as caseLawTopics } from "./caseLaw.js";
+import { hindiPages, hindiPath } from "./hindi.js";
+import { courtGuide } from "./courtGuide.js";
 
 // Re-exported so the many pages that already import them from here keep
 // working; the definitions themselves live in site.js to break an import
@@ -52,6 +54,32 @@ const table = [
     changefreq: "monthly",
   })),
 
+  // ---- The home court's own page --------------------------------------------
+  //
+  //  "hajipur civil court" / "vaishali district court" are navigational
+  //  queries nothing on the site owned; this guide page is their hub.
+  {
+    path: courtGuide.path,
+    title: courtGuide.seoTitle,
+    description: courtGuide.seoDescription,
+    priority: "0.9",
+    changefreq: "monthly",
+  },
+
+  // ---- Hindi pages (/hi pilot, generated from src/data/hindi.js) ------------
+  //
+  //  `lang` makes the prerenderer emit <html lang="hi"> and og:locale hi_IN;
+  //  hreflang pairing with the English counterparts is attached below via
+  //  HREFLANG so the two language versions point at each other.
+  ...hindiPages.map((p) => ({
+    path: hindiPath(p),
+    title: p.seoTitle,
+    description: p.seoDescription,
+    lang: "hi",
+    priority: p.slug ? "0.8" : "0.85",
+    changefreq: "monthly",
+  })),
+
   // ---- Case status ----------------------------------------------------------
   //
   //  The hub plus one page per Bihar district. "Case status" is the single
@@ -62,7 +90,7 @@ const table = [
     path: "/case-status",
     title: "Bihar Court Case Status — Check Online by CNR or Name",
     description:
-      "Free case status check for every Bihar district court — Vaishali (Hajipur), Patna, Muzaffarpur and all 38 districts — by CNR, party or advocate name. Works for any Indian court too.",
+      "Free case status check for every Bihar district court — Vaishali (Hajipur), Patna and all 38 districts — by CNR, party or advocate name. Works for any Indian court too.",
     priority: "0.8",
     changefreq: "daily",
   },
@@ -135,6 +163,8 @@ const table = [
     title: p.seoTitle || p.title,
     description: p.seoDescription || p.excerpt,
     lastmod: p.date || undefined,
+    ogType: "article",
+    published: p.date || undefined,
     priority: "0.6",
     changefreq: "yearly",
   })),
@@ -220,10 +250,31 @@ const table = [
   },
 ];
 
+// English ↔ Hindi hreflang pairs. Attached to BOTH sides below, so each
+// language version declares the other (hreflang must be reciprocal to count);
+// x-default points at the English page.
+const HREFLANG = [
+  ["/", "/hi"],
+  ["/practice/divorce-family-lawyer-hajipur", "/hi/talak-ka-vakil-hajipur"],
+  ["/practice/criminal-lawyer-hajipur", "/hi/jamanat-ka-vakil-hajipur"],
+  ["/blog/dakhil-kharij-mutation-bihar", "/hi/dakhil-kharij-bihar"],
+];
+
+const alternatesFor = (path) => {
+  const pair = HREFLANG.find(([en, hi]) => en === path || hi === path);
+  if (!pair) return undefined;
+  const [en, hi] = pair;
+  return { "en-IN": en, "hi-IN": hi, "x-default": en };
+};
+
 // Structured data is attached here rather than written out by hand on every
 // entry: one builder, one graph per URL, and the prerenderer and <Seo> cannot
 // disagree about what a page claims to be.
-export const routes = table.map((r) => ({ ...r, jsonLd: jsonLdFor(r.path) }));
+export const routes = table.map((r) => ({
+  ...r,
+  jsonLd: jsonLdFor(r.path),
+  alternates: alternatesFor(r.path),
+}));
 
 /** Look up a route by path, for <Seo>. */
 export const routeFor = (path) => routes.find((r) => r.path === path);

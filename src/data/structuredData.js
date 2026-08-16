@@ -35,6 +35,8 @@ import { feeFaqs } from "./fees.js";
 import { districts, districtBySlug, courtName, placeLabel } from "./courts.js";
 import { hubFaqs, districtFaqs } from "./caseStatus.js";
 import { hubFaqs as caseLawFaqs, topics as caseLawTopics, topicBySlug } from "./caseLaw.js";
+import { hindiBySlug, hindiPath } from "./hindi.js";
+import { courtGuide } from "./courtGuide.js";
 
 const G = (nodes) => ({ "@context": "https://schema.org", "@graph": nodes.filter(Boolean) });
 
@@ -74,17 +76,14 @@ const webPage = (path, name, description, extra = {}) => ({
   ...extra,
 });
 
-// The chamber's full service area — kept in step with the static areaServed
-// list in index.html's organization block (which cannot import this module).
-// "Chhapra" carries the popular "Chapra" transliteration as an alternateName
-// so both spellings resolve to the same place.
-const BIHAR = [
+// The chamber's service area — kept in step with the static areaServed list
+// in index.html's organization block (which cannot import this module; the
+// build guard in scripts/prerender.mjs fails the build if the two drift).
+// Hajipur first, Patna for High Court work; deliberately nothing wider.
+export const SERVICE_AREA = [
   { "@type": "City", name: "Hajipur" },
   { "@type": "AdministrativeArea", name: "Vaishali" },
   { "@type": "City", name: "Patna" },
-  { "@type": "City", name: "Muzaffarpur" },
-  { "@type": "City", name: "Chhapra", alternateName: "Chapra" },
-  { "@type": "AdministrativeArea", name: "Saran" },
   { "@type": "City", name: "Sonepur" },
   { "@type": "State", name: "Bihar" },
 ];
@@ -117,7 +116,7 @@ const personNode = {
   email: contact.email,
   worksFor: { "@id": ORG_ID },
   knowsLanguage: ["Hindi", "English"],
-  areaServed: BIHAR,
+  areaServed: SERVICE_AREA,
   sameAs: profiles.map((p) => p.url),
 };
 
@@ -156,7 +155,7 @@ const practicePage = (slug) => {
       description: area.seoDescription,
       url,
       provider: { "@id": ORG_ID },
-      areaServed: BIHAR,
+      areaServed: SERVICE_AREA,
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: area.title,
@@ -259,7 +258,7 @@ const toolPage = (path) => {
       description: tool.description,
       offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
       publisher: { "@id": ORG_ID },
-      areaServed: BIHAR,
+      areaServed: SERVICE_AREA,
       isAccessibleForFree: true,
     },
     faqNode(`${url}#faq`, faqsForTool(path)),
@@ -334,7 +333,7 @@ const bookingPage = () =>
         "A confidential first consultation at the chamber in Hajipur or by telephone — an honest view of whether you have a case, the likely route, and what it will cost.",
       url: absolute("/book"),
       provider: { "@id": ORG_ID },
-      areaServed: BIHAR,
+      areaServed: SERVICE_AREA,
       serviceType: "Legal consultation",
       availableChannel: {
         "@type": "ServiceChannel",
@@ -519,11 +518,84 @@ const askPage = () => {
 const policyPage = (path, name, description) =>
   G([webPage(path, name, description), crumbs([name, path])]);
 
+// ---- Hajipur Civil Court guide --------------------------------------------
+
+const courtGuidePage = () => {
+  const url = absolute(courtGuide.path);
+  return G([
+    {
+      "@type": "Courthouse",
+      "@id": `${url}#court`,
+      name: "Vaishali District Court, Hajipur",
+      alternateName: "Hajipur Civil Court",
+      description:
+        "The district judiciary of Vaishali — the District & Sessions Court, Family Court, civil courts and magistrates' courts — sits at Hajipur.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Hajipur",
+        addressRegion: "Bihar",
+        addressCountry: "IN",
+      },
+      containedInPlace: { "@type": "AdministrativeArea", name: "Vaishali, Bihar" },
+    },
+    webPage(courtGuide.path, courtGuide.seoTitle, courtGuide.seoDescription),
+    faqNode(`${url}#faq`, courtGuide.faqs),
+    crumbs(["Hajipur Civil Court", courtGuide.path]),
+  ]);
+};
+
+// ---- Hindi pages (/hi) ----------------------------------------------------
+
+const hindiPage = (slug) => {
+  const page = hindiBySlug(slug);
+  if (!page) return null;
+  const path = hindiPath(page);
+  const url = absolute(path);
+
+  const core =
+    page.kind === "service"
+      ? {
+          "@type": "Service",
+          "@id": `${url}#service`,
+          name: page.title,
+          description: page.seoDescription,
+          url,
+          provider: { "@id": ORG_ID },
+          areaServed: SERVICE_AREA,
+          inLanguage: "hi-IN",
+        }
+      : page.kind === "article"
+        ? {
+            "@type": "Article",
+            "@id": `${url}#article`,
+            headline: page.title,
+            description: page.seoDescription,
+            url,
+            mainEntityOfPage: url,
+            author: { "@id": PERSON_ID },
+            publisher: { "@id": ORG_ID },
+            inLanguage: "hi-IN",
+            isAccessibleForFree: true,
+          }
+        : {
+            ...webPage(path, page.title, page.seoDescription),
+            inLanguage: "hi-IN",
+          };
+
+  return G([
+    core,
+    faqNode(`${url}#faq`, page.faqs),
+    crumbs(["हिन्दी", "/hi"], ...(page.slug ? [[page.title, path]] : [])),
+  ]);
+};
+
 // ---------------------------------------------------------------------------
 //  Dispatch. Static paths first, then the parameterised families.
 // ---------------------------------------------------------------------------
 const STATIC = {
   "/": home,
+  "/hajipur-civil-court": courtGuidePage,
+  "/hi": () => hindiPage(""),
   "/blog": blogIndex,
   "/tools": toolsIndex,
   "/checklists": checklistIndex,
@@ -558,6 +630,7 @@ export function jsonLdFor(path) {
   if (!tail) return null;
 
   if (head === "practice") return practicePage(tail);
+  if (head === "hi") return hindiPage(tail);
   if (head === "blog") return blogPost(tail);
   if (head === "checklists") return checklistPage(tail);
   if (head === "case-status") return caseStatusDistrict(tail);

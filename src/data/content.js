@@ -266,7 +266,7 @@ export const whyChoose = {
   heading: "Why Choose Our Legal Services",
   subtext: "Proven expertise, client-focused approach, and commitment to exceptional results",
   items: [
-    { icon: "trophy", title: "Proven Track Record", desc: `${advocate.yearsExperience}+ years of successful legal practice with outstanding case results and client satisfaction` },
+    { icon: "trophy", title: "Known at the Hajipur Bar", desc: `${advocate.yearsExperience}+ years of daily practice before the courts at Hajipur (Vaishali) — the judges, the registry and the local procedure are familiar ground` },
     { icon: "target", title: "Personalized Approach", desc: "Tailored legal strategies designed specifically for your unique situation and requirements" },
     { icon: "clock", title: "24/7 Support", desc: "Round-the-clock availability for urgent legal matters and continuous client communication" },
     { icon: "book", title: "Expert Knowledge", desc: "Deep expertise across multiple legal domains with continuous professional development" },
@@ -373,7 +373,7 @@ export const office = {
     { day: "Sunday", time: "By Appointment", status: "Appointment Only" },
   ],
   areasTitle: "Areas We Serve",
-  areasServed: ["Hajipur", "Vaishali", "Patna", "Muzaffarpur", "Chapra (Saran)", "Sonepur", "Patna High Court"],
+  areasServed: ["Hajipur", "Vaishali", "Patna High Court", "Patna", "Sonepur"],
 };
 
 // Frequently Asked Questions (also emitted as FAQ structured data for SEO)
@@ -437,6 +437,17 @@ export const footerNav = [
       { label: "Criminal Lawyer in Hajipur", href: "/practice/criminal-lawyer-hajipur" },
       { label: "Civil Lawyer in Hajipur", href: "/practice/civil-lawyer-hajipur" },
       { label: "Property & Land Lawyer in Hajipur", href: "/practice/property-lawyer-hajipur" },
+      { label: "Patna High Court Advocate", href: "/practice/patna-high-court-advocate" },
+      { label: "Hajipur Civil Court Guide", href: "/hajipur-civil-court" },
+    ],
+  },
+  {
+    title: "हिन्दी में",
+    links: [
+      { label: "हाजीपुर में वकील", href: "/hi" },
+      { label: "तलाक का वकील हाजीपुर", href: "/hi/talak-ka-vakil-hajipur" },
+      { label: "जमानत का वकील हाजीपुर", href: "/hi/jamanat-ka-vakil-hajipur" },
+      { label: "दाखिल-खारिज बिहार", href: "/hi/dakhil-kharij-bihar" },
     ],
   },
   {

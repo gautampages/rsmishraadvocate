@@ -44,7 +44,7 @@ export const DIVISIONS = {
  *              a page that says the same thing as thirty-seven others is a
  *              page Google is right to ignore.
  * `home`     — the chamber's own court (Vaishali/Hajipur).
- * `target`   — the chamber's secondary markets (Patna, Muzaffarpur, Saran);
+ * `target`   — the chamber's secondary market (Patna, for High Court work);
  *              drives higher sitemap priority than the other districts.
  */
 export const districts = [
@@ -116,7 +116,6 @@ export const districts = [
     division: "tirhut",
     lead:
       "Muzaffarpur is the divisional headquarters of Tirhut and one of the busiest court complexes in north Bihar, drawing appeals and sessions work from across the division.",
-    target: true,
   },
   {
     slug: "east-champaran",
@@ -159,7 +158,6 @@ export const districts = [
     division: "saran",
     lead:
       "Saran district cases are heard at Chhapra (also written Chapra). Searching for \"Chapra court case status\" and selecting Chhapra as the district will fail — the district is recorded as Saran.",
-    target: true,
   },
   {
     slug: "siwan",

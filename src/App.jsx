@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import PracticeArea from "./pages/PracticeArea";
+import HajipurCourt from "./pages/HajipurCourt";
+import HindiPage from "./pages/HindiPage";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import Booking from "./pages/Booking";
@@ -35,6 +37,9 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="practice/:slug" element={<PracticeArea />} />
+        <Route path="hajipur-civil-court" element={<HajipurCourt />} />
+        <Route path="hi" element={<HindiPage />} />
+        <Route path="hi/:slug" element={<HindiPage />} />
         <Route path="blog" element={<BlogIndex />} />
         <Route path="blog/:slug" element={<BlogPost />} />
         <Route path="book" element={<Booking />} />

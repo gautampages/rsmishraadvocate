@@ -80,6 +80,10 @@ export const toolFaqs = {
       q: "What if the respondent hides their real income?",
       a: "This is the usual battleground. The mandatory disclosure affidavit exists precisely for it, and a court can draw an adverse inference where disclosure is evasive, look at lifestyle and standard of living rather than declared income, and in appropriate cases direct production of bank statements, income tax returns and employer records.",
     },
+    {
+      q: "Where is maintenance decided for a Vaishali district matter?",
+      a: "Before the Family Court at the Hajipur court complex, which hears matrimonial and maintenance matters for Vaishali district. The same Supreme Court framework — the 25% net-salary benchmark and the Rajnesh v. Neha disclosure affidavit — is what that court applies.",
+    },
   ],
 
   "/tools/limitation-checker": [
@@ -98,6 +102,10 @@ export const toolFaqs = {
     {
       q: "Is time spent getting a certified copy excluded when filing an appeal?",
       a: "Yes. Section 12 excludes the time requisite for obtaining a copy of the decree or order appealed from. This routinely gives an appellant more working time than the bare period suggests, but only the time genuinely requisite is excluded — not delay in applying for the copy in the first place.",
+    },
+    {
+      q: "Does limitation work the same way in Bihar courts?",
+      a: "Yes — the Limitation Act, 1963 is central law and applies in the courts at Hajipur and across Bihar exactly as it does elsewhere in India. What is local is practice: apply for the certified copy at the copying section the day judgment is pronounced, and keep the receipt, because that date is what Section 12 protects on an appeal to the Patna High Court.",
     },
   ],
 

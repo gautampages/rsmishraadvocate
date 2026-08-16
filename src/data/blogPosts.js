@@ -48,7 +48,7 @@ export const blogPosts = [
     tag: "Criminal Law",
     date: "2026-08-16",
     title: "The Police Refuse to Lodge Your FIR. What Now?",
-    seoTitle: "Police Refusing to Lodge an FIR? Four Steps That Work | Adv. Ram Snehi Mishra",
+    seoTitle: "Police Not Filing Your FIR in Bihar? Four Steps That Work",
     seoDescription:
       "What to do when a police station refuses to register your FIR — the written complaint to the Superintendent under Section 173(4) BNSS, the application to the Magistrate under Section 175(3), zero FIR, and what Lalita Kumari settled.",
     excerpt:
@@ -109,10 +109,17 @@ export const blogPosts = [
           "What costs people their case is not the refusal. It is the six weeks spent going back to the counter and being told to come again, while the evidence goes cold and no document anywhere records that they ever asked.",
         ],
       },
+      {
+        heading: "Doing this in Vaishali district",
+        paragraphs: [
+          "For an offence in Vaishali district, the ladder runs: the police station concerned, then the Superintendent of Police, Vaishali, by registered post under Section 173(4), then an application before the Magistrate at the Hajipur court complex under Section 175(3) — with the written complaints and postal receipts from the first two steps attached.",
+          "If an arrest is feared on the other side of the same dispute, or the police inaction is costing evidence, take advice before the weeks slip away. The chamber handles [criminal matters at Hajipur](/practice/criminal-lawyer-hajipur), including exactly this escalation.",
+        ],
+      },
     ],
     faqs: [
       {
-        q: "Can the police refuse to register an FIR?",
+        q: "Can the police in Bihar refuse to register an FIR?",
         a: "Not where the information discloses a cognizable offence. In Lalita Kumari v. Government of Uttar Pradesh (2014) a Constitution Bench of the Supreme Court held that registration is mandatory in such a case and that no preliminary inquiry is permissible first. A preliminary inquiry is allowed only in a narrow set of categories — matrimonial disputes, commercial offences, medical negligence, corruption and cases of abnormal delay — and even then it is limited to whether a cognizable offence is disclosed, not to whether the allegation is true.",
       },
       {
@@ -193,11 +200,18 @@ export const blogPosts = [
           "The honest advice, given often in this chamber, is that a settlement worth signing takes a few more weeks to draft than one worth regretting.",
         ],
       },
+      {
+        heading: "In the Family Court at Hajipur",
+        paragraphs: [
+          "Matrimonial matters from Vaishali district are heard by the Family Court at the Hajipur court complex, and the timeline above is what a straightforward file looks like there: settlement drafted before the petition, both parties present at both motions, documents complete on day one.",
+          "If you are weighing this route, the [divorce and family practice page](/practice/divorce-family-lawyer-hajipur) explains how the chamber handles it, and the free preparation checklist lists the papers to gather before the first consultation.",
+        ],
+      },
     ],
     faqs: [
       {
-        q: "How long does a mutual consent divorce take in India?",
-        a: "The statutory shape is six to eighteen months: the second motion comes not less than six months and not more than eighteen months after the first. Where the court waives the six-month period under Amardeep Singh v. Harveen Kaur (2017), a straightforward file can conclude in a few months instead.",
+        q: "How long does a mutual consent divorce take in the Hajipur Family Court?",
+        a: "The statutory shape is six to eighteen months: the second motion comes not less than six months and not more than eighteen months after the first. In the Family Court at Hajipur a straightforward, well-prepared file ordinarily concludes within that window, and where the court waives the six-month period under Amardeep Singh v. Harveen Kaur (2017), in a few months instead.",
       },
       {
         q: "Can the six-month waiting period be waived?",
@@ -227,7 +241,7 @@ export const blogPosts = [
     tag: "Court Procedure",
     date: "2026-08-16",
     title: "How to Get a Certified Copy of a Court Order — and Why the Date Matters",
-    seoTitle: "How to Get a Certified Copy of a Court Judgment or Order | Adv. Ram Snehi Mishra",
+    seoTitle: "Certified Copy of a Court Order in Bihar — How to Get One",
     seoDescription:
       "How to apply for a certified copy of a judgment, decree or order from a district court, what it is needed for, and why Section 12 of the Limitation Act makes the date you applied as important as the copy itself.",
     excerpt:
@@ -283,6 +297,13 @@ export const blogPosts = [
           "Keep the receipt. Note the case's CNR number on your own file at the same time, because it is the one number that will find the case again years later, whatever happens to the case number in between.",
         ],
       },
+      {
+        heading: "At the Hajipur court complex",
+        paragraphs: [
+          "For a decree or order of the courts at Hajipur (Vaishali district), the copy application goes to the copying section of the court complex — apply the day the judgment is pronounced if an appeal to the Patna High Court is even a possibility, because the appeal clock is what the application date protects.",
+          "If the appeal is the plan, the chamber handles the whole chain — certified copy, limitation and the [appeal at the Patna High Court](/practice/patna-high-court-advocate) — and the [limitation checker](/tools/limitation-checker) on this site shows the periods that apply.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -315,7 +336,7 @@ export const blogPosts = [
     tag: "Criminal Law",
     date: "2026-08-16",
     title: "Cheque Bounce: The Three Deadlines That Decide the Case",
-    seoTitle: "Cheque Bounce Case — 30 Day Notice & Filing Deadlines (S.138) | Adv. Ram Snehi Mishra",
+    seoTitle: "Cheque Bounce in Bihar — the 3 Deadlines (Section 138)",
     seoDescription:
       "The Section 138 Negotiable Instruments Act timeline explained: 30 days to send the demand notice, 15 days for payment, 30 days to file the complaint — and the jurisdiction rule that decides where you file.",
     excerpt:
@@ -364,6 +385,13 @@ export const blogPosts = [
           "Which is why the papers matter more than the cheque. A complaint backed by bank statements, an income tax return and a written record of the transaction is a very different proposition from one resting on a cheque and an assertion.",
         ],
       },
+      {
+        heading: "Filing from Hajipur",
+        paragraphs: [
+          "Apply the jurisdiction rule to Vaishali district and it reads simply: if the bank branch where you presented the cheque is in the district, the complaint lies before the Magistrates at the Hajipur court complex — wherever the drawer lives and wherever the cheque was written.",
+          "The three deadlines above are unforgiving, and the notice is where most complaints are quietly lost. The chamber [drafts the notice and conducts Section 138 complaints at Hajipur](/practice/criminal-lawyer-hajipur) — bring the return memo and the cheque before the thirty days run.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -376,7 +404,7 @@ export const blogPosts = [
       },
       {
         q: "Where do I file a Section 138 complaint?",
-        a: "Before the court within whose jurisdiction the branch of the payee's bank at which the cheque was presented for collection is situated. It is the payee's bank branch that fixes the court — not the drawer's address, and not where the cheque was issued.",
+        a: "Before the court within whose jurisdiction the branch of the payee's bank at which the cheque was presented for collection is situated. It is the payee's bank branch that fixes the court — not the drawer's address, and not where the cheque was issued. For a payee whose bank branch is in Vaishali district, that means the Magistrates' courts at Hajipur.",
       },
       {
         q: "What if I miss the deadline to file the complaint?",
@@ -487,7 +515,7 @@ export const blogPosts = [
     tag: "Court Procedure",
     date: "2026-08-16",
     title: "What Actually Happens on the First Date of a Criminal Case",
-    seoTitle: "First Hearing in a Criminal Case — What to Expect | Adv. Ram Snehi Mishra, Hajipur",
+    seoTitle: "First Hearing of a Criminal Case in Bihar — What to Expect",
     seoDescription:
       "What happens on the first date of a criminal case in a district court — appearance, bail bonds, supply of documents, framing of charge — and why the first date almost never involves any evidence being heard.",
     excerpt:
@@ -540,6 +568,13 @@ export const blogPosts = [
         paragraphs: [
           "After every date, two questions are worth asking, and both have short answers: what stage is the case at now, and what is the next date for.",
           "Someone who cannot answer the second question is not going to be ready for it. And a client who knows the answer to the first stops measuring progress by how many times they have been to court.",
+        ],
+      },
+      {
+        heading: "At the courts at Hajipur",
+        paragraphs: [
+          "For a Vaishali district matter, everything above plays out at the Hajipur court complex: the first appearance before the Magistrate, committal to the Sessions Court where the offence requires it, and the stages that follow. You can watch your own case's stage and next date, free, with the [case-status tracker for Vaishali (Hajipur)](/case-status/vaishali) — search by CNR number or name.",
+          "If the first date is still ahead of you, that is the right moment to take advice, not after it. The chamber [conducts criminal defence at Hajipur](/practice/criminal-lawyer-hajipur) from first appearance through trial, and appeals at the Patna High Court.",
         ],
       },
     ],
