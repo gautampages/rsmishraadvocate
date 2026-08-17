@@ -93,11 +93,15 @@ export const SERVICE_AREA = [
 //  refers to them by @id, which is what tells a search engine that forty URLs
 //  describe one chamber rather than forty unrelated businesses.
 // ---------------------------------------------------------------------------
+// `name`/`alternateName` here are what Google reads to show a site name in
+// search results instead of the bare domain (paired with og:site_name in
+// index.html); the alternate is the short form it may pick on narrow screens.
 const websiteNode = {
   "@type": "WebSite",
   "@id": WEBSITE_ID,
   url: `${SITE_URL}/`,
   name: `Advocate ${advocate.name}`,
+  alternateName: [advocate.name, "RSM Advocate"],
   description: advocate.credentials,
   inLanguage: "en-IN",
   publisher: { "@id": ORG_ID },
