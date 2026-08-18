@@ -29,6 +29,7 @@
    ========================================================================= */
 
 import { daysFromISTToday, formatISODate } from "./istTime.js";
+import { API_AUTH_HEADER } from "./apiAuth.js";
 
 // The API's CORS policy names the production hostname, so localhost cannot
 // call it directly. In `npm run dev` requests go through the /api/appointment
@@ -60,7 +61,11 @@ async function request(url, init = {}) {
 
   let res;
   try {
-    res = await fetch(url, { ...init, signal: controller.signal });
+    res = await fetch(url, {
+      ...init,
+      headers: { ...API_AUTH_HEADER, ...(init.headers || {}) },
+      signal: controller.signal,
+    });
   } catch (err) {
     clearTimeout(timer);
     throw new AppointmentError(

@@ -14,6 +14,8 @@
    back to a "call the chamber" message.
    ========================================================================= */
 
+import { API_AUTH_HEADER } from "./apiAuth.js";
+
 const WORKER_URL = "https://cold-disk-f361.gautampages.workers.dev/";
 
 // `npm run dev` routes through the Vite proxy so the chat is testable locally
@@ -59,7 +61,7 @@ export async function askAssistant(question, history = []) {
   try {
     res = await fetch(ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...API_AUTH_HEADER },
       body: JSON.stringify({ question: buildPrompt(question, history) }),
       signal: controller.signal,
     });

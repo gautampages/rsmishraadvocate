@@ -40,7 +40,7 @@ export default defineConfig({
       // the others: its CORS header names the production hostname, so a call
       // from localhost is refused at the preflight.
       '/api/kanoon': {
-        target: 'https://kanoon.ramsnehimishra.in',
+        target: 'https://ikanoon.gautampages.workers.dev',
         changeOrigin: true,
         headers: { Origin: 'https://ramsnehimishra.in' },
         rewrite: (p) => p.replace(/^\/api\/kanoon/, ''),

@@ -22,12 +22,14 @@
       tokens from that list.
    ========================================================================== */
 
+import { API_AUTH_HEADER } from "./apiAuth.js";
+
 const env = import.meta.env || {};
 
 // The Worker's CORS policy names the production hostname, so localhost goes
 // through the dev proxy in vite.config.js — the same shim the other three
 // workers use.
-const WORKER = "https://kanoon.ramsnehimishra.in";
+const WORKER = "https://ikanoon.gautampages.workers.dev";
 const BASE = (env.VITE_KANOON_BASE_URL || (env.DEV ? "/api/kanoon" : WORKER)).replace(/\/$/, "");
 
 export const PAGE_SIZE = 10;
@@ -228,7 +230,15 @@ function cached(key, fn, { persist = false } = {}) {
   return p;
 }
 
+// Every successful call takes at least this long, even when the response
+// comes straight from the browser's cache — same floor as ecourts.js, so
+// cached and fresh lookups feel uniform.
+const MIN_REQUEST_MS = 2000;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function call(path, params) {
+  const started = Date.now();
   const url = new URL(`${BASE}${path}`, typeof window === "undefined" ? "https://ramsnehimishra.in" : window.location.origin);
   Object.entries(params || {}).forEach(([k, v]) => {
     if (v !== undefined && v !== null && v !== "") url.searchParams.set(k, v);
@@ -236,7 +246,7 @@ async function call(path, params) {
 
   let res;
   try {
-    res = await fetch(url, { headers: { Accept: "application/json" } });
+    res = await fetch(url, { headers: { Accept: "application/json", ...API_AUTH_HEADER } });
   } catch {
     throw new KanoonError(
       "Could not reach the case-law service. Check your connection and try again.",
@@ -257,6 +267,11 @@ async function call(path, params) {
       body?.error?.code || `HTTP_${res.status}`
     );
   }
+
+  // Top up to the minimum only if the round trip came in under it — a
+  // browser-cache hit resolves in ~0ms.
+  const remaining = MIN_REQUEST_MS - (Date.now() - started);
+  if (remaining > 0) await sleep(remaining);
 
   return body;
 }

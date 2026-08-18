@@ -89,7 +89,7 @@ any web server.
 | --- | --- | --- |
 | `api.ramsnehimishra.in` | `/book` submissions + the appointment status popup | Booking falls back to WhatsApp |
 | `workers/legal-data` | Case-status tracker | Tracker shows an error |
-| `kanoon.ramsnehimishra.in` | Case-law search + judgment reader | Search shows an error |
+| `ikanoon.gautampages.workers.dev` | Case-law search + judgment reader | Search shows an error |
 | (assistant worker) | AI legal assistant | Chat suggests WhatsApp instead |
 
 ### Case-law API (Indian Kanoon) — attribution is contractual

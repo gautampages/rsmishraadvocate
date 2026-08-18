@@ -11,12 +11,21 @@
    the worker's Access-Control-Allow-Origin is a fixed production hostname.
    ========================================================================= */
 
+import { API_AUTH_HEADER } from "./apiAuth.js";
+
 const WORKER_API = "https://legal-data.gautampages.workers.dev/api";
 
 const env = import.meta.env ?? {};
 const BASE = (env.VITE_ECOURTS_BASE_URL || (env.DEV ? "/api/ecourts" : WORKER_API)).replace(/\/$/, "");
 
 const TIMEOUT_MS = 45000;
+
+// Every successful lookup takes at least this long, even when the response
+// comes straight from the browser's cache and never touches the network.
+// Matches the worker's own cache-hit delay, so all lookups feel uniform.
+const MIN_REQUEST_MS = 2000;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class CaseApiError extends Error {
   constructor(message, { code = "REQUEST_FAILED", status = 0 } = {}) {
@@ -28,6 +37,7 @@ export class CaseApiError extends Error {
 }
 
 async function request(path, params) {
+  const started = Date.now();
   const url = new URL(`${BASE}${path}`, window.location.origin);
   for (const [key, val] of Object.entries(params || {})) {
     if (val == null || val === "") continue;
@@ -39,7 +49,12 @@ async function request(path, params) {
 
   let res;
   try {
-    res = await fetch(url.toString(), { signal: controller.signal });
+    res = await fetch(url.toString(), {
+      signal: controller.signal,
+      // The worker only serves requests carrying this header. The value is
+      // public (it ships in this bundle) — an abuse filter, not a secret.
+      headers: { ...API_AUTH_HEADER },
+    });
   } catch (err) {
     clearTimeout(timer);
     if (err?.name === "AbortError") {
@@ -80,7 +95,15 @@ async function request(path, params) {
       status: res.status,
     });
   }
-  return res.json();
+
+  const data = await res.json();
+
+  // Top up to the minimum only if the round trip came in under it — a
+  // browser-cache hit resolves in ~0ms, a worker round trip already takes 2s+.
+  const remaining = MIN_REQUEST_MS - (Date.now() - started);
+  if (remaining > 0) await sleep(remaining);
+
+  return data;
 }
 
 /* ------------------------------------------------------------------ *
