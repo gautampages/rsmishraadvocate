@@ -184,7 +184,7 @@ const table = [
     path: "/tools",
     title: "Free Legal Calculators & Lookups for Bihar | Advocate Ram Snehi Mishra",
     description:
-      "Free tools for court users in Bihar — Bihar stamp duty and registration calculator, civil suit court fee calculator, maintenance estimator, limitation period checker and Vaishali cause list lookup.",
+      "Free tools for court users in Bihar — stamp duty and registration calculator, katha–square feet land unit converter, IPC to BNS section converter, civil suit court fee calculator, maintenance estimator, limitation checker and Vaishali cause list lookup.",
     priority: "0.8",
     changefreq: "monthly",
   },
@@ -257,7 +257,12 @@ const HREFLANG = [
   ["/", "/hi"],
   ["/practice/divorce-family-lawyer-hajipur", "/hi/talak-ka-vakil-hajipur"],
   ["/practice/criminal-lawyer-hajipur", "/hi/jamanat-ka-vakil-hajipur"],
+  ["/practice/property-lawyer-hajipur", "/hi/jamin-ka-vakil-hajipur"],
   ["/blog/dakhil-kharij-mutation-bihar", "/hi/dakhil-kharij-bihar"],
+  ["/blog/bihar-land-survey-documents", "/hi/bihar-jamin-survey"],
+  ["/blog/lok-adalat-bihar", "/hi/lok-adalat-bihar"],
+  ["/blog/bihar-prohibition-act-bail", "/hi/sharab-bandi-jamanat"],
+  ["/ask", "/hi/muft-kanooni-salah"],
 ];
 
 const alternatesFor = (path) => {

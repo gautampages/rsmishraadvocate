@@ -12,7 +12,7 @@ JavaScript runs, then hydrates into a single-page app.
 | `/practice/<slug>` | Four practice-area pages (divorce & family, criminal, civil, property) |
 | `/blog`, `/blog/<slug>` | Legal insight articles, one URL each |
 | `/book` | Appointment booking with real slots, calendar export and WhatsApp fallback |
-| `/tools`, `/tools/<slug>` | Five free calculators and lookups |
+| `/tools`, `/tools/<slug>` | Seven free calculators and lookups |
 | `/checklists`, `/checklists/<slug>` | Printable document checklists |
 | `/fees` | Fees and engagement terms |
 | `/privacy-policy`, `/terms`, `/disclaimer` | Policy documents |
@@ -22,8 +22,9 @@ JavaScript runs, then hydrates into a single-page app.
 - Prerendered HTML per route, with per-page `<title>`, description, canonical URL
   and JSON-LD; `sitemap.xml` generated at build time from the same route table
 - Live eCourts case-status tracker and an AI legal assistant (Cloudflare Workers)
-- Free legal tools: Bihar stamp duty, Bihar court fee, maintenance estimator,
-  limitation checker, Vaishali cause-list lookup — all computed in the browser
+- Free legal tools: Bihar stamp duty, katha–sq ft land unit converter, IPC→BNS
+  section converter, Bihar court fee, maintenance estimator, limitation
+  checker, Vaishali cause-list lookup — all computed in the browser
 - Appointment booking against the chamber's real office hours, with `.ics` export
 - Scroll-reveal animations (respect `prefers-reduced-motion`), print stylesheet
 - Navy + gold aesthetic, Fraunces + Inter typography, fully responsive

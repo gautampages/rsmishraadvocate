@@ -88,6 +88,7 @@ export const courtGuide = {
     { to: "/case-status/vaishali", label: "Vaishali (Hajipur) case status", note: "Check by CNR or name", icon: "clock" },
     { to: "/tools/cause-list", label: "Cause list lookup", note: "Find your case on the daily board", icon: "calendar" },
     { to: "/tools/court-fee-calculator", label: "Bihar court fee calculator", note: "Ad valorem fee on a civil suit", icon: "scales" },
+    { to: "/tools/ipc-to-bns-converter", label: "IPC → BNS converter", note: "Old section numbers to the new codes", icon: "refresh" },
     { to: "/practice/patna-high-court-advocate", label: "Patna High Court matters", note: "Appeals, bail & writs", icon: "book" },
   ],
 };

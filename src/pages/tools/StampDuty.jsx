@@ -28,7 +28,7 @@ export default function StampDuty() {
       notes={[
         "The MVR rate varies plot by plot and is fixed by the district administration. Get the current rate for your specific khata and plot number before relying on any estimate.",
         "Gift, lease, mortgage, partition and exchange deeds are charged differently from a sale deed. This calculator covers sale deeds.",
-        "Bihar has offered a rebate for completing registration through the online process. Whether it applies to your transaction should be checked at the time of registration.",
+        "Registering through the online (e-nibandhan) process earns a rebate of 1% of the stamp duty, capped at ₹2,000 (S.O. 10/2016). A scanning fee also applies — ₹250 up to 10 pages, ₹500 up to 20, ₹1,000 beyond. Confirm both at the time of registration.",
         "Mutation (dakhil kharij) at the Circle Office is a separate step after registration, with its own fee. Registration alone does not update the revenue record.",
       ]}
     >

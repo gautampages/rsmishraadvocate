@@ -44,6 +44,255 @@ export const blogMeta = {
 export const blogPosts = [
   // ---------------------------------------------------------------------------
   {
+    slug: "bihar-land-survey-documents",
+    tag: "Property & Land",
+    date: "2026-08-22",
+    title: "Bihar Land Survey: The Papers Your Family Needs Ready",
+    seoTitle: "Bihar Land Survey — Vanshavali, Prapatra 2 & the Documents That Decide It",
+    seoDescription:
+      "What the Bihar special land survey means for your family's land: the self-declaration (Prapatra 2), the vanshavali (Prapatra 3(1)) on plain paper, the supporting papers worth digging out, what to do when ancestral land was never partitioned, and how to object when the record comes out wrong.",
+    excerpt:
+      "Bihar is rewriting its land records village by village. The khatiyan that comes out of this survey will be the base document for decades — and whether your family's land is recorded right depends on a few papers filed at the right time.",
+    sections: [
+      {
+        paragraphs: [
+          "Across all 38 districts, survey teams are measuring every plot and rebuilding the khatiyan — the record of rights — from scratch. Most existing khatiyans stand in the names of grandfathers and great-grandfathers; the new one will stand in the names of today's holders. That is the opportunity, and the risk: a family that files its papers in time gets its land recorded in the right names, and a family that waits inherits somebody else's mistake and years of proceedings to undo it.",
+          "The government has extended the deadline for completing the survey to December 2026, but the working reality is village by village: once khanapuri — the entry of names against plots — begins in your mauza, the family that has already filed is simply in a stronger position than the family still collecting papers.",
+        ],
+      },
+      {
+        heading: "Two forms carry the whole exercise",
+        paragraphs: [
+          "The self-declaration, Prapatra 2, states what land you hold — khata, khesra, area, and how it came to you. The genealogy, Prapatra 3(1) or vanshavali, traces the line from the ancestor whose name is on the khatiyan or jamabandi down to the heirs alive today.",
+          "Both are accepted on plain paper and self-attested. No sarpanch certificate, notary or kachahari attestation is legally required — a point on which a small industry of misinformation has grown up around the survey camps. They are submitted free at the anchal survey camp, or online through the survey directorate's portal (dlrs.bihar.gov.in). Keep the acknowledgement, whichever route you use.",
+        ],
+      },
+      {
+        heading: "The supporting papers worth digging out",
+        paragraphs: [
+          "Attach what exists: the old khatiyan, the registered deeds (kewala) in the chain, the current [jamabandi and lagaan receipts](/hi/dakhil-kharij-bihar), any court decree, and death certificates of the ancestors through whom the land descends. None of it needs to be complete before you start — a self-declaration filed with part of the papers beats a perfect file that never gets submitted. Old khatiyans can be obtained from the record room or online; jamabandi and rent receipts from the Bihar Bhumi portal; certified copies of old deeds from the registration office.",
+        ],
+      },
+      {
+        heading: "Write the vanshavali the court-proof way",
+        paragraphs: [
+          "Start from the recorded ancestor and bring every line down to the present — sons and daughters both. Leaving daughters out is the commonest mistake in the survey and the most expensive: since the 2005 amendment to the Hindu Succession Act a daughter is a coparcener by birth, equal to a son, and a genealogy that omits her is not just wrong but a standing invitation for the whole family's entry to be challenged later.",
+          "Where shares are already disputed inside the family, take advice before filing — what goes into the self-declaration now is what every later claim will be argued from.",
+        ],
+      },
+      {
+        heading: "Ancestral land that was never partitioned",
+        paragraphs: [
+          "This is the standard Vaishali situation: the jamabandi stands in a dead ancestor's name, three branches of the family hold the land on an oral partition nobody wrote down. In the survey, the heirs are recorded jointly on the strength of the vanshavali, or by agreed shares where the family states them.",
+          "This is also the cheapest moment in a generation to regularise the position. Bihar now charges a flat ₹50 stamp duty and ₹50 registration fee — ₹100 in all — on a registered partition deed of inherited family land. A partition that used to be postponed for fear of stamp duty can now be registered for less than the cost of the photocopies, and a registered partition is the cleanest basis for each branch's name to be recorded separately in the new khatiyan.",
+        ],
+      },
+      {
+        heading: "When the record comes out wrong",
+        paragraphs: [
+          "After khanapuri you receive a parcha — check it against your papers: name, khata, khesra, area, share. Errors are challenged by filing a claim or objection within the notified period, and there is a second window of objections when the draft khatiyan is published. File within the window and keep the receipt; corrections after final publication are a far longer road.",
+          "Where the dispute is not clerical but real — two branches claiming the same plot, a deed and possession telling different stories — the matter is fought before the survey and revenue authorities, and if necessary in the civil court. The chamber handles [land and partition matters at Hajipur](/practice/property-lawyer-hajipur), including survey objections and the appeals that follow them.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the last date for the Bihar land survey?",
+        a: "The State has extended the target for completing the special survey to December 2026, but each mauza moves on its own schedule of camps, khanapuri and parcha distribution. Do not plan around the final date — file the self-declaration and vanshavali as soon as the camp in your anchal is active, because objections and corrections all get harder the further the survey advances.",
+      },
+      {
+        q: "Is a vanshavali on plain paper valid? Does the sarpanch have to attest it?",
+        a: "Yes, plain paper is valid, and no — the vanshavali (Prapatra 3(1)) is accepted self-attested. No sarpanch certificate, notary or kachahari attestation is legally required. What matters is completeness: every heir from the recorded ancestor down to the present, daughters included.",
+      },
+      {
+        q: "We have no papers for our land. Can we still file?",
+        a: "File with what you can reconstruct. The old khatiyan can be obtained from the district record room or online, the jamabandi and lagaan receipts from the Bihar Bhumi portal, and certified copies of old registered deeds from the registration office. A self-declaration supported by part of the chain, filed in time, is far better than missing the window while hunting for a complete file.",
+      },
+      {
+        q: "The survey has recorded my land in someone else's name. What do I do?",
+        a: "Object, in writing, within the notified window — first against the khanapuri parcha, and again when the draft khatiyan is published. Attach your deed, jamabandi, receipts and vanshavali, and keep the acknowledgement. If the objection fails, appeals lie before the survey and revenue authorities, and a genuine title dispute ultimately goes to the civil court — but every later stage is easier if the objection was filed in time.",
+      },
+      {
+        q: "Does the new khatiyan decide ownership?",
+        a: "Not conclusively — title disputes are decided by the civil court, and a revenue record is not itself a deed of ownership. But in practice the new khatiyan will be the base document for decades: the entry every bank, registry office and later purchaser reads first. Getting it right now is the strongest practical protection your family's land can have.",
+      },
+    ],
+    hashtags: ["BiharLandSurvey", "Vanshavali", "PropertyLaw", "LandRecords", "Bihar"],
+    related: "/practice/property-lawyer-hajipur",
+    relatedLabel: "Property & Land Lawyer in Hajipur",
+    tool: "/tools/land-unit-converter",
+    toolLabel: "Bihar land unit converter",
+    checklist: "/checklists/property-purchase-bihar",
+    checklistLabel: "Land purchase checklist (PDF)",
+    caseLaw: "/case-law/partition-and-ancestral-property",
+    caseLawLabel: "Partition & ancestral property case law",
+  },
+
+  // ---------------------------------------------------------------------------
+  {
+    slug: "lok-adalat-bihar",
+    tag: "Court Procedure",
+    date: "2026-08-22",
+    title: "Lok Adalat: Settle in a Day — and Know What You Sign",
+    seoTitle: "Lok Adalat in Bihar — How It Works, Bank Settlements & the Court-Fee Refund",
+    seoDescription:
+      "How Lok Adalat works in Bihar: which cases settle there — bank loans, cheque bounce, accident claims, maintenance — how to get a pending or pre-litigation matter listed at Hajipur, why the award is final with no appeal, the court-fee refund, and free legal aid through DLSA Vaishali and helpline 15100.",
+    excerpt:
+      "Every quarter, the National Lok Adalat sits at the Hajipur civil court and disposes of in one day what would otherwise take years. It is genuinely free and genuinely final — which is exactly why you should understand it before you sign.",
+    sections: [
+      {
+        paragraphs: [
+          "A Lok Adalat is not a faster court. It is a statutory settlement forum under the Legal Services Authorities Act, 1987, where a case ends only one way: both sides agree. There is no fee to pay, no evidence recorded, no judgment won or lost — and when it works, a matter that has been listed for years is over by the afternoon.",
+          "The National Lok Adalat is organised every quarter across the country, and the benches at the Hajipur civil court sit with the rest. The dates are notified by the legal services authorities; the District Legal Services Authority (DLSA), Vaishali — its office is in the Hajipur court complex — is the local organiser, and courts begin marking suitable cases to the next sitting weeks in advance.",
+        ],
+      },
+      {
+        heading: "What actually settles there",
+        paragraphs: [
+          "The forum is built for matters where a number or a compromise can end the dispute. Bank recovery cases and one-time settlement of loans dominate the lists — banks issue pre-litigation notices inviting borrowers to settle at the Lok Adalat, often waiving a real part of the claimed amount. Cheque bounce complaints under Section 138, motor accident compensation claims, maintenance amounts, electricity and utility bill disputes, money suits and compoundable criminal cases all settle routinely.",
+          "What a Lok Adalat cannot do is decide a contest. A genuine title dispute, a non-compoundable offence, a divorce itself (as opposed to its money terms) — these it can only refer back. If the other side will not agree, nothing happens to your case: it simply returns to the court it came from, no worse off.",
+        ],
+      },
+      {
+        heading: "How to get a case listed",
+        paragraphs: [
+          "For a pending case, apply to the court where it is running, asking that it be referred to the next Lok Adalat; courts also refer suitable matters on their own and issue notices to the parties. For a dispute not yet in court — a loan the bank is threatening to sue on, a money claim you would rather not litigate — apply directly to the DLSA, Vaishali, for the matter to be taken up pre-litigation.",
+          "Then prepare, because the sitting itself moves fast. Know the figure you can actually pay or accept, bring the loan statements or the papers that prove your number, and decide your walk-away point before you enter the room — not while a bench is waiting.",
+        ],
+      },
+      {
+        heading: "Final means final",
+        paragraphs: [
+          "The award of a Lok Adalat is deemed a decree of a civil court. It binds both sides, it is executable like any decree, and there is no appeal against it. That is its power — the matter genuinely ends — and its danger: an award signed in haste, under pressure to finish, is one you will live with. The protection is simple and complete: do not agree, and the case merely continues where it was. Nobody can impose a settlement in a Lok Adalat.",
+          "There is also a quiet financial incentive to settle: where a court case is resolved in a Lok Adalat, the court fee already paid on the plaint is refunded. On a money suit of any size that refund is real money, and it is worth weighing when you decide how firm your final number is.",
+        ],
+      },
+      {
+        heading: "The free lawyer many people are entitled to",
+        paragraphs: [
+          "The same Act that creates Lok Adalats creates legal aid. Women and children, members of Scheduled Castes and Tribes, persons in custody, persons with disability and those with income below the notified ceiling are entitled to a lawyer at government expense — for a Lok Adalat sitting or for a full case. Call the national helpline 15100, or apply at the DLSA front office in the Hajipur court complex.",
+          "And where the stakes justify it, take your own advice before the sitting: the chamber [prepares settlement terms and appears in these matters](/practice/civil-lawyer-hajipur) — because the cheapest hearing of your life is still one where the number you sign should be the right one. What is free is the forum; the judgment about what to accept is yours, and it deserves the same care as any decree.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "When is the next Lok Adalat in Hajipur?",
+        a: "National Lok Adalats are held every quarter, on dates notified by the legal services authorities, and the benches for Vaishali district sit at the Hajipur civil court. The current schedule is published by NALSA and the Bihar State Legal Services Authority, and the DLSA office in the Hajipur court complex can confirm the next date and whether your matter can be listed for it.",
+      },
+      {
+        q: "Can I appeal against a Lok Adalat award?",
+        a: "No. The award is deemed a decree of a civil court, final and binding on the parties, with no appeal. The protection lies before signing, not after: a Lok Adalat cannot impose a settlement, so if the terms are not right, decline them — your case simply returns to the regular court and continues from where it stood.",
+      },
+      {
+        q: "Is settling a bank loan in a Lok Adalat a good idea?",
+        a: "Often, yes — banks routinely offer genuine one-time settlements there, waiving part of the outstanding amount, and the award closes the matter conclusively. But check the settlement figure against your own loan statements, understand what happens to the account's credit reporting, and get the waiver recorded clearly in the award. Once signed, it is a decree.",
+      },
+      {
+        q: "Do I get my court fee back if my case settles?",
+        a: "Yes. Where a pending court case is settled in a Lok Adalat, the court fee paid on the plaint is refunded. This is a deliberate statutory encouragement to settle, and on an ad valorem fee it can be a substantial amount — worth factoring into your decision.",
+      },
+      {
+        q: "How do I get a free government lawyer for my case?",
+        a: "Call the national legal-aid helpline 15100, or apply to the District Legal Services Authority (DLSA), Vaishali, at the Hajipur civil court complex. Women, children, members of Scheduled Castes and Tribes, persons in custody, persons with disability and those with income below the notified ceiling are entitled to legal aid by statute — it is a right, not a concession.",
+      },
+    ],
+    hashtags: ["LokAdalat", "LegalAid", "DLSA", "BankSettlement", "CourtProcedure"],
+    related: "/practice/civil-lawyer-hajipur",
+    relatedLabel: "Civil Litigation in Hajipur",
+    tool: "/tools/court-fee-calculator",
+    toolLabel: "Court fee calculator (see what a refund is worth)",
+    caseLaw: "/case-law/cheque-bounce-section-138",
+    caseLawLabel: "Cheque bounce case law",
+  },
+
+  // ---------------------------------------------------------------------------
+  {
+    slug: "bihar-prohibition-act-bail",
+    tag: "Criminal Law",
+    date: "2026-08-22",
+    title: "A Sharab Bandi Case: The Fine, the Bail, and the Seized Vehicle",
+    seoTitle: "Bihar Prohibition Act Cases — Section 37 Fine, Bail Under Section 30 & Vehicle Release",
+    seoDescription:
+      "What actually happens in a Bihar liquor (sharab bandi) case: the ₹2,000–5,000 first-offence fine for consumption under Section 37, why Section 30 transport and sale cases are non-bailable, how anticipatory bail survives Section 76(2), and the separate DM proceeding to get a seized vehicle released.",
+    excerpt:
+      "Over eleven lakh cases and seventeen lakh arrests in ten years of prohibition — no law fills Bihar's court lists like this one. The first thing to understand about your case is which section it is under, because consumption and trade live in different worlds.",
+    sections: [
+      {
+        paragraphs: [
+          "Since total prohibition began in 2016, Bihar has registered more than 11 lakh cases and made more than 17 lakh arrests under the Bihar Prohibition and Excise Act — and the courts at Hajipur carry their share of that list every working day. The Act was softened once, in April 2022, after the Supreme Court publicly criticised what the case-load was doing to the courts; everything below describes the law as it stands after that amendment.",
+        ],
+      },
+      {
+        heading: "Caught drinking: Section 37, and a fine most people can pay",
+        paragraphs: [
+          "A first offence of consuming liquor, or being found drunk, is now dealt with summarily: the person is produced before the nearest Executive Magistrate within twenty-four hours and released on payment of a penalty of ₹2,000 to ₹5,000. Failure to pay means simple imprisonment of one month; a repeat offence carries up to a year. A first Section 37 case is bailable — the Act says so expressly.",
+          "Two cautions. The internet still serves the pre-2022 numbers — a ₹50,000 fine and three months' imprisonment — which no longer apply. And the penalty, once paid, is not refundable; keep the receipt and the release order safely, because a second occasion is treated very differently.",
+        ],
+      },
+      {
+        heading: "Making, storing, selling, transporting: Section 30 is another world",
+        paragraphs: [
+          "Section 30 covers manufacture, storage, sale, purchase and transport, and it is severe: a first offence carries imprisonment of not less than five years and a fine of not less than ₹1 lakh; a second, ten years up to imprisonment for life. These offences are cognizable and non-bailable, tried by the district's Special Court under the Act, with statutory timelines — a charge sheet in 60 or 90 days and a trial meant to finish within a year.",
+          "The provision that catches people who never touched a bottle is Section 32: a reverse burden. Where liquor is found in a vehicle or on premises, the owner must account for it — which is why the vehicle owner and the landlord end up arrayed as accused beside the driver, and why the defence has to be built from the seizure list onwards, not from the trial.",
+        ],
+      },
+      {
+        heading: "Bail: fought on the recovery, won on the record",
+        paragraphs: [
+          "Regular bail in a Section 30 case is moved before the Special Court, and after refusal, the Patna High Court. What decides it in practice: from whom and from where the recovery was actually made, whether possession was conscious, whether the antecedents are clean, and whether the search and seizure followed the procedure. In May 2025 the Patna High Court granted pre-arrest bail in exactly such a case — recovery not from the accused's conscious possession, clean record — on a bond of ₹10,000 with two sureties and the usual conditions of cooperation.",
+        ],
+      },
+      {
+        heading: "Anticipatory bail: barred on paper, alive in law",
+        paragraphs: [
+          "Section 76(2) of the Act bars the ordinary anticipatory bail provision, and many accused are told the door is closed. The authorities say otherwise. A Full Bench of the Patna High Court held in Ram Vinay Yadav (2019) that where the FIR on its face discloses no offence under the Act, an anticipatory bail application is maintainable despite the bar. And in Sweta Kumari v. State of Bihar (2022) the Supreme Court held that the High Court, as a constitutional court, could grant pre-arrest protection notwithstanding the embargo — and did.",
+          "The route, in other words, runs through a close reading of the FIR and the seizure papers: which section is actually invoked, what the recovery memo really records, who the witnesses are. If arrest is feared, that reading needs to happen [before the arrest, not after](/practice/criminal-lawyer-hajipur).",
+        ],
+      },
+      {
+        heading: "The seized vehicle: a separate fight, on a separate clock",
+        paragraphs: [
+          "When liquor is found in a vehicle, the vehicle is seized under Section 56 and confiscation proceedings run before the District Collector under Section 58 — independently of the criminal case, which is why waiting for the trial is the standard, expensive mistake. There is a 15-day window to lodge a claim after notice, and the rules permit release of the vehicle on payment of a penalty — since the 2023 revision, not less than 10% of the insured value, capped at ₹5 lakh; premises are released on a penalty of not less than ₹1 lakh. The penalty is not refunded even on acquittal.",
+          "Appeals run on short clocks too: sixty days to the Collector against a subordinate officer's order, ninety days to the Excise Commissioner against the Collector's final order, with no second appeal — and the Patna High Court has quashed confiscations where the procedure or the timelines were not honoured. If the vehicle matters, fight the confiscation from the first week.",
+        ],
+      },
+      {
+        heading: "Doing this from Hajipur",
+        paragraphs: [
+          "For a Vaishali district case this means, concretely: the Section 37 production before the Executive Magistrate; bail and trial for Section 30 matters before the Special Court at the Hajipur complex and, where needed, the Patna High Court; and the vehicle proceeding before the District Collector on its own timeline. Three forums, three clocks — and the papers of the first week decide most of what happens in all three. The chamber handles these matters across all three forums; bring the FIR and the seizure list, whatever stage the case is at.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the punishment for drinking liquor in Bihar now?",
+        a: "For a first offence, after the April 2022 amendment: production before the nearest Executive Magistrate within 24 hours and release on a penalty of ₹2,000 to ₹5,000, with one month's simple imprisonment on failure to pay. A repeat offence carries up to a year. The older figures still found online — ₹50,000 or three months — are the pre-2022 law and no longer apply.",
+      },
+      {
+        q: "Is bail possible in a Section 30 liquor case?",
+        a: "Yes, but it is fought, not granted by default — the offence is non-bailable with a minimum five-year sentence. Courts look at whom the recovery was actually made from, whether possession was conscious, the antecedents, and whether the search and seizure followed procedure. The application goes to the Special Court first and the Patna High Court after; well-prepared applications succeed in deserving cases.",
+      },
+      {
+        q: "Can I get anticipatory bail in a prohibition case?",
+        a: "Section 76(2) bars the ordinary route, but a Patna High Court Full Bench (Ram Vinay Yadav, 2019) held an application maintainable where the FIR discloses no offence under the Act, and the Supreme Court in Sweta Kumari (2022) granted pre-arrest protection under the High Court's constitutional powers despite the embargo. The route depends entirely on what the FIR and seizure papers actually say — take advice before the arrest, not after.",
+      },
+      {
+        q: "How do I get back a vehicle seized in a liquor case?",
+        a: "Through the confiscation proceeding before the District Collector, which runs separately from the criminal case. Lodge the claim within 15 days of notice; the rules allow release on a penalty of not less than 10% of the vehicle's insured value, capped at ₹5 lakh (non-refundable even on acquittal). Appeals lie in 60 days to the Collector and 90 days to the Excise Commissioner. Remember the owner may also face prosecution under Section 32's reverse burden — both fronts need handling together.",
+      },
+    ],
+    hashtags: ["SharabBandi", "BiharProhibition", "Bail", "CriminalLaw", "Section37"],
+    related: "/practice/criminal-lawyer-hajipur",
+    relatedLabel: "Criminal Defence in Hajipur",
+    caseLaw: "/case-law/anticipatory-bail",
+    caseLawLabel: "Anticipatory bail case law",
+    tool: "/case-status/vaishali",
+    toolLabel: "Track a Vaishali case by CNR or name",
+  },
+
+  // ---------------------------------------------------------------------------
+  {
     slug: "police-refuse-to-lodge-fir",
     tag: "Criminal Law",
     date: "2026-08-16",
@@ -461,13 +710,13 @@ export const blogPosts = [
         paragraphs: [
           "Mutation does not create title, and a mutation entry is not proof of ownership. The Supreme Court has said this repeatedly: entries in revenue records are made for fiscal purposes — so that the state knows from whom to collect — and they neither confer title nor extinguish it.",
           "So the two propositions sit side by side, and both are true. A mutation in your favour will not save a defective title. And a title that is perfectly good will still cause you years of trouble if the record says somebody else's name.",
-          "Which is why due diligence before purchase cannot be replaced by mutation after it. Check the chain of title, the jamabandi, the current rent receipts, the encumbrance position and the physical boundary before the money moves. Then mutate immediately afterwards.",
+          "Which is why due diligence before purchase cannot be replaced by mutation after it. Check the chain of title, the jamabandi, the current rent receipts, the encumbrance position and the physical boundary before the money moves — and check that the [decimal area written in the deed](/tools/land-unit-converter) matches the katha figure that was actually agreed, because the deed's figure is the one that binds. Then mutate immediately afterwards.",
         ],
       },
       {
         heading: "If the record is wrong rather than merely out of date",
         paragraphs: [
-          "An error in the jamabandi itself — a wrong khata or khesra number, a wrong area, a name spelt wrong, an entry that survived a partition it should not have — is a correction matter rather than a mutation one, and it is dealt with by the revenue authorities on an application for correction.",
+          "An error in the jamabandi itself — a wrong khata or khesra number, a wrong area, a name spelt wrong, an entry that survived a partition it should not have — is a correction matter rather than a mutation one, and it is dealt with by the revenue authorities on an application for correction. With the [special land survey](/blog/bihar-land-survey-documents) now rewriting the khatiyan village by village, an uncorrected error is about to be copied into the record the next generation inherits — fix it before the survey reaches your mauza.",
           "Where the dispute is about who is entitled rather than about what was typed, no revenue officer can resolve it. A contested claim to title is decided by a civil court, and an order in a mutation proceeding will not bind that court.",
         ],
       },

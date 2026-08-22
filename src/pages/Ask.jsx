@@ -3,8 +3,10 @@ import PageHeader from "../components/PageHeader";
 import Seo from "../components/Seo";
 import AskAI from "../components/AskAI";
 import ConsultCta from "../components/ConsultCta";
+import FaqList from "../components/FaqList";
 import { Icon } from "../components/Icons";
 import { practiceAreas } from "../data/practice";
+import { askFaqs } from "../data/content";
 
 // What the assistant is for, and — more usefully — what it is not for. A page
 // that only sells the feature gets asked questions it cannot answer.
@@ -83,6 +85,15 @@ export default function Ask() {
               <Link to="/book">book a consultation</Link> and have it looked at properly.
             </span>
           </p>
+        </div>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container container--narrow">
+          <h2 className="section__title" style={{ fontSize: "1.4rem", marginBottom: "18px" }}>
+            Free legal help — the honest picture
+          </h2>
+          <FaqList items={askFaqs} defaultOpen={0} />
         </div>
       </section>
 

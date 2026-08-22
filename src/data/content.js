@@ -405,8 +405,42 @@ export const faqs = {
       q: "How can I book a legal consultation?",
       a: "You can book a consultation by contacting our Hajipur office directly or by filling out the enquiry form on this website. Initial case assessments are handled promptly and treated with full confidentiality.",
     },
+    {
+      q: "Is there free legal help available on this website?",
+      a: "Yes. The AI legal assistant answers general legal questions free of charge, in English or Hindi, at any hour — and the case-status tracker, the Bihar stamp duty, court fee and land unit calculators, and the document checklists are all free too. For advice on your specific matter, book a consultation; for government-funded legal aid, eligible persons can call the NALSA helpline 15100 or approach the District Legal Services Authority (DLSA), Vaishali, at the Hajipur civil court.",
+    },
   ],
 };
+
+// FAQs for the /ask page — rendered on the page and emitted as FAQPage
+// structured data, so "free legal advice online" queries have something
+// concrete to land on. Keep the two in lockstep via structuredData.js.
+export const askFaqs = [
+  {
+    q: "Is the AI legal assistant really free?",
+    a: "Yes — completely. There is no charge, no sign-up and no limit on when you can ask: the assistant answers at any hour, in English or Hindi. It exists because most legal questions deserve an immediate plain answer, and the questions that need more than that deserve a proper consultation.",
+  },
+  {
+    q: "क्या हिन्दी में सवाल पूछ सकते हैं?",
+    a: "हाँ — जिस भाषा में सवाल पूछेंगे, उसी में जवाब मिलेगा। तलाक़, भरण-पोषण, दाखिल-खारिज, जमानत, चेक बाउंस — अपने शब्दों में पूछिए, क़ानूनी भाषा ज़रूरी नहीं।",
+  },
+  {
+    q: "Is this legal advice?",
+    a: "No. The assistant gives general legal information — what a provision means, how a procedure runs, which documents are usually needed. Legal advice is an opinion on your specific facts and papers, which is an advocate's work; using the assistant does not create an advocate–client relationship. For anything that turns on your own case, book a consultation.",
+  },
+  {
+    q: "Is my conversation private? Is it stored?",
+    a: "Your question is sent to an AI model to generate the answer, is not linked to your identity, and is not stored as a chat history on this website's servers. Even so, do not type names, case numbers or confidential facts into it — anything confidential belongs in a consultation, where it is protected properly.",
+  },
+  {
+    q: "How do I get a free government lawyer (legal aid)?",
+    a: "Legal aid is a statutory right for eligible persons — women, children, members of Scheduled Castes and Tribes, persons in custody, persons with disability and those below the income ceiling. Call the national legal-aid helpline 15100, or apply to the District Legal Services Authority (DLSA), Vaishali, at the Hajipur civil court complex. Quarterly Lok Adalats also settle compoundable and bank-settlement matters free of cost.",
+  },
+  {
+    q: "When should I stop asking the assistant and call an advocate?",
+    a: "The moment a deadline or liberty is involved: a limitation period running, an arrest feared, a notice to answer, a hearing date close. The assistant can explain the procedure, but only an advocate can act in it — and in those situations the time lost asking is the real cost. The chamber can be reached at +91 91232 34065.",
+  },
+];
 
 // Primary navigation.
 //
@@ -447,13 +481,20 @@ export const footerNav = [
       { label: "हाजीपुर में वकील", href: "/hi" },
       { label: "तलाक का वकील हाजीपुर", href: "/hi/talak-ka-vakil-hajipur" },
       { label: "जमानत का वकील हाजीपुर", href: "/hi/jamanat-ka-vakil-hajipur" },
+      { label: "शराबबंदी केस में जमानत", href: "/hi/sharab-bandi-jamanat" },
+      { label: "ज़मीन का वकील हाजीपुर", href: "/hi/jamin-ka-vakil-hajipur" },
       { label: "दाखिल-खारिज बिहार", href: "/hi/dakhil-kharij-bihar" },
+      { label: "बिहार ज़मीन सर्वे गाइड", href: "/hi/bihar-jamin-survey" },
+      { label: "लोक अदालत गाइड", href: "/hi/lok-adalat-bihar" },
+      { label: "मुफ़्त क़ानूनी सलाह", href: "/hi/muft-kanooni-salah" },
     ],
   },
   {
     title: "Free Tools",
     links: [
       { label: "Stamp Duty Calculator", href: "/tools/stamp-duty-calculator" },
+      { label: "Land Unit Converter", href: "/tools/land-unit-converter" },
+      { label: "IPC → BNS Converter", href: "/tools/ipc-to-bns-converter" },
       { label: "Court Fee Calculator", href: "/tools/court-fee-calculator" },
       { label: "Maintenance Estimator", href: "/tools/maintenance-estimator" },
       { label: "Limitation Checker", href: "/tools/limitation-checker" },
@@ -528,8 +569,10 @@ export const assistant = {
     "How do I check my Vaishali (Hajipur) court case status?",
     "How do I file for divorce by mutual consent?",
     "What is stamp duty on a land purchase in Bihar?",
+    "बिहार ज़मीन सर्वे के लिए कौन-से कागज़ चाहिए?",
     "What is anticipatory bail and who can apply?",
     "दाखिल-खारिज के लिए क्या करना होगा?",
+    "IPC 420 is now which BNS section?",
     "What should I do if the police refuse to lodge my FIR?",
   ],
 };

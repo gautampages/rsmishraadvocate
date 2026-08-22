@@ -25,7 +25,7 @@
 // ============================================================================
 
 import { ORG_ID, PERSON_ID, WEBSITE_ID, OG_IMAGE, SITE_URL, absolute } from "./site.js";
-import { advocate, contact, faqs, profiles } from "./content.js";
+import { advocate, askFaqs, contact, faqs, profiles } from "./content.js";
 import { practiceAreas, practiceBySlug } from "./practice.js";
 import { tools, toolFor } from "./tools.js";
 import { faqsForTool } from "./toolFaqs.js";
@@ -515,6 +515,7 @@ const askPage = () => {
       publisher: { "@id": ORG_ID },
       inLanguage: ["en-IN", "hi-IN"],
     },
+    faqNode(`${url}#faq`, askFaqs),
     crumbs(["Ask a Legal Question", "/ask"]),
   ]);
 };

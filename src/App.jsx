@@ -15,6 +15,8 @@ import CaseLawTopic from "./pages/CaseLawTopic";
 import Judgment from "./pages/Judgment";
 import ToolsIndex from "./pages/ToolsIndex";
 import StampDuty from "./pages/tools/StampDuty";
+import LandUnits from "./pages/tools/LandUnits";
+import IpcBns from "./pages/tools/IpcBns";
 import CourtFee from "./pages/tools/CourtFee";
 import Maintenance from "./pages/tools/Maintenance";
 import Limitation from "./pages/tools/Limitation";
@@ -52,6 +54,8 @@ export default function App() {
         <Route path="case-law/:slug" element={<CaseLawTopic />} />
         <Route path="tools" element={<ToolsIndex />} />
         <Route path="tools/stamp-duty-calculator" element={<StampDuty />} />
+        <Route path="tools/land-unit-converter" element={<LandUnits />} />
+        <Route path="tools/ipc-to-bns-converter" element={<IpcBns />} />
         <Route path="tools/court-fee-calculator" element={<CourtFee />} />
         <Route path="tools/maintenance-estimator" element={<Maintenance />} />
         <Route path="tools/limitation-checker" element={<Limitation />} />

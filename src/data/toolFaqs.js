@@ -26,6 +26,64 @@ export const toolFaqs = {
       q: "Are stamp duty and registration fee the same thing?",
       a: "No. Stamp duty is a tax on the instrument, paid to the State. The registration fee is charged separately for registering that instrument with the Sub-Registrar. Both are payable, which is why the effective cost of registering a sale deed in Bihar is around 8% of value rather than 6%.",
     },
+    {
+      q: "Is there a discount for registering online in Bihar?",
+      a: "Yes. Completing the registration through Bihar's online e-registration process earns a rebate of 1% of the stamp duty, capped at ₹2,000, under S.O. 10/2016. A modest scanning fee applies separately — ₹250 for a document up to 10 pages, ₹500 up to 20 pages and ₹1,000 beyond that. The rebate is worth claiming on almost every sale deed.",
+    },
+    {
+      q: "How much does a family partition deed cost to register in Bihar?",
+      a: "Far less than people assume. A registered partition deed of inherited family property attracts a flat ₹50 stamp duty and ₹50 registration fee — ₹100 in all — rather than the ad valorem rates that apply to a sale. This makes registering a long-pending family partition one of the cheapest and most valuable pieces of paperwork in Bihar, particularly with the land survey rewriting the khatiyan.",
+    },
+  ],
+
+  "/tools/land-unit-converter": [
+    {
+      q: "How many square feet is 1 katha in Bihar?",
+      a: "In the Patna/Vaishali (Hajipur) standard — which also holds across most of north and central Bihar — 1 katha is 1,361.25 square feet, which is exactly 3.125 decimal. But the katha is a customary unit and varies by district, from roughly 750 to about 2,000 square feet. The figure that legally defines a plot is the decimal area written in the deed and the khatiyan, not the katha it is spoken of in.",
+    },
+    {
+      q: "How many katha are there in a bigha, and a bigha in an acre?",
+      a: "Across Bihar, 1 bigha = 20 katha, 1 katha = 20 dhur and 1 dhur = 20 dhurki. At the Patna/Vaishali standard that makes 1 bigha = 27,225 sq ft = 62.5 decimal, so 1 acre (100 decimal, 43,560 sq ft) works out to exactly 1.6 bigha, or 32 katha.",
+    },
+    {
+      q: "What is a decimal (dismil) of land?",
+      a: "One hundredth of an acre — 435.6 square feet, about 40.47 square metres. It is the unit Bihar's revenue records actually use: khatiyan and jamabandi entries, MVR (circle rate) tables and registered deeds all state area in acre and decimal. Everyday conversation happens in katha and dhur, and this converter is the bridge between the two.",
+    },
+    {
+      q: "Why does the katha have different sizes in different districts?",
+      a: "Because it was never fixed by statute — it is a customary measure that settled differently district by district under the old surveys. That is why a deed drawn anywhere in Bihar records the area in decimal, and why, when a sale discussed in katha is written up, the decimal figure in the document is the one that binds. Always check what the katha means in the specific mauza before agreeing a price per katha.",
+    },
+    {
+      q: "Can this converter tell me my plot's actual area or boundary?",
+      a: "No. It converts units; it cannot measure land. For the position on the ground you need a measurement by the government amin, which is booked online through Bihar's e-Mapi portal (₹500 per plot for rural land, ₹1,000 for urban, with a Tatkal option). If a boundary or area dispute has already surfaced, take legal advice before it hardens into possession.",
+    },
+  ],
+
+  "/tools/ipc-to-bns-converter": [
+    {
+      q: "What replaced the IPC, CrPC and the Evidence Act?",
+      a: "From 1 July 2024, the Indian Penal Code was replaced by the Bharatiya Nyaya Sanhita (BNS), the Code of Criminal Procedure by the Bharatiya Nagarik Suraksha Sanhita (BNSS), and the Indian Evidence Act by the Bharatiya Sakshya Adhiniyam (BSA). The offences and procedures largely continue, but almost every section number changed — which is why FIRs, bail orders and news reports now cite numbers that look unfamiliar.",
+    },
+    {
+      q: "IPC 420 is now which section in the BNS?",
+      a: "Section 318(4) of the Bharatiya Nyaya Sanhita — cheating and dishonestly inducing delivery of property. Cheating generally is Section 318: the definition is 318(1) and the aggravated form that used to be the famous '420' is 318(4).",
+    },
+    {
+      q: "Does my old case now run under the BNS?",
+      a: "No. The date of the offence decides the code: an offence committed before 1 July 2024 is charged under the IPC even if the FIR is registered afterwards, and cases already pending on that date continue under the old law. The new codes apply to offences committed on or after 1 July 2024.",
+    },
+    {
+      q: "What is 'Dhara 144' now?",
+      a: "This is the conversion people get caught by. The old CrPC Section 144 — the urgent prohibitory orders imposed during tension, what newspapers called 'Dhara 144' — is now Section 163 of the BNSS. Meanwhile the number 144 in the BNSS belongs to maintenance for wife, children and parents, which used to be Section 125 CrPC. Same number, completely different subject.",
+    },
+    {
+      q: "Is Section 498A still there for cruelty cases?",
+      a: "The offence continues, renumbered. Cruelty by a husband or his relatives is punished under Section 85 of the BNS, with Section 86 carrying the definition of cruelty. It remains cognizable and non-bailable, so anticipatory bail — now Section 482 BNSS, formerly 438 CrPC — remains the immediate remedy where arrest is feared.",
+    },
+    {
+      q: "Is cheque bounce still Section 138?",
+      a: "Yes. The Negotiable Instruments Act was not part of the 2024 replacement, so a cheque dishonour case is still Section 138 NI Act, with the same notice-and-15-days timeline as before. Only the three criminal codes — IPC, CrPC and the Evidence Act — were replaced.",
+    },
   ],
 
   "/tools/court-fee-calculator": [

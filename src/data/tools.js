@@ -24,6 +24,30 @@ export const tools = [
       "Free Bihar stamp duty calculator — 6% / 5.7% / 6.3% by buyer and seller gender, plus registration fee, computed on the higher of consideration or MVR value. For property in Hajipur, Vaishali and across Bihar.",
   },
   {
+    path: "/tools/land-unit-converter",
+    icon: "sliders",
+    name: "Bihar Land Unit Converter",
+    short: "Land Unit Converter",
+    tagline: "Katha, bigha, dhur, dismil — into square feet",
+    description:
+      "Convert between katha, bigha, dhur, dhurki, decimal (dismil), acre, hectare and square feet at the Patna/Vaishali standard — 1 katha = 1,361.25 sq ft — with the district-variation caveat stated plainly.",
+    seoTitle: "Katha to Square Feet Converter — Bihar Land Units (Bigha, Dhur, Dismil)",
+    seoDescription:
+      "Free Bihar land unit converter: katha to square feet (1 katha = 1,361.25 sq ft in Vaishali/Patna), bigha, dhur, dhurki, decimal/dismil, acre and hectare — the units of the khatiyan, jamabandi and registry, converted both ways.",
+  },
+  {
+    path: "/tools/ipc-to-bns-converter",
+    icon: "refresh",
+    name: "IPC to BNS Section Converter",
+    short: "IPC → BNS Converter",
+    tagline: "Old section numbers to the new codes",
+    description:
+      "Find the new section under the Bharatiya Nyaya Sanhita for any commonly cited IPC section — 420, 302, 376, 498A — and the BNSS equivalents of CrPC provisions like 125, 144, 154 and 438. Works in both directions.",
+    seoTitle: "IPC to BNS Section Converter — 420, 302, 376, 498A & More",
+    seoDescription:
+      "Free IPC to BNS converter: the new section for every commonly searched IPC provision — 420→318(4), 302→103(1), 376→64, 498A→85 — plus CrPC to BNSS (125→144, 144→163, 438→482) and Evidence Act to BSA (65B→63).",
+  },
+  {
     path: "/tools/court-fee-calculator",
     icon: "scales",
     name: "Court Fee Calculator",

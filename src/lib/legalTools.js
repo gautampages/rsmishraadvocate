@@ -351,7 +351,81 @@ export function computeDeadline(key, startISO) {
 }
 
 /* ---------------------------------------------------------------------- *
- *  5. CAUSE LIST — deep links
+ *  5. LAND UNIT CONVERTER — Bihar customary units
+ *
+ *  Official records (khatiyan, jamabandi, MVR, registered deeds) measure in
+ *  acre–decimal; everyday dealing in Bihar happens in bigha–katha–dhur. The
+ *  bridge between the two is customary, not statutory, and the katha varies
+ *  by district. The values here are the PATNA / VAISHALI (HAJIPUR) standard —
+ *  1 katha = 3.125 decimal = 1,361.25 sq ft — which also holds across most of
+ *  north and central Bihar (Muzaffarpur, Samastipur, Darbhanga, Begusarai…).
+ *  The page says this out loud: the legally operative area is always the
+ *  decimal figure in the deed, never the converted one.
+ * ---------------------------------------------------------------------- */
+
+const SQFT = {
+  dhurki: 3.403125, // 1/20 dhur
+  dhur: 68.0625, // 1/20 katha
+  katha: 1361.25, // 3.125 decimal — Patna/Vaishali standard
+  bigha: 27225, // 20 katha = 62.5 decimal = 0.625 acre
+  decimal: 435.6, // 1/100 acre — the unit of the revenue record
+  acre: 43560,
+  hectare: 107639.104,
+  sqft: 1,
+  sqm: 10.7639104,
+  sqyd: 9, // gaj
+};
+
+export const LAND_UNITS = [
+  { key: "katha", label: "Katha", hindi: "कट्ठा" },
+  { key: "decimal", label: "Decimal / Dismil", hindi: "डिसमिल" },
+  { key: "bigha", label: "Bigha", hindi: "बीघा" },
+  { key: "dhur", label: "Dhur", hindi: "धुर" },
+  { key: "dhurki", label: "Dhurki", hindi: "धुरकी" },
+  { key: "acre", label: "Acre", hindi: "एकड़" },
+  { key: "hectare", label: "Hectare", hindi: "हेक्टेयर" },
+  { key: "sqft", label: "Square feet", hindi: "वर्ग फुट" },
+  { key: "sqm", label: "Square metre", hindi: "वर्ग मीटर" },
+  { key: "sqyd", label: "Square yard (gaj)", hindi: "गज" },
+];
+
+export const landUnit = (key) => LAND_UNITS.find((u) => u.key === key);
+
+/** Format an area figure with precision that follows its size. */
+export const formatArea = (n) => {
+  if (!Number.isFinite(n)) return "0";
+  const digits = Math.abs(n) >= 100 ? 2 : Math.abs(n) >= 1 ? 3 : 4;
+  return new Intl.NumberFormat("en-IN", { maximumFractionDigits: digits }).format(n);
+};
+
+/**
+ * Convert `value` of unit `fromKey` into every other unit.
+ * Returns null when there is nothing meaningful to convert.
+ */
+export function convertLand(value, fromKey) {
+  const v = Number(value);
+  const from = SQFT[fromKey];
+  if (!from || !Number.isFinite(v) || v <= 0) return null;
+
+  const sqft = v * from;
+  const rows = LAND_UNITS.filter((u) => u.key !== fromKey).map((u) => ({
+    unit: u,
+    amount: sqft / SQFT[u.key],
+  }));
+
+  // The traditional reading of the same area — "1 बीघा 12 कट्ठा 10 धुर" is how
+  // the figure is actually said in Vaishali, so the tool says it that way too.
+  const totalDhur = sqft / SQFT.dhur;
+  const bigha = Math.floor(totalDhur / 400);
+  const katha = Math.floor((totalDhur - bigha * 400) / 20);
+  const dhur = totalDhur - bigha * 400 - katha * 20;
+  const traditional = { bigha, katha, dhur: Math.round(dhur * 100) / 100 };
+
+  return { sqft, rows, traditional };
+}
+
+/* ---------------------------------------------------------------------- *
+ *  6. CAUSE LIST — deep links
  *
  *  There is no public API for district-court cause lists; eCourts publishes
  *  them only through its web portal. Rather than scrape it, these helpers

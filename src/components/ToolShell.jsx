@@ -82,6 +82,16 @@ export default function ToolShell({ path, children, authority, notes = [], faqs 
                   <Icon name="arrow" width={17} height={17} />
                 </Link>
               ))}
+              <Link to="/ask" className="linkcard">
+                <span className="linkcard__icon">
+                  <Icon name="chat" width={22} height={22} />
+                </span>
+                <div>
+                  <strong>Ask the AI Assistant</strong>
+                  <span>A free plain-language answer — English or Hindi, any hour</span>
+                </div>
+                <Icon name="arrow" width={17} height={17} />
+              </Link>
             </div>
           </div>
         </div>
