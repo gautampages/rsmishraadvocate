@@ -108,6 +108,30 @@ export const tools = [
       "Free cheque bounce calculator for Section 138 NI Act: 30-day notice, 15-day payment and 1-month complaint deadlines from your dishonour date; maximum fine (2× cheque), 20% interim compensation, 20% appeal deposit, likely compensation with interest; plus a demand notice generator in English and Hindi.",
   },
   {
+    path: "/tools/vanshavali-generator",
+    icon: "users",
+    name: "Vanshavali (Prapatra 3(1)) Generator",
+    short: "Vanshavali Generator",
+    tagline: "Family tree, heir list and affidavit — Hindi or English",
+    description:
+      "Build the vanshavali the Bihar land survey and the Circle Office ask for: enter the recorded rayat and each heir, and get Prapatra 3(1) as a family tree with a numbered list of heirs, the self-attested declaration and a matching affidavit, in Hindi or English, ready to print and sign.",
+    seoTitle: "Vanshavali Format Bihar — Prapatra 3(1) Generator with Affidavit (Hindi / English)",
+    seoDescription:
+      "Free vanshavali generator for the Bihar land survey and dakhil-kharij: fill in the rayat and heirs to get Prapatra 3(1) as a family tree, heir list, self-declaration and shapath patra in Hindi or English. Plain paper, self-attested — who has to sign it, and what to attach.",
+  },
+  {
+    path: "/tools/consumer-court-fee-calculator",
+    icon: "scales",
+    name: "Consumer Court Fee & Jurisdiction Finder",
+    short: "Consumer Forum Finder",
+    tagline: "District, State or National — and the fee",
+    description:
+      "Find which Consumer Commission hears your complaint — District, State (Patna) or National — from what you paid, with the filing fee under the 2020 Rules, the two-year limit, where you can file, and the e-Daakhil route.",
+    seoTitle: "Consumer Court Fee Calculator & Forum Finder (2026) — District, State or National Commission",
+    seoDescription:
+      "Free consumer complaint fee calculator: enter the price you paid and find the forum (District Commission up to ₹50 lakh, State up to ₹2 crore, National above), the filing fee (nil up to ₹5 lakh), the 2-year time limit and how to file on e-Daakhil — for Vaishali, Patna and every Bihar district.",
+  },
+  {
     path: "/tools/cause-list",
     icon: "calendar",
     name: "Vaishali Cause List Lookup",

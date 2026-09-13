@@ -3630,6 +3630,39 @@ a.chip { text-decoration: none; }
   .gen__out { position: static; }
 }
 
+.gen__sub { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); margin: 6px 0 -6px; }
+.tree { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tree__row { display: grid; grid-template-columns: 1.4fr 0.8fr 1.2fr auto auto auto; gap: 8px; align-items: center; }
+.tree__row input[type="text"],
+.tree__row select {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  min-width: 0;
+}
+.tree__row .check { font-size: 0.8rem; white-space: nowrap; }
+.tree__btn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-alt);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.tree__btn:hover { border-color: var(--gold-500); color: var(--ink); }
+.tree__btn--del:hover { border-color: #d66a60; color: #d66a60; }
+@media (max-width: 720px) {
+  .tree__row { grid-template-columns: 1fr 1fr; }
+  .tree__row input[type="text"] { grid-column: 1 / -1; }
+}
+
 /* ---- Chips (segmented choice) ---- */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {

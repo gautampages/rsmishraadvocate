@@ -245,6 +245,60 @@ export const toolFaqs = {
     },
   ],
 
+  "/tools/vanshavali-generator": [
+    {
+      q: "What is a vanshavali and why does the Bihar survey need it?",
+      a: "A vanshavali is a genealogical table — the family tree from the person whose name stands in the khatiyan or jamabandi down to the heirs alive today. The Bihar special survey asks for it as Prapatra 3(1), alongside the self-declaration (Prapatra 2), because most land in the State is still recorded in the name of an ancestor who died decades ago and the survey has to write in the living heirs.",
+    },
+    {
+      q: "Who signs the vanshavali — the sarpanch, the mukhiya or the panchayat sachiv?",
+      a: "For the survey, nobody but you: Prapatra 3(1) is self-attested on plain paper, and the survey rules do not require a sarpanch, notary or kachahari signature. Where an office insists on a certified vanshavali — some Circle Offices for dakhil-kharij by inheritance, banks, courts — the route reported under the Panchayati Raj Department's December 2023 instructions runs through the Panchayat Sachiv, with the draft displayed on the panchayat notice board for objections before the Gram Kachahari endorses it. Confirm at your panchayat; practice varies and blogs contradict each other.",
+    },
+    {
+      q: "Is a vanshavali valid on plain paper, or does it need stamp paper?",
+      a: "Plain paper. No stamp duty is chargeable on a genealogical statement, and the survey accepts it self-attested. The \"₹10 stamp\" mentioned on some websites has no basis in any rule. If an office asks for an affidavit as well, that is sworn before a notary or magistrate on the affidavit stamp — the generator produces the affidavit text too.",
+    },
+    {
+      q: "Do daughters have to be included in the vanshavali?",
+      a: "Yes, always — married or unmarried. Since the 2005 amendment to the Hindu Succession Act a daughter is a coparcener by birth with the same rights as a son, and the Supreme Court in Vineeta Sharma (2020) confirmed it applies whether or not the father was alive in 2005. A vanshavali that omits daughters is incomplete, and it is the commonest ground on which a survey entry or a mutation is challenged later.",
+    },
+    {
+      q: "What documents go with the vanshavali?",
+      a: "For the survey: the self-declaration (Prapatra 2), the jamabandi or khatiyan copy and the latest rent receipt, any deed of purchase or partition, death certificates of the ancestor and any deceased heir where available, and Aadhaar copies of the declarant. For dakhil-kharij by inheritance at the Circle Office: the same, plus the mutation application on the portal and, where asked, the affidavit.",
+    },
+    {
+      q: "Does the vanshavali decide who gets how much land?",
+      a: "No. It records who the heirs are. Shares are fixed by succession law and settled by partition — a registered partition deed (a flat ₹100 in Bihar for inherited family property) or, if the family cannot agree, a partition suit. Where the family holds the land jointly without partition, the survey records all the heirs jointly on the strength of the vanshavali.",
+    },
+  ],
+
+  "/tools/consumer-court-fee-calculator": [
+    {
+      q: "Which consumer court do I file in — District, State or National?",
+      a: "It depends on the value of the goods or services you paid for, not on the compensation you claim. Since the 2021 Jurisdiction Rules: up to ₹50 lakh, the District Commission; above ₹50 lakh and up to ₹2 crore, the State Commission (at Patna for Bihar); above ₹2 crore, the National Commission in New Delhi. A ₹4 lakh phone with a ₹15 lakh compensation claim goes to the District Commission.",
+    },
+    {
+      q: "What is the fee for filing a consumer complaint?",
+      a: "Nil where the consideration is up to ₹5 lakh. Then ₹200 up to ₹10 lakh, ₹400 up to ₹20 lakh, ₹1,000 up to ₹50 lakh, ₹2,000 up to ₹1 crore, ₹2,500 up to ₹2 crore, ₹3,000 up to ₹4 crore, ₹4,000 up to ₹6 crore, ₹5,000 up to ₹8 crore, ₹6,000 up to ₹10 crore and ₹7,500 above that — the Schedule to the Consumer Protection (Consumer Commissions) Rules, 2020. Paid online on e-Daakhil or by demand draft.",
+    },
+    {
+      q: "Can I file a consumer complaint where I live, against a company in another city?",
+      a: "Yes. Section 34(2)(d) of the 2019 Act lets you file where you reside or personally work for gain, in addition to where the opposite party is or where the cause of action arose. A Hajipur buyer of a defective product from a Delhi online seller files at the District Commission, Vaishali.",
+    },
+    {
+      q: "What is the time limit for a consumer complaint?",
+      a: "Two years from the date the cause of action arose — the defect, the deficiency, the repudiation of the claim — under section 69. A later complaint needs an application to condone the delay with reasons, which Commissions do not grant lightly.",
+    },
+    {
+      q: "How do I file on e-Daakhil?",
+      a: "Register on edaakhil.nic.in, choose the Commission the calculator shows, upload the complaint, an affidavit, the index of documents and the documents themselves (invoice, correspondence, the company's reply), pay the fee online, and note the case number. The Commission scrutinises it, may return it for defects, and then issues notice to the opposite party.",
+    },
+    {
+      q: "Do I need a lawyer at the consumer forum?",
+      a: "Not by law — the Act was written for self-representation. In practice complaints fail at admission for wrong parties, missing proof of deficiency, or a claim outside the two years, and insurers and builders always appear through counsel. For anything beyond a small refund, drafting by an advocate pays for itself.",
+    },
+  ],
+
   "/tools/cause-list": [
     {
       q: "What is a cause list?",
