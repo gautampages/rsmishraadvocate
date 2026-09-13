@@ -74,6 +74,7 @@ export const hindiPages = [
       { to: "/hi/jamanat-ka-vakil-hajipur", label: "जमानत का वकील — हाजीपुर", note: "जमानत, अग्रिम जमानत, बचाव", icon: "shield" },
       { to: "/hi/dakhil-kharij-bihar", label: "दाखिल-खारिज (बिहार)", note: "रजिस्ट्री के बाद का ज़रूरी कदम", icon: "home" },
       { to: "/case-status/vaishali", label: "केस स्टेटस — वैशाली (हाजीपुर)", note: "CNR या नाम से मुफ़्त जाँच", icon: "clock" },
+      { to: "/hi/bns", label: "BNS की धाराएँ हिंदी में", note: "सज़ा, ज़मानती या नहीं, संज्ञेय या नहीं — हर धारा", icon: "scales" },
     ],
   },
 

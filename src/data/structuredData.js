@@ -37,6 +37,7 @@ import { hubFaqs, districtFaqs } from "./caseStatus.js";
 import { hubFaqs as caseLawFaqs, topics as caseLawTopics, topicBySlug } from "./caseLaw.js";
 import { hindiBySlug, hindiPath } from "./hindi.js";
 import { courtGuide } from "./courtGuide.js";
+import { CODE_NAMES, bnsRouteInfo, bnsSections, faqsForSection, hubPath, sectionMeta, sectionPath, HUB_META } from "./bnsPages.js";
 
 const G = (nodes) => ({ "@context": "https://schema.org", "@graph": nodes.filter(Boolean) });
 
@@ -594,6 +595,62 @@ const hindiPage = (slug) => {
   ]);
 };
 
+// ---- BNS / BNSS section pages ---------------------------------------------
+
+const bnsHubPage = (lang) => {
+  const path = hubPath(lang);
+  const url = absolute(path);
+  const crumbLabel = lang === "hi" ? "BNS की धाराएँ" : "BNS Sections";
+  return G([
+    { ...webPage(path, HUB_META[lang].title, HUB_META[lang].description), inLanguage: lang === "hi" ? "hi-IN" : "en-IN" },
+    {
+      "@type": "ItemList",
+      "@id": `${url}#list`,
+      name: HUB_META[lang].title,
+      itemListElement: bnsSections.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `${CODE_NAMES[p.code].short} ${p.section} — ${p.title[lang]}`,
+        url: absolute(sectionPath(p, lang)),
+      })),
+    },
+    crumbs(...(lang === "hi" ? [["हिन्दी", "/hi"]] : []), [crumbLabel, path]),
+  ]);
+};
+
+const bnsSectionPage = (p, lang) => {
+  const path = sectionPath(p, lang);
+  const url = absolute(path);
+  const meta = sectionMeta(p, lang);
+  const code = CODE_NAMES[p.code];
+  return G([
+    {
+      "@type": "Article",
+      "@id": `${url}#article`,
+      headline: meta.title,
+      description: meta.description,
+      url,
+      mainEntityOfPage: url,
+      author: { "@id": PERSON_ID },
+      publisher: { "@id": ORG_ID },
+      inLanguage: lang === "hi" ? "hi-IN" : "en-IN",
+      isAccessibleForFree: true,
+      about: {
+        "@type": "Legislation",
+        name: `${code.full.en}, section ${p.section}`,
+        legislationIdentifier: `${code.short} ${p.section}`,
+        legislationJurisdiction: "IN",
+      },
+    },
+    faqNode(`${url}#faq`, faqsForSection(p, lang)),
+    crumbs(
+      ...(lang === "hi" ? [["हिन्दी", "/hi"]] : []),
+      [lang === "hi" ? "BNS की धाराएँ" : "BNS Sections", hubPath(lang)],
+      [`${code.short} ${p.section}`, path]
+    ),
+  ]);
+};
+
 // ---------------------------------------------------------------------------
 //  Dispatch. Static paths first, then the parameterised families.
 // ---------------------------------------------------------------------------
@@ -630,6 +687,10 @@ export function jsonLdFor(path) {
   const clean = path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
 
   if (STATIC[clean]) return STATIC[clean]();
+
+  // /bns, /bns/<slug>, /bnss/<slug> and their /hi twins.
+  const bns = bnsRouteInfo(clean);
+  if (bns) return bns.hub ? bnsHubPage(bns.lang) : bnsSectionPage(bns.page, bns.lang);
 
   const [, head, tail] = clean.split("/");
   if (!tail) return null;

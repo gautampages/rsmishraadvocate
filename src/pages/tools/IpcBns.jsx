@@ -1,10 +1,13 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router";
 import ToolShell from "../../components/ToolShell";
 import { Icon } from "../../components/Icons";
 import { CODE_GROUPS, HOT_SECTIONS, searchSections } from "../../data/bnsSections";
+import { pageForNumber, sectionPath } from "../../data/bnsPages";
 import { faqsForTool } from "../../data/toolFaqs";
 
 const groupFor = (key) => CODE_GROUPS.find((g) => g.key === key);
+const CODE_FOR_GROUP = { ipc: "bns", crpc: "bnss" };
 
 export default function IpcBns() {
   const [query, setQuery] = useState("");
@@ -30,6 +33,7 @@ export default function IpcBns() {
         "The renumbering is not always one-to-one — several provisions were merged, split or re-framed rather than renamed. Where the correspondence is not exact, the entry says so instead of pretending it is.",
         "The Negotiable Instruments Act was not replaced: a cheque bounce case is still Section 138.",
         "This table covers the commonly used sections, not every provision of the codes. For anything it does not list, ask the chamber — or the AI assistant on this site.",
+        "For the sections charged most often — 103, 109, 115, 118, 85, 303, 316, 318, 351 and thirty more — there is a full page each with punishment, cognizable, bailable, triable-by and compoundable status, in English and Hindi. Rows below link to them.",
       ]}
     >
       <div className="secmap">
@@ -94,6 +98,14 @@ export default function IpcBns() {
                     </span>
                     <span className="secmap__offence">{r.offence}</span>
                     {r.note && <span className="secmap__note">{r.note}</span>}
+                    {(() => {
+                      const page = CODE_FOR_GROUP[g.key] && pageForNumber(CODE_FOR_GROUP[g.key], r.to);
+                      return page ? (
+                        <Link to={sectionPath(page)} className="secmap__more">
+                          Punishment, bail and cognizability <Icon name="arrow" width={13} height={13} />
+                        </Link>
+                      ) : null;
+                    })()}
                   </li>
                 ))}
               </ul>

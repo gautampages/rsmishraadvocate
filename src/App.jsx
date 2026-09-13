@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import PracticeArea from "./pages/PracticeArea";
 import HajipurCourt from "./pages/HajipurCourt";
 import HindiPage from "./pages/HindiPage";
+import BnsHub from "./pages/BnsHub";
+import BnsSection from "./pages/BnsSection";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import Booking from "./pages/Booking";
@@ -41,7 +43,14 @@ export default function App() {
         <Route path="practice/:slug" element={<PracticeArea />} />
         <Route path="hajipur-civil-court" element={<HajipurCourt />} />
         <Route path="hi" element={<HindiPage />} />
+        {/* Section pages sit under /hi/bns before the generic /hi/:slug catch. */}
+        <Route path="hi/bns" element={<BnsHub />} />
+        <Route path="hi/bns/:slug" element={<BnsSection />} />
+        <Route path="hi/bnss/:slug" element={<BnsSection />} />
         <Route path="hi/:slug" element={<HindiPage />} />
+        <Route path="bns" element={<BnsHub />} />
+        <Route path="bns/:slug" element={<BnsSection />} />
+        <Route path="bnss/:slug" element={<BnsSection />} />
         <Route path="blog" element={<BlogIndex />} />
         <Route path="blog/:slug" element={<BlogPost />} />
         <Route path="book" element={<Booking />} />

@@ -28,6 +28,7 @@ import { districts, courtName, placeLabel } from "./courts.js";
 import { topics as caseLawTopics } from "./caseLaw.js";
 import { hindiPages, hindiPath } from "./hindi.js";
 import { courtGuide } from "./courtGuide.js";
+import { bnsSections, bnsHreflangPairs, hubPath, sectionPath, sectionMeta, HUB_META } from "./bnsPages.js";
 
 // Re-exported so the many pages that already import them from here keep
 // working; the definitions themselves live in site.js to break an import
@@ -196,6 +197,29 @@ const table = [
     changefreq: "monthly",
   })),
 
+  // ---- BNS / BNSS section pages (EN + HI) -----------------------------------
+  //
+  //  "BNS 318", "dhara 302 kya hai", "498A bailable or not" — forty queries
+  //  the one-page converter could never rank for. One data array → one hub
+  //  and one page per section in each language, hreflang-paired below.
+  ...["en", "hi"].map((lang) => ({
+    path: hubPath(lang),
+    title: HUB_META[lang].title,
+    description: HUB_META[lang].description,
+    lang: lang === "hi" ? "hi" : undefined,
+    priority: "0.8",
+    changefreq: "monthly",
+  })),
+  ...bnsSections.flatMap((p) =>
+    ["en", "hi"].map((lang) => ({
+      path: sectionPath(p, lang),
+      ...sectionMeta(p, lang),
+      lang: lang === "hi" ? "hi" : undefined,
+      priority: "0.7",
+      changefreq: "yearly",
+    }))
+  ),
+
   // ---- Document checklists --------------------------------------------------
   {
     path: "/checklists",
@@ -263,6 +287,7 @@ const HREFLANG = [
   ["/blog/lok-adalat-bihar", "/hi/lok-adalat-bihar"],
   ["/blog/bihar-prohibition-act-bail", "/hi/sharab-bandi-jamanat"],
   ["/ask", "/hi/muft-kanooni-salah"],
+  ...bnsHreflangPairs,
 ];
 
 const alternatesFor = (path) => {
