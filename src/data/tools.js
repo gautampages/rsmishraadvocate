@@ -16,12 +16,12 @@ export const tools = [
     icon: "home",
     name: "Stamp Duty & Registration Calculator",
     short: "Stamp Duty Calculator",
-    tagline: "Bihar rates, including the MVR trap",
+    tagline: "Every deed type — sale, gift, ₹100 partition, lease, POA, will",
     description:
-      "Estimate stamp duty and registration charges on a sale deed in Bihar, at the correct rate for the gender of the buyer and seller, and on the higher of your price or the Minimum Value Register rate.",
-    seoTitle: "Bihar Stamp Duty & Registration Charges Calculator (2026) | Adv. Ram Snehi Mishra",
+      "Estimate stamp duty and registration fee for any deed registered in Bihar — sale, gift, family partition, release, lease, rent agreement, power of attorney, mortgage, will, adoption — at the correct rate for the parties, on the higher of your price or the MVR value, with the online rebate, scanning fee, mutation fee and TDS shown alongside.",
+    seoTitle: "Bihar Stamp Duty & Registration Fee Calculator 2026 — Sale, Gift, Partition, Lease, POA",
     seoDescription:
-      "Free Bihar stamp duty calculator — 6% / 5.7% / 6.3% by buyer and seller gender, plus registration fee, computed on the higher of consideration or MVR value. For property in Hajipur, Vaishali and across Bihar.",
+      "Free Bihar stamp duty calculator for every deed: sale (6% / 5.7% / 6.3% by gender), gift deed, ₹100 family partition, release, lease and rent agreement, power of attorney, mortgage, will. Total cost at the registry with e-nibandhan rebate, scanning fee, mutation fee and TDS.",
   },
   {
     path: "/tools/land-unit-converter",

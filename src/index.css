@@ -1306,6 +1306,7 @@ a.contact__item:hover .contact__value { color: var(--gold-500); }
 .field { display: grid; gap: 7px; }
 .field label { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); }
 .field input,
+.field select,
 .field textarea {
   font-family: inherit;
   font-size: 0.98rem;
@@ -1318,6 +1319,7 @@ a.contact__item:hover .contact__value { color: var(--gold-500); }
   resize: vertical;
 }
 .field input:focus,
+.field select:focus,
 .field textarea:focus { outline: none; border-color: var(--gold-500); box-shadow: 0 0 0 3px var(--ring); }
 .field input::placeholder,
 .field textarea::placeholder { color: var(--ink-muted); }
@@ -3522,6 +3524,14 @@ a.contact__item:hover .contact__value { color: var(--gold-500); }
 .calc__total dt { color: #fff !important; font-weight: 600; }
 .calc__total dd { color: var(--gold-300) !important; font-size: 1.06rem; }
 .calc__result .btn { margin-top: 16px; }
+
+.calc__options { display: grid; gap: 12px; padding-top: 4px; border-top: 1px dashed var(--line); }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.88rem; color: var(--ink-soft); cursor: pointer; }
+.check input { margin-top: 3px; accent-color: var(--gold-600); width: 16px; height: 16px; flex: none; }
+.field--inline { grid-template-columns: 1fr; }
+.calc__breakdown--aside { margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(255, 255, 255, 0.18); }
+.calc__asidehead dt { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-300); }
+.calc__result .calc__warn + .btn { margin-top: 12px; }
 
 /* ---- Chips (segmented choice) ---- */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }

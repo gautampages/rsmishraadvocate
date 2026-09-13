@@ -19,20 +19,40 @@ export const toolFaqs = {
       a: "The Minimum Value Register (MVR) is the government's own circle-rate valuation for the plot. Duty is charged on the consideration stated in the deed or the MVR value, whichever is higher. If the MVR rate for your area exceeds the price you agreed, duty is computed on the MVR figure — this is the single most common surprise at the registry office.",
     },
     {
-      q: "Is stamp duty payable on a gift deed within the family?",
-      a: "A gift deed still attracts stamp duty and registration fee, though the applicable rate can differ from an ordinary sale. Transfers between specified close relatives are treated differently in several states, so the position for your particular relationship and property should be confirmed before the deed is drawn.",
+      q: "How much does a gift deed cost to register in Bihar?",
+      a: "The same as a sale. On the Registration Department's published chart a gift (Article 33) is charged like a conveyance — 6% duty and 2% fee on the MVR value of the property, with the same gender concession (5.7% + 1.9% or 6.3% + 2.1%). Bihar does not give a separate blood-relation concession on gifts, whatever a national portal may say. Gifts to schools, hospitals, orphanages and similar public institutions are exempt.",
+    },
+    {
+      q: "How much does a family partition deed cost to register in Bihar?",
+      a: "Far less than people assume. A registered partition deed of inherited family property attracts a flat ₹50 stamp duty and ₹50 registration fee — ₹100 in all — rather than the ad valorem rates that apply to a sale. Partition of any other co-owned property is 3% + 2% on the value of the shares separated, leaving out the largest share. With the land survey rewriting the khatiyan, registering a long-pending family partition is one of the cheapest and most valuable pieces of paperwork in Bihar.",
+    },
+    {
+      q: "What is the stamp duty on a lease or rent agreement in Bihar?",
+      a: "For a lease of land or a building at a fixed rent, conveyance duty (6% + 2%) is charged on a slice of the MVR value that grows with the term — 2% of value for under a year, 5% for one to ten years, 15% up to thirty years and 50% beyond. A house or flat rent agreement (kirayanama) is charged at 0.5% of the total rent for the term. An 11-month tenancy need not be registered at all and is usually notarised on stamp paper instead.",
+    },
+    {
+      q: "How much does a power of attorney cost to register in Bihar?",
+      a: "It depends entirely on who receives it and what it allows. A power to sell property given to someone outside the family is charged as if it were the sale — 6% of the MVR value plus a ₹10,000 registration fee. A power to a family member (parents, spouse, children, siblings, daughter-in-law, grandchildren), or one that is for a court case or not for sale, is ₹1,000 duty and ₹1,000 fee. This is the trap migrant families fall into when they hand a general power over village land to an outsider.",
+    },
+    {
+      q: "Is there stamp duty on a will in Bihar?",
+      a: "No. A will (vasiyat) attracts no stamp duty, and registering it is optional. If you do register it — which is strongly advisable, because a registered will is very hard to challenge as forged — the registration fee is ₹2,000, and the same fee applies to cancelling a registered will.",
+    },
+    {
+      q: "Is there a discount for registering online in Bihar?",
+      a: "Yes. Completing the registration through Bihar's online e-registration process earns a rebate of 1% of the stamp duty, capped at ₹2,000, under S.O. 10/2016. A scanning fee applies separately — ₹250 for a document up to 10 pages, ₹500 up to 20 pages and ₹1,000 beyond that. The rebate is worth claiming on almost every sale deed.",
+    },
+    {
+      q: "Do I have to pay TDS when buying property worth ₹50 lakh or more?",
+      a: "Yes. Under Section 194-IA of the Income-tax Act the buyer must deduct 1% of the price — or of the stamp-duty value, if that is higher — where either is ₹50 lakh or more, deposit it against the seller's PAN through Form 26QB within 30 days of the end of the month, and give the seller Form 16B. It is not an extra cost to the buyer; it comes out of what the seller receives. The registry will ask to see the challan. Agricultural land is exempt.",
+    },
+    {
+      q: "Is the mutation (dakhil kharij) fee included in these figures?",
+      a: "It is shown separately, because it is paid later at the Circle Office and not at the registry. Mutation applications in Bihar were free until 2026; the Bihar Land Mutation (Amendment) Bill 2026 is reported to introduce a ₹200 fee for mutation, appeal and correction applications. The calculator shows that figure as reported. Confirm at the Circle Office before budgeting for it.",
     },
     {
       q: "Are stamp duty and registration fee the same thing?",
       a: "No. Stamp duty is a tax on the instrument, paid to the State. The registration fee is charged separately for registering that instrument with the Sub-Registrar. Both are payable, which is why the effective cost of registering a sale deed in Bihar is around 8% of value rather than 6%.",
-    },
-    {
-      q: "Is there a discount for registering online in Bihar?",
-      a: "Yes. Completing the registration through Bihar's online e-registration process earns a rebate of 1% of the stamp duty, capped at ₹2,000, under S.O. 10/2016. A modest scanning fee applies separately — ₹250 for a document up to 10 pages, ₹500 up to 20 pages and ₹1,000 beyond that. The rebate is worth claiming on almost every sale deed.",
-    },
-    {
-      q: "How much does a family partition deed cost to register in Bihar?",
-      a: "Far less than people assume. A registered partition deed of inherited family property attracts a flat ₹50 stamp duty and ₹50 registration fee — ₹100 in all — rather than the ad valorem rates that apply to a sale. This makes registering a long-pending family partition one of the cheapest and most valuable pieces of paperwork in Bihar, particularly with the land survey rewriting the khatiyan.",
     },
   ],
 

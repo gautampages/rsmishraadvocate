@@ -13,66 +13,32 @@
 
 import { addDaysISO, addYearsISO, daysFromISTToday, isoToUTCms } from "./istTime.js";
 
-export const inr = (n) =>
-  new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(Math.round(n || 0));
-
-export const rupees = (n) => `₹${inr(n)}`;
+export { inr, rupees } from "./money.js";
 
 /* ---------------------------------------------------------------------- *
  *  1. STAMP DUTY & REGISTRATION — Bihar
  *
- *  Bihar charges duty on the higher of the stated consideration or the
- *  Minimum Value Register (MVR) rate for the plot, and varies the rate by
- *  the gender of the transferor and transferee.
+ *  Moved to ./stampDuty.js when the calculator grew from one deed type to
+ *  every instrument on the Registration Department's fee chart. Re-exported
+ *  here so nothing that imported the sale-deed helpers has to change.
  * ---------------------------------------------------------------------- */
 
-export const STAMP_CATEGORIES = [
-  {
-    key: "m2f",
-    label: "Male → Female",
-    hint: "Seller male, buyer female",
-    stamp: 5.7,
-    registration: 1.9,
-  },
-  {
-    key: "f2m",
-    label: "Female → Male",
-    hint: "Seller female, buyer male",
-    stamp: 6.3,
-    registration: 2.1,
-  },
-  {
-    key: "other",
-    label: "Any other combination",
-    hint: "Male → male, female → female, or joint buyers",
-    stamp: 6,
-    registration: 2,
-  },
-];
-
-/**
- * @param consideration  price stated in the deed
- * @param mvr            Minimum Value Register valuation for the plot
- * @param categoryKey    one of STAMP_CATEGORIES
- */
-export function computeStampDuty({ consideration = 0, mvr = 0, categoryKey = "other" }) {
-  const category = STAMP_CATEGORIES.find((c) => c.key === categoryKey) || STAMP_CATEGORIES[2];
-  const base = Math.max(Number(consideration) || 0, Number(mvr) || 0);
-  const stamp = (base * category.stamp) / 100;
-  const registration = (base * category.registration) / 100;
-
-  return {
-    category,
-    base,
-    // Which figure the duty was charged on — the commonest surprise at the
-    // registry office is duty computed on MVR, not on the agreed price.
-    basedOn: (Number(mvr) || 0) > (Number(consideration) || 0) ? "mvr" : "consideration",
-    stamp,
-    registration,
-    total: stamp + registration,
-    effectiveRate: category.stamp + category.registration,
-  };
-}
+export {
+  STAMP_CATEGORIES,
+  STAMP_RATES_AS_OF,
+  DEED_TYPES,
+  LEASE_TENURES,
+  MORTGAGE_KINDS,
+  MUTATION_FEE,
+  TDS_THRESHOLD,
+  categoryFor,
+  deedType,
+  computeDeed,
+  computeRegistrationCost,
+  computeStampDuty,
+  onlineRebate,
+  scanningFee,
+} from "./stampDuty.js";
 
 /* ---------------------------------------------------------------------- *
  *  2. COURT FEE — Bihar

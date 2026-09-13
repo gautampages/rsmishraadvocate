@@ -104,3 +104,18 @@ export function formatISODate(iso, options = { day: "numeric", month: "long", ye
   if (Number.isNaN(ms)) return iso || "";
   return new Date(ms).toLocaleDateString("en-IN", { ...options, timeZone: "UTC" });
 }
+
+/**
+ * Add calendar months to a "YYYY-MM-DD". Where the target month is shorter
+ * (31 Jan + 1 month) the date clamps to the last day of that month, which is
+ * how "one month from" is reckoned for limitation under the General Clauses
+ * Act reading courts apply.
+ */
+export function addMonthsISO(iso, months) {
+  const [y, m, d] = String(iso).slice(0, 10).split("-").map(Number);
+  if (!Number.isFinite(y)) return null;
+  const target = new Date(Date.UTC(y, m - 1 + months, 1));
+  const lastDay = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
+  target.setUTCDate(Math.min(d, lastDay));
+  return target.toISOString().slice(0, 10);
+}
