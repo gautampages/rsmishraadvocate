@@ -31,6 +31,7 @@ export default function Limitation() {
         "An acknowledgement of liability in writing (Section 18) or a part payment (Section 19) can start a fresh period running from the date of that acknowledgement.",
         "Delay in an appeal or application may be condoned under Section 5 for sufficient cause. That is not available for suits.",
         "Where the last day falls on a court holiday, Section 4 allows filing on the day the court reopens.",
+        "The cheque-bounce, MACT and consumer periods are fixed by their own statutes, not the Limitation Act. For a bounced cheque, the cheque-bounce calculator works all three dates from the dishonour date.",
       ]}
     >
       <div className="calc">

@@ -11,7 +11,7 @@
    rather than inventing a precise number.
    ========================================================================= */
 
-import { addDaysISO, addYearsISO, daysFromISTToday, isoToUTCms } from "./istTime.js";
+import { addDaysISO, addMonthsISO, addYearsISO, daysFromISTToday, isoToUTCms } from "./istTime.js";
 
 export { inr, rupees } from "./money.js";
 
@@ -255,6 +255,72 @@ export const LIMITATION_ITEMS = [
     from: "the date the right to apply accrued",
     authority: "Limitation Act, 1963 — Article 137",
   },
+  // ---- Cheque bounce: the three s.138 clocks people miss ---------------------
+  {
+    key: "cheque-notice",
+    group: "Cheque bounce (s.138 NI Act)",
+    label: "Demand notice to the drawer of a bounced cheque",
+    days: 30,
+    period: "30 days",
+    from: "the date you received the bank's return memo (dishonour)",
+    authority: "Negotiable Instruments Act, 1881 — s.138 proviso (b)",
+  },
+  {
+    key: "cheque-complaint",
+    group: "Cheque bounce (s.138 NI Act)",
+    label: "Complaint under s.138 after the drawer fails to pay",
+    months: 1,
+    period: "1 month",
+    from: "the day after the 15-day payment period (counted from the drawer's receipt of the notice) ends",
+    authority: "Negotiable Instruments Act, 1881 — s.142(b)",
+  },
+  // ---- Accident, consumer, money ----------------------------------------------
+  {
+    key: "mact-claim",
+    group: "Accident, consumer and money",
+    label: "Motor accident compensation claim before the MACT",
+    months: 6,
+    period: "6 months",
+    from: "the date of the accident",
+    authority: "Motor Vehicles Act, 1988 — s.166(3)",
+  },
+  {
+    key: "consumer-complaint",
+    group: "Accident, consumer and money",
+    label: "Consumer complaint before the District / State / National Commission",
+    days: 2 * 365,
+    period: "2 years",
+    from: "the date the cause of action arose (the deficiency, defect or unfair practice)",
+    authority: "Consumer Protection Act, 2019 — s.69",
+  },
+  {
+    key: "sarfaesi-drt",
+    group: "Accident, consumer and money",
+    label: "Application to the DRT against a bank's possession / sale measure under SARFAESI",
+    days: 45,
+    period: "45 days",
+    from: "the date the measure under s.13(4) (possession notice, sale notice) was taken",
+    authority: "SARFAESI Act, 2002 — s.17(1); DRT Patna for all of Bihar",
+  },
+  {
+    key: "insurance-ombudsman",
+    group: "Accident, consumer and money",
+    label: "Complaint to the Insurance Ombudsman after the insurer rejects or ignores a claim",
+    days: 365,
+    period: "1 year",
+    from: "the insurer's final rejection, or the end of one month without a reply to your written representation",
+    authority: "Insurance Ombudsman Rules, 2017 — rule 14(3)",
+  },
+  // ---- Land and revenue -------------------------------------------------------
+  {
+    key: "dclr-appeal",
+    group: "Land and revenue",
+    label: "Appeal to the DCLR against rejection of a dakhil-kharij (mutation) application",
+    days: 30,
+    period: "30 days",
+    from: "the date of the Circle Officer's rejection order",
+    authority: "Bihar Land Mutation Act, 2011 — appeal to the Deputy Collector Land Reforms",
+  },
   {
     key: "criminal-appeal-sessions",
     group: "Criminal",
@@ -295,8 +361,9 @@ export function computeDeadline(key, startISO) {
   // blocks, so a leap year does not silently shorten them. All of it is done
   // on date strings so the answer cannot shift with the device's timezone —
   // a limitation deadline is the same date wherever you read it from.
-  const deadlineISO =
-    item.days % 365 === 0
+  const deadlineISO = item.months
+    ? addMonthsISO(startISO, item.months)
+    : item.days % 365 === 0
       ? addYearsISO(startISO, item.days / 365)
       : addDaysISO(startISO, item.days);
 

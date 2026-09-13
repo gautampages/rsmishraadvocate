@@ -187,6 +187,64 @@ export const toolFaqs = {
     },
   ],
 
+  "/tools/mact-compensation-calculator": [
+    {
+      q: "How is motor accident compensation calculated in India?",
+      a: "For a death claim: take the deceased's annual income, add a percentage for future prospects (50%, 30% or 15% for a permanent job and 40%, 25% or 10% for the self-employed, depending on whether the deceased was under 40, 40 to 50, or 50 to 60), deduct the share the deceased would have spent on themselves (half for a bachelor; a third, a quarter or a fifth for a married person with up to three, up to six, or more dependants), and multiply by the Sarla Verma multiplier for the deceased's age. Add the conventional heads — loss of consortium to each dependant, loss of estate and funeral expenses — and interest from the date of the claim. That is the Sarla Verma / Pranay Sethi method every tribunal applies.",
+    },
+    {
+      q: "What is the multiplier in a MACT case?",
+      a: "A number from the Supreme Court's table in Sarla Verma v. DTC (2009) that stands for the years of dependency the family has lost: 18 for a deceased aged 15 to 25, 17 for 26 to 30, 16 for 31 to 35, 15 for 36 to 40, 14 for 41 to 45, 13 for 46 to 50, 11 for 51 to 55, 9 for 56 to 60, 7 for 61 to 65 and 5 above 65. It is applied to the deceased's age, not the age of the dependants.",
+    },
+    {
+      q: "How much compensation is paid for death in a road accident if fault cannot be proved?",
+      a: "Section 164 of the Motor Vehicles Act, as amended from 1 April 2022, gives a no-fault claim of ₹5 lakh for death and ₹2.5 lakh for grievous hurt against the insurer of the vehicle, without proving negligence. Where the vehicle cannot be traced at all, the Hit and Run Scheme, 2022 pays ₹2 lakh for death and ₹50,000 for grievous hurt through the District Claims Enquiry Officer (the SDO). Neither prevents a full claim under s.166 if fault can be shown.",
+    },
+    {
+      q: "What is the time limit for filing a motor accident claim?",
+      a: "Six months from the date of the accident, under section 166(3) as inserted by the 2019 amendment. Before 2019 there was no limit, and older articles still say so. A late petition needs an application to condone the delay, which tribunals do not grant routinely — file within the six months.",
+    },
+    {
+      q: "Where is the MACT for Vaishali district?",
+      a: "The Motor Accident Claims Tribunal for Vaishali sits at the civil court at Hajipur, presided by the District Judge or an Additional District Judge. A claim can be filed where the accident happened, where the claimant resides, or where the defendant resides — so a Vaishali family can file at Hajipur even for an accident elsewhere.",
+    },
+    {
+      q: "Is compensation reduced if the victim was also at fault?",
+      a: "Yes, in proportion to the victim's share of the negligence — commonly 25% or 50% where the tribunal finds both drivers rash. Where the victim was the driver and solely at fault, the s.166 claim fails; the family is left with the personal-accident cover on the vehicle's own policy and, if the other vehicle is untraced, nothing under the hit-and-run scheme either.",
+    },
+  ],
+
+  "/tools/cheque-bounce-calculator": [
+    {
+      q: "What is the punishment for a cheque bounce case?",
+      a: "Imprisonment up to two years, or a fine up to twice the cheque amount, or both, under section 138 of the Negotiable Instruments Act, 1881. In practice most convictions end in an order to pay the cheque amount with interest as compensation under s.357(3) CrPC (now BNSS 395), with imprisonment held in default of payment. The offence is compoundable at any stage, so paying up ends the case.",
+    },
+    {
+      q: "What are the deadlines in a Section 138 case?",
+      a: "Three, and missing any one is fatal. The demand notice must be sent within 30 days of receiving the bank's return memo. The drawer then has 15 days from receipt of the notice to pay. If he does not, the cause of action arises the next day and the complaint must be filed within one month of that date. The cheque itself must have been presented within three months of the date written on it.",
+    },
+    {
+      q: "Can I get money before the case is decided?",
+      a: "The trial court can order interim compensation of up to 20% of the cheque amount under section 143A, payable within 60 days. Since Rakesh Ranjan Shrivastava v. State of Jharkhand (2024) this is discretionary, not automatic — the court must record a prima facie view. If the drawer is convicted and appeals, the appellate court ordinarily requires him to deposit at least 20% of the fine or compensation under section 148.",
+    },
+    {
+      q: "Where do I file a cheque bounce complaint?",
+      a: "In the court of the Judicial Magistrate of the first class within whose jurisdiction the bank branch where you deposited the cheque is located (section 142(2), after the 2015 amendment). For a cheque deposited in a Hajipur branch, that is the Chief Judicial Magistrate's court at Hajipur. Where the drawer lives does not matter.",
+    },
+    {
+      q: "What must a cheque bounce notice contain?",
+      a: "The cheque's number, date, amount and bank; that it was presented within validity and returned unpaid, with the return-memo date and the bank's reason; the debt or liability it was issued for; a demand for the cheque amount within 15 days of receipt; and a statement that a complaint under section 138 will follow. Send it by registered post with acknowledgment due, and by speed post, and keep the receipts. Demanding more than the cheque amount as one lump sum, or omitting the demand, are the classic defects.",
+    },
+    {
+      q: "What defences does the drawer have?",
+      a: "That the cheque was not for a legally enforceable debt — a security cheque with nothing due, a gift, a time-barred loan; that the notice was late, defective or not served; that the cheque was presented after three months; that the signature was forged; or that the complaint was filed early or late. The presumption under section 139 is against the drawer, so each defence needs evidence, not just a denial.",
+    },
+    {
+      q: "Does settling the case cost anything?",
+      a: "Settling at the first or second hearing costs nothing beyond what you agree. The Supreme Court in Damodar S. Prabhu (2010) directed graded costs for later compounding: 10% of the cheque amount if settled during the trial, 15% at the Sessions or High Court stage and 20% in the Supreme Court, paid to the Legal Services Authority. Settlement in a Lok Adalat is a decree and closes the criminal case.",
+    },
+  ],
+
   "/tools/cause-list": [
     {
       q: "What is a cause list?",

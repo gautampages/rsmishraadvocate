@@ -84,6 +84,30 @@ export const tools = [
       "Free limitation period checker for suits, appeals and applications in Bihar courts under the Limitation Act, 1963 — the applicable period, the date it runs from, and the days remaining.",
   },
   {
+    path: "/tools/mact-compensation-calculator",
+    icon: "shield",
+    name: "Motor Accident Compensation Calculator (MACT)",
+    short: "Accident Compensation",
+    tagline: "Sarla Verma multiplier, Pranay Sethi heads",
+    description:
+      "Estimate motor-accident compensation the way the Claims Tribunal computes it — Sarla Verma multiplier by age, Pranay Sethi future prospects and conventional heads, deduction for personal expenses, consortium per dependant — for death and injury claims, with the no-fault and hit-and-run floors and the 6-month filing limit.",
+    seoTitle: "Motor Accident Compensation Calculator (MACT) — Sarla Verma & Pranay Sethi Method, India",
+    seoDescription:
+      "Free MACT claim calculator: death and injury compensation by the Supreme Court's Sarla Verma multiplier and Pranay Sethi future-prospects method, with consortium, estate and funeral heads, the ₹5 lakh no-fault and ₹2 lakh hit-and-run floors, and the 6-month limit under s.166(3). For claims at Hajipur, Patna and across Bihar.",
+  },
+  {
+    path: "/tools/cheque-bounce-calculator",
+    icon: "doc",
+    name: "Cheque Bounce Calculator & Section 138 Notice Generator",
+    short: "Cheque Bounce Calculator",
+    tagline: "Deadlines, fine, compensation — and the notice",
+    description:
+      "Work out the three Section 138 deadlines from the dishonour date, the maximum fine, interim compensation and appeal deposit, the compensation a court is likely to order with interest, and the cost of settling late — then generate a compliant demand notice in English or Hindi.",
+    seoTitle: "Cheque Bounce Case Calculator & Legal Notice Format (Section 138) — Fine, Compensation, Deadlines",
+    seoDescription:
+      "Free cheque bounce calculator for Section 138 NI Act: 30-day notice, 15-day payment and 1-month complaint deadlines from your dishonour date; maximum fine (2× cheque), 20% interim compensation, 20% appeal deposit, likely compensation with interest; plus a demand notice generator in English and Hindi.",
+  },
+  {
     path: "/tools/cause-list",
     icon: "calendar",
     name: "Vaishali Cause List Lookup",

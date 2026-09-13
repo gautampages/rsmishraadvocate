@@ -23,6 +23,8 @@ import CourtFee from "./pages/tools/CourtFee";
 import Maintenance from "./pages/tools/Maintenance";
 import Limitation from "./pages/tools/Limitation";
 import CauseList from "./pages/tools/CauseList";
+import Mact from "./pages/tools/Mact";
+import ChequeBounce from "./pages/tools/ChequeBounce";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import Fees from "./pages/Fees";
@@ -69,6 +71,8 @@ export default function App() {
         <Route path="tools/maintenance-estimator" element={<Maintenance />} />
         <Route path="tools/limitation-checker" element={<Limitation />} />
         <Route path="tools/cause-list" element={<CauseList />} />
+        <Route path="tools/mact-compensation-calculator" element={<Mact />} />
+        <Route path="tools/cheque-bounce-calculator" element={<ChequeBounce />} />
         <Route path="checklists" element={<Checklists />} />
         <Route path="checklists/:slug" element={<ChecklistDetail />} />
         <Route path="fees" element={<Fees />} />

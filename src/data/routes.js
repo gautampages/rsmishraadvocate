@@ -185,7 +185,7 @@ const table = [
     path: "/tools",
     title: "Free Legal Calculators & Lookups for Bihar | Advocate Ram Snehi Mishra",
     description:
-      "Free tools for court users in Bihar — stamp duty and registration calculator, katha–square feet land unit converter, IPC to BNS section converter, civil suit court fee calculator, maintenance estimator, limitation checker and Vaishali cause list lookup.",
+      "Free tools for court users in Bihar — stamp duty calculator for every deed, katha–square feet converter, IPC to BNS converter, court fee calculator, maintenance estimator, limitation checker, motor-accident (MACT) compensation calculator, cheque-bounce calculator with a Section 138 notice generator, and the Vaishali cause list.",
     priority: "0.8",
     changefreq: "monthly",
   },
