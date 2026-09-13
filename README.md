@@ -12,7 +12,11 @@ JavaScript runs, then hydrates into a single-page app.
 | `/practice/<slug>` | Four practice-area pages (divorce & family, criminal, civil, property) |
 | `/blog`, `/blog/<slug>` | Legal insight articles, one URL each |
 | `/book` | Appointment booking with real slots, calendar export and WhatsApp fallback |
-| `/tools`, `/tools/<slug>` | Seven free calculators and lookups |
+| `/tools`, `/tools/<slug>` | Eleven free calculators, generators and lookups |
+| `/bns`, `/bns/<n>`, `/bnss/<n>` | One page per commonly charged BNS / BNSS section (42), with Hindi twins under `/hi/bns/…` |
+| `/hi`, `/hi/<slug>` | Hindi pages, hreflang-paired with their English counterparts |
+| `/case-status`, `/case-status/<district>` | Live eCourts case-status tracker, one page per Bihar district |
+| `/case-law`, `/case-law/<topic>` | Case-law search and subject pages |
 | `/checklists`, `/checklists/<slug>` | Printable document checklists |
 | `/fees` | Fees and engagement terms |
 | `/privacy-policy`, `/terms`, `/disclaimer` | Policy documents |
@@ -22,9 +26,14 @@ JavaScript runs, then hydrates into a single-page app.
 - Prerendered HTML per route, with per-page `<title>`, description, canonical URL
   and JSON-LD; `sitemap.xml` generated at build time from the same route table
 - Live eCourts case-status tracker and an AI legal assistant (Cloudflare Workers)
-- Free legal tools: Bihar stamp duty, katha–sq ft land unit converter, IPC→BNS
-  section converter, Bihar court fee, maintenance estimator, limitation
-  checker, Vaishali cause-list lookup — all computed in the browser
+- Free legal tools: Bihar stamp duty for every deed type, katha–sq ft land
+  unit converter, IPC→BNS section converter, Bihar court fee, maintenance
+  estimator, limitation checker (20 periods), MACT accident compensation,
+  cheque-bounce calculator with a Section 138 notice generator, vanshavali
+  (Prapatra 3(1)) generator with affidavit, consumer-forum fee finder,
+  Vaishali cause-list lookup — all computed in the browser
+- Per-section BNS/BNSS pages in English and Hindi, generated from one data
+  file with punishment and BNSS-Schedule classification and FAQ schema
 - Appointment booking against the chamber's real office hours, with `.ics` export
 - Scroll-reveal animations (respect `prefers-reduced-motion`), print stylesheet
 - Navy + gold aesthetic, Fraunces + Inter typography, fully responsive
@@ -40,11 +49,23 @@ Content is split by concern, all under [`src/data/`](src/data/):
 | `practice.js` | Practice-area pages |
 | `blogPosts.js` | Articles — add an entry to publish a new one |
 | `tools.js` | Tool index metadata |
+| `toolFaqs.js` | FAQ text per tool (rendered on the page and emitted as FAQPage schema) |
+| `bnsPages.js` | The BNS / BNSS section pages — data, route helpers, FAQ and title generators |
+| `bnsSections.js` | The IPC→BNS converter table |
+| `hindi.js` | Prose Hindi pages |
 | `checklists.js` | Document checklists |
 | `fees.js` | Fee schedule and engagement terms |
 | `legal.js` | Privacy policy, terms, disclaimer |
 
-Calculation logic for the tools lives in [`src/lib/legalTools.js`](src/lib/legalTools.js).
+Calculation logic for the tools lives under [`src/lib/`](src/lib/):
+`legalTools.js` (court fee, maintenance, limitation, land units, cause list;
+re-exports the stamp helpers), `stampDuty.js`, `mact.js`, `chequeBounce.js`,
+`consumer.js`, `vanshavali.js` and `money.js` (Indian digit grouping and
+rupees in words). Every function runs in the browser; nothing typed is sent
+anywhere.
+
+The SEO backlog these were built from, with what is done and what is still
+open, is in [`docs/seo-opportunities-2026-09.md`](docs/seo-opportunities-2026-09.md).
 
 ### Outstanding TODOs
 
